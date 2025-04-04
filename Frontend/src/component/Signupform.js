@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/Signupform.css';
+import API from '../api';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
+
+  const navigation = useNavigate();
+
+
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -25,9 +31,15 @@ const SignupForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
+    try {
+      const response = await API.post('http://localhost:4000/auth/register' , {
+        formData
+      })
+    } catch (error) {
+      console.log(error)
+    }
     console.log(formData);
   };
 

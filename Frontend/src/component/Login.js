@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import '../styles/Login.css';
 import { FaGoogle, FaFacebook, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa';
+import API from '../api';
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await API.post('http://localhost:4000/auth/login', {
+        email, password
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="login-page">
@@ -28,7 +41,12 @@ function Login() {
 
           <div className="form-group">
             <label>Email Address</label>
-            <input type="email" placeholder="Your Email" />
+            <input 
+              type="email" 
+              placeholder="Your Email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} 
+            />
             <div className="divider"></div>
           </div>
 
@@ -37,6 +55,8 @@ function Login() {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="***********"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} 
             />
             <div className="divider"></div>
             <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
@@ -44,7 +64,7 @@ function Login() {
             </span>
           </div>
 
-          <button className="login-button">Log In</button>
+          <button className="login-button" onClick={handleLogin}>Log In</button>
 
           <div className="social-login">
             <p>Or continue with</p>
