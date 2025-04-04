@@ -1,0 +1,10 @@
+js Needs 
+1.variable
+2.datatypes
+3.operators
+4.conditional ,Looping
+5.data types function
+6.functions in js
+
+
+=========== xxxx ========
