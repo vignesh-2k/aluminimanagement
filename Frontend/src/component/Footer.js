@@ -8,9 +8,7 @@ function Footer() {  // Changed component name to start with uppercase
         <div className="footer-section">
           <h2 className="footer-logo">Anna University Alumni</h2>  {/* Fixed typo in "Alumni" */}
           <p className="footer-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus elementum metus vitae vulputate.
-            Proin mattis ligula a nunc suscipit, sed aliquam mi condimentum. In dictum erat lacus, id laculis
-            mauris tincidunt quis.
+           Anna university was established on 4th Septemper , 1978 as a university type of university. This University was named after late Dr.C.N.Annadurai, former Chief Minister of Tamil Nadu.
           </p>
         </div>
 

@@ -2,17 +2,24 @@ import React, { useState } from 'react';
 import '../styles/Login.css';
 import { FaGoogle, FaFacebook, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa';
 import API from '../api';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   const handleLogin = async () => {
+
+    const loginData = {
+      email, password
+    }
     try {
-      const response = await API.post('http://localhost:4000/auth/login', {
-        email, password
-      });
+      const response = await API.post('http://localhost:4000/auth/login', loginData);
+      navigate('/dashboard')
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -24,7 +31,6 @@ function Login() {
       <div className="login-left">
         <div className="login-header">
           <h1>Anna University Alumni</h1>
-          <p className="welcome-text">Welcome Back</p>
           <p className="register-text">
             Register now to see people who have attended or graduated from a particular school, college or university.
           </p>

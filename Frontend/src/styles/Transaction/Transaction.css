@@ -1,0 +1,93 @@
+.transaction-container {
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 20px 40px;
+    background-color: #f8faec;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .transaction-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .transaction-box {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .transaction-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .transaction-search-icon {
+    position: absolute;
+    left: 12px;
+    color: gray;
+  }
+  
+  .transaction-search-box input {
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    width: 300px;
+    font-size: 16px;
+  }
+  
+  .transaction-table-controls {
+    float: right;
+    margin-top: -40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .transaction-table th,
+  .transaction-table td {
+    border: 1px solid #f0f0f0;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .transaction-table th {
+    background-color: #f9f9f9;
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+  }
+  
+  .table-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination-buttons button {
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

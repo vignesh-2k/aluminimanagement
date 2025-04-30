@@ -1,0 +1,118 @@
+/* styles/Navbar.css */
+
+/* Main Navigation */
+.db-nav {
+  background: #003f7d;
+  backdrop-filter: blur(8px);
+  height: 100vh;
+  width: 260px;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 2rem;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation List */
+.db-nav-list {
+  list-style: none;
+  padding: 0px 13px 0px 10px;
+  margin: 0;
+}
+
+/* Navigation Items */
+.db-nav-item {
+  margin: 10px 5px;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Navigation Link */
+.db-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: #f2f2f2;
+  font-size: 1.10rem;
+  padding: 0.9rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Arrow inside Nav Link */
+.db-nav-arrow {
+  margin-left: auto;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Hover Effects */
+.db-nav-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: thin;
+  /* transform: translateX(-3px);  */
+}
+
+.db-nav-item:hover .db-nav-link {
+  color: #ffffff;
+}
+
+.db-nav-icon {
+  font-size: 1.3rem;
+}
+
+/* Dropdown List */
+.dropdown-list {
+  list-style-type: disc;
+  padding-left: 2.5rem;
+  margin-left: 30px;
+  margin-bottom: 0px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  color: #cfd8dc;
+}
+
+.dropdown-list.show {
+  max-height: 600px;
+  padding-top: 0rem;
+  padding-bottom: 1rem;
+}
+
+/* Dropdown List Items */
+.dropdown-list li {
+  margin: 1rem 0; /* Increased gap between dropdown items */
+}
+
+.dropdown-list li a {
+  color: #cfd8dc;
+  font-size: 0.90rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.dropdown-list li a:hover {
+  color: #ffffff;
+}
+
+/* Scrollbar Customization */
+.db-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.db-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+
+.db-nav::-webkit-scrollbar-track {
+  background: transparent;
+}

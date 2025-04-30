@@ -1,0 +1,301 @@
+/* --- BatchSetting.css --- */
+
+/* --- Page Layout --- */
+.bs-page {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faf4;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.bs-page-header {
+  padding: 15px 0px 30px 0px;
+}
+
+.bs-page-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* --- Card Layout --- */
+.bs-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px #e0e0e0;
+}
+
+/* --- Top Controls --- */
+.bs-top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.bs-left-controls {
+  flex: 1;
+}
+
+.bs-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bs-search-icon {
+  position: absolute;
+  left: 12px;
+  color: gray;
+}
+
+.bs-search-box input {
+  padding: 10px 15px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  width: 300px;
+  font-size: 16px;
+}
+
+/* --- Right Controls --- */
+.bs-right-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.bs-add-new-btn {
+  background: #c8f169;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bs-add-new-btn:hover {
+  background: #a6e343;
+}
+
+.bs-entries-select {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.bs-entries-select select {
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+/* --- Table --- */
+.bs-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.bs-table th, .bs-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.bs-table thead {
+  background: #f9f9f9;
+}
+
+.bs-actions button {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0 5px;
+  padding: 6px 10px;
+  transition: 0.3s;
+}
+
+.bs-actions button:hover {
+  background: #c8f169;
+}
+
+/* --- Table Footer --- */
+.bs-table-footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bs-pagination button {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 0 2px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bs-pagination .active {
+  background: #c8f169;
+  border: none;
+}
+
+/* --- Modals --- */
+.bs-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.bs-modal-content, .bs-delete-modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  width: 400px;
+  text-align: center;
+}
+
+.bs-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bs-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.bs-modal-body {
+  margin-top: 20px;
+}
+
+/* --- Floating Label (Always Top) --- */
+.bs-floating-label {
+  position: relative;
+  margin-top: 10px;
+}
+
+.bs-floating-label input {
+  width: 100%;
+  padding: 14px 12px 14px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  background: white;
+}
+
+.bs-floating-label label {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: black;
+  background: white;
+  padding: 0 5px;
+}
+
+/* --- Save / Update Button --- */
+.bs-save-update-btn {
+  background: #28a745;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bs-save-update-btn:hover {
+  background: #218838;
+}
+
+/* --- Required Star --- */
+.bs-required-star {
+  color: red;
+  font-size: 16px;
+}
+
+/* --- Delete Modal --- */
+.bs-warning-icon {
+  width: 50px;
+  height: 50px;
+  border: 2px solid orange;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  font-size: 32px;
+  color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bs-delete-modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.bs-delete-confirm-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bs-delete-confirm-btn:hover {
+  background-color: #0056b3;
+}
+
+.bs-delete-cancel-btn {
+  background-color:rgb(245, 69, 86);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bs-delete-cancel-btn:hover {
+  background-color: #c82333;
+}
