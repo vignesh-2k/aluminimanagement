@@ -9,18 +9,26 @@ const SignupForm = () => {
 
 
   const [formData, setFormData] = useState({
-    fullName: '',
-    phone: '',
-    department: '',
-    id: '',
-    birthDate: '',
-    password: '',
-    batch: '',
-    email: '',
-    passingYear: '',
-    gender: 'male',
-    confirmPassword: '',
-    attachment: null
+    userTypeId: '',
+    email: "",
+    password: "",
+    name: "",
+    mobileNumber: "",
+    dateOfBirth: "",
+    rollNumber: "",
+    address: "",
+    city: "",
+    state: "",
+    pinCode: "",
+    linkedInUrl: "",
+    companyName: "",
+    companyDesignation: "",
+    companyAddress: "",
+    batchNameId: 1,
+    departmentId: 1,
+    passedOutYearId: 1,
+    genderId: 1,
+    bloodGroupId: 1
   });
 
   const handleChange = (e) => {
@@ -33,10 +41,17 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+
+    
     try {
-      const response = await API.post('http://localhost:4000/auth/register' , {
-        formData
-      })
+      const response = await API.post('http://localhost:4000/auth/register' , formData)
+      navigation('/login')
+    
     } catch (error) {
       console.log(error)
     }
