@@ -1,0 +1,95 @@
+.ed-container {
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 20px 40px;
+    background-color: #f8faec;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .ed-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .ed-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .ed-date {
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .ed-heading {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1c1c1c;
+    margin-bottom: 20px;
+  }
+  
+  .ed-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+  }
+
+  .ed-image {
+    width: 725.33px;
+    height: 518.66px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .ed-ticket-info {
+    margin: 10px 0;
+    background-color: #e2f5c8;
+    padding: 5px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: bold;
+    color: #2b5e00;
+    font-size: 14px;
+  }
+  
+  .ed-description {
+    margin: 15px 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .ed-list {
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  .ed-list li {
+    margin-bottom: 8px;
+  }
+  
+  .ed-purchase-btn {
+    background-color: #d4f7b3;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #1e5b00;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ed-purchase-btn:hover {
+    background-color: #c1f092;
+  }
+  

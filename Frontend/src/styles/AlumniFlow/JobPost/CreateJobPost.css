@@ -1,0 +1,174 @@
+.alumni-cjp-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.alumni-cjp-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #1a365d;
+}
+
+.alumni-cjp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.alumni-cjp-form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.alumni-cjp-field-group {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+.floating input,
+.floating input[type="file"],
+.floating-dropdown .alumni-cjp-dropdown {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: all 0.3s;
+}
+
+.floating input:hover,
+.floating-dropdown .alumni-cjp-dropdown:hover {
+  border-color: #0052a3;
+}
+
+.floating input:focus {
+  border-color: #0052a3;
+  outline: none;
+}
+
+.floating label,
+.floating-dropdown label {
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background: white;
+  font-size: 14px;
+  color: #4a5568;
+  padding: 0 5px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+
+
+.alumni-cjp-dropdown {
+  position: relative;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.alumni-cjp-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alumni-cjp-dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 5px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.alumni-cjp-dropdown-options div {
+  padding: 12px 16px;
+  transition: background 0.2s;
+}
+
+.alumni-cjp-dropdown-options div:hover {
+  background-color: #f7fafc;
+}
+
+.alumni-cjp-editor-group.floating-quill {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.alumni-cjp-editor-group.floating-quill label {
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background: white;
+  font-size: 13px;
+  color: #4a5568;
+  padding: 0 5px;
+  z-index: 5;
+}
+
+.ql-toolbar {
+  border: 1px solid #cbd5e0 !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0;
+  background-color: #f9fafb;
+  padding: 8px !important;
+}
+
+.ql-container {
+  border: 1px solid #cbd5e0 !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px;
+  min-height: 150px;
+}
+
+.ql-editor {
+  min-height: 150px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.alumni-cjp-submit-btn {
+  background-color: #48bb78;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
+.alumni-cjp-submit-btn:hover {
+  background-color: #38a169;
+}
+
+.required {
+  color: #e53e3e;
+  margin-left: 3px;
+}

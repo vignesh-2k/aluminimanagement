@@ -1,0 +1,97 @@
+
+
+.jobpost-container {
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 20px 40px;
+    background-color: #f8faf4;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  
+  .jobpost-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .jobpost-box {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .jobpost-search-box {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  
+  .jobpost-search-box input {
+    width: 300px;
+    padding: 10px 10px 10px 40px;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+  }
+  
+  .jobpost-search-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 18px;
+  }
+  
+  .jobpost-table-controls {
+    float: right;
+    margin-top: -5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .jobpost-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .jobpost-table th,
+  .jobpost-table td {
+    border: 1px solid #f0f0f0;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .jobpost-table th {
+    background-color: #f9f9f9;
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+  }
+  
+  .table-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination-buttons button {
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

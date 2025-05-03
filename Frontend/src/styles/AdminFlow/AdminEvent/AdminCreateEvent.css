@@ -1,0 +1,240 @@
+.ce-create-event-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.ce-event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.ce-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.ce-full-width {
+  width: 100%;
+}
+
+.ce-field-group {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ce-field-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: grey;
+  background: white;
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  padding: 0 5px;
+  z-index: 1;
+}
+
+.ce-required-star {
+  color: red;
+}
+
+/* === Inputs, Textarea === */
+.ce-field-group input,
+.ce-field-group textarea,
+.ce-field-group .ce-quill-wrapper {
+  width: 100%;
+  padding: 14px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  outline: none;
+  position: relative;
+  z-index: 0;
+  transition: border-color 0.3s;
+}
+
+.ce-field-group input:hover,
+.ce-field-group input:focus,
+.ce-field-group textarea:hover,
+.ce-field-group textarea:focus,
+.ce-custom-dropdown:hover,
+.ce-custom-dropdown:focus {
+  border-color: #0052a3;
+}
+
+.ce-field-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* === Custom Select Styling === */
+.ce-custom-dropdown {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  position: relative;
+  padding: 14px 12px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.ce-dropdown-selected {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ce-dropdown-icon {
+  font-size: 20px;
+  color: #888;
+  flex-shrink: 0;
+}
+
+.ce-dropdown-menu {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 10;
+  animation: fadeIn 0.2s ease;
+}
+
+.ce-dropdown-item {
+  padding: 12px;
+  transition: 0.2s;
+}
+
+.ce-dropdown-item:hover {
+  background-color: #f1f8e9;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Upload Section === */
+.ce-upload-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ce-upload-box {
+  flex: 1;
+  border: 3px dotted #ccc;
+  border-radius: 10px;
+  padding: 30px 10px;
+  background-color: #f0f0f0;
+  position: relative;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.ce-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ce-upload-icon {
+  font-size: 50px;
+  color: #888;
+}
+
+/* === Button === */
+.ce-publish-btn {
+  background-color: #b4ec51;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.ce-publish-btn:hover {
+  background-color: #9bd145;
+}
+
+/* === React Quill Styling === */
+.ce-quill-wrapper .ql-container {
+  border: none !important;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  min-height: 120px;
+  border-radius: 8px;
+}
+
+.ce-quill-wrapper .ql-toolbar {
+  border: none !important;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ce-quill-wrapper .ql-editor {
+  min-height: 100px;
+  padding: 10px 12px;
+}
+
+/* === Special Field Styling === */
+.ce-description-field {
+  position: relative;
+}
+
+.ce-description-field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: grey;
+  background: white;
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  padding: 0 5px;
+  z-index: 2;
+}

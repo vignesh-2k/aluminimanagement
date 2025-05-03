@@ -1,0 +1,310 @@
+.me-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.me-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.me-table-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.me-top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.me-search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.me-search-icon {
+  position: absolute;
+  left: 10px;
+  color: gray;
+}
+
+.me-search-input {
+  padding: 8px 8px 8px 32px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+}
+
+.me-entries-container {
+  display: flex;
+  align-items: center;
+}
+
+.me-entries-label {
+  font-size: 14px;
+}
+
+.me-entries-select {
+  margin: 0 5px;
+  padding: 4px;
+}
+
+.me-table-responsive {
+  overflow-x: auto;
+}
+
+.me-event-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.me-event-table th,
+.me-event-table td {
+  padding: 12px 10px;
+  border: 1px solid #eee;
+  text-align: left;
+}
+
+.me-category-badge,
+.me-type-badge,
+.me-status-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: white;
+}
+
+.me-category-badge {
+  background-color: #007bff;
+}
+
+.me-type-badge {
+  background-color: #28a745;
+}
+
+.me-status-badge {
+  background-color: #ffc107;
+  color: black;
+}
+
+.me-action-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.me-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.me-table-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.me-pagination {
+  display: flex;
+  gap: 5px;
+}
+
+.me-page-btn {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.me-active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* --- TICKET POPUP STYLES --- */
+.me-tp-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.me-tp-popup {
+  width: 80%;
+  max-width: 1000px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.me-tp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.me-tp-back,
+.me-tp-download {
+  background-color: #dff3ba;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.me-tp-content {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.me-tp-left,
+.me-tp-middle,
+.me-tp-right {
+  flex: 1;
+}
+
+.me-tp-image {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+}
+
+.me-tp-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.me-tp-ticket-id {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.me-tp-reserved {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.me-tp-location-label {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.me-tp-location {
+  font-size: 14px;
+  color: #444;
+}
+
+.me-tp-qr {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 10px;
+}
+
+.me-tp-scan-text {
+  font-size: 13px;
+  color: #444;
+  text-align: center;
+}
+
+.me-tp-barcode {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 180px;
+}
+
+
+/* --- DELETE POPUP STYLES --- */
+.me-del-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.me-del-popup {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.me-del-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.me-del-message {
+  font-size: 14px;
+  margin-bottom: 24px;
+  color: #444;
+}
+
+.me-del-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.me-del-cancel,
+.me-del-confirm {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.me-del-cancel {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.me-del-confirm {
+  background-color: #ff4d4f;
+  color: white;
+}

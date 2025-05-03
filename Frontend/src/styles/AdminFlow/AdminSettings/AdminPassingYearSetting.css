@@ -1,0 +1,299 @@
+/* --- PassingYearSetting.css --- */
+
+/* --- Page Layout --- */
+.pys-page {
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 20px 40px;
+    background-color: #f8faf4;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .pys-page-header {
+    padding: 15px 0px 30px 0px;
+  }
+  
+  .pys-page-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* --- Card Layout --- */
+  .pys-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px #e0e0e0;
+  }
+  
+  /* --- Top Controls --- */
+  .pys-top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .pys-left-controls {
+    flex: 1;
+  }
+  
+  .pys-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .pys-search-icon {
+    position: absolute;
+    left: 12px;
+    color: gray;
+  }
+  
+  .pys-search-box input {
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    width: 300px;
+    font-size: 16px;
+  }
+  
+  /* --- Right Controls --- */
+  .pys-right-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .pys-add-new-btn {
+    background: #c8f169;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .pys-add-new-btn:hover {
+    background: #a6e343;
+  }
+  
+  .pys-entries-select {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .pys-entries-select select {
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  /* --- Table --- */
+  .pys-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  
+  .pys-table th, .pys-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .pys-table thead {
+    background: #f9f9f9;
+  }
+  
+  .pys-actions button {
+    background: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+    padding: 6px 10px;
+    transition: 0.3s;
+  }
+  
+  .pys-actions button:hover {
+    background: #c8f169;
+  }
+  
+  /* --- Table Footer --- */
+  .pys-table-footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pys-pagination button {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .pys-pagination .active {
+    background: #c8f169;
+    border: none;
+  }
+  
+  /* --- Modals --- */
+  .pys-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .pys-modal-content, .pys-delete-modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .pys-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pys-close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  
+  .pys-modal-body {
+    margin-top: 20px;
+  }
+  
+  .pys-floating-label {
+    position: relative;
+    margin-top: 10px;
+  }
+  
+  .pys-floating-label input {
+    width: 100%;
+    padding: 14px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    background: white;
+  }
+  
+  .pys-floating-label label {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    font-size: 12px;
+    color: black;
+    background: white;
+    padding: 0 5px;
+  }
+  
+  /* --- Save / Update Button --- */
+  .pys-save-update-btn {
+    background: #28a745;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .pys-save-update-btn:hover {
+    background: #218838;
+  }
+  
+  /* --- Required Star --- */
+  .pys-required-star {
+    color: red;
+    font-size: 16px;
+  }
+  
+  /* --- Delete Modal --- */
+  .pys-warning-icon {
+    width: 50px;
+    height: 50px;
+    border: 2px solid orange;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pys-delete-modal-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .pys-delete-confirm-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .pys-delete-confirm-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .pys-delete-cancel-btn {
+    background-color: rgb(245, 69, 86);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .pys-delete-cancel-btn:hover {
+    background-color: #c82333;
+  }
+  
