@@ -7,9 +7,13 @@ const BatchName = require('./batchName');
 const Department = require('./department');
 const Gender = require('./gender');
 const PassedOutYear = require('./passedOutYear');
+const EventType = require('./eventType');
+const Event = require('./event');
 
 const initDB = async () => {
-    if (process.env.ENVIRONMENT === 'testing') {
+    if (process.env.ENVIRONMENT === 'development') {
+        await Event.drop();
+        await EventType.drop();
         await User.drop();
         await BatchName.drop();
         await Department.drop();
@@ -25,6 +29,9 @@ const initDB = async () => {
         await Gender.sync({ force: true });
         await PassedOutYear.sync({ force: true });
         await User.sync({ force: true });
+        await EventType.sync({ force : true});
+        await Event.sync({force: true});
+
     } else {
         await UserType.sync();
         await BatchName.sync();
@@ -55,6 +62,9 @@ User.belongsTo(PassedOutYear, { foreignKey: 'passedOutYearId' });
 BloodGroup.hasMany(User, { foreignKey: 'bloodGroupId' });
 User.belongsTo(BloodGroup, { foreignKey: 'bloodGroupId' });
 
+EventType.hasMany(Event , { foreignKey : 'eventCategory'});
+Event.belongsTo(EventType , {foreignKey : 'eventCategory'});
+
 module.exports = {
     initDB,
     User,
@@ -63,5 +73,7 @@ module.exports = {
     BloodGroup,
     BatchName,
     PassedOutYear,
-    Department
+    Department,
+    EventType,
+    Event,
 };

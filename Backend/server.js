@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const { initDB } = require('./models');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const eventRoutes = require('./routes/event');
 
 
 
@@ -41,6 +42,7 @@ app.use('/uploads', express.static(UPLOAD_DIR));
 // Routes
 app.use('/auth', authRoutes);
 app.use('/users' , authMiddleware , userRoutes);
+app.use('/events' , authMiddleware , eventRoutes);
 
 
 // Health Check

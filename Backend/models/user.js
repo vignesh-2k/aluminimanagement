@@ -36,10 +36,10 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        validate: {
-            isNumeric: true,
-            len: [10, 10]
-        }
+        // validate: {
+        //     isNumeric: true,
+        //     len: [10, 10]
+        // }
     },
     dateOfBirth: {
         type: DataTypes.DATEONLY,

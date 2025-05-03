@@ -12,11 +12,61 @@ const SignupForm = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+<<<<<<< HEAD:Frontend/src/component/Signupform.js
+  const navigation = useNavigate();
+
+
+  const [formData, setFormData] = useState({
+    userTypeId: '',
+    email: "",
+    password: "",
+    name: "",
+    mobileNumber: "",
+    dateOfBirth: "",
+    rollNumber: "",
+    address: "",
+    city: "",
+    state: "",
+    pinCode: "",
+    linkedInUrl: "",
+    companyName: "",
+    companyDesignation: "",
+    companyAddress: "",
+    batchNameId: 1,
+    departmentId: 1,
+    passedOutYearId: 1,
+    genderId: 1,
+    bloodGroupId: 1
+  });
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: files ? files[0] : value
+    }));
+  };
+=======
   const navigate = useNavigate();
+>>>>>>> f8f507866c1b40a9d6183950754b5cbeb76a1ad3:Frontend/src/component/AlumniFlow/Signupform.js
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+<<<<<<< HEAD:Frontend/src/component/Signupform.js
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+
+    
+    try {
+      const response = await API.post('http://localhost:4000/auth/register' , formData)
+      navigation('/login')
+    
+    } catch (error) {
+      console.log(error)
+=======
     if (password !== confirmPassword) {
       alert("Password Mismatch");
       return;
@@ -35,6 +85,7 @@ const SignupForm = () => {
       return response.data;
     } catch (error) {
       console.log("Error in Registering Data", error);
+>>>>>>> f8f507866c1b40a9d6183950754b5cbeb76a1ad3:Frontend/src/component/AlumniFlow/Signupform.js
     }
   };
 
