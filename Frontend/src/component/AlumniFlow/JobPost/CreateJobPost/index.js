@@ -31,13 +31,16 @@ const CreateJobPost = () => {
         <form className="alumni-cjp-form">
           {/* Row 1 */}
           <div className="alumni-cjp-form-row">
-            <div className="alumni-cjp-field-group floating">
-              <input type="text" required />
-              <label>Job Title <span className="required">*</span></label>
+            <div className="alumni-cjp-field-group alumni-cjp-floating">
+              <input type="text" required placeholder='Enter the Title'/>
+              <label>Job Title <span className="alumni-cjp-required">*</span></label>
             </div>
 
-            <div className="alumni-cjp-field-group floating-dropdown">
-              <div className="alumni-cjp-dropdown" onClick={() => setStatusOpen(!statusOpen)}>
+            <div className="alumni-cjp-field-group alumni-cjp-floating-dropdown">
+              <div
+                className="alumni-cjp-dropdown"
+                onClick={() => setStatusOpen(!statusOpen)}
+              >
                 <div className="alumni-cjp-dropdown-header">
                   {employeeStatus}
                   <IoChevronDown />
@@ -55,68 +58,68 @@ const CreateJobPost = () => {
                   </div>
                 )}
               </div>
-              <label>Employee Status <span className="required">*</span></label>
+              <label>Employee Status <span className="alumni-cjp-required">*</span></label>
             </div>
           </div>
 
           {/* Row 2 */}
           <div className="alumni-cjp-form-row">
-            <div className="alumni-cjp-field-group floating">
-              <input type="text" required defaultValue="As per company policy" />
-              <label>Compensation & Benefits <span className="required">*</span></label>
+            <div className="alumni-cjp-field-group alumni-cjp-floating">
+              <input type="text" required placeholder='As per company policy' />
+              <label>Compensation & Benefits <span className="alumni-cjp-required">*</span></label>
             </div>
 
-            <div className="alumni-cjp-field-group floating ">
+            <div className="alumni-cjp-field-group alumni-cjp-floating alumni-cjp-file-input">
               <input type="file" accept="image/*" required />
-              <label>Upload Company Logo <span className="required">*</span></label>
+              <label>Upload Company Logo <span className="alumni-cjp-required">*</span></label>
             </div>
           </div>
 
           {/* Row 3 */}
           <div className="alumni-cjp-form-row">
-            <div className="alumni-cjp-field-group floating">
-              <input type="text" required defaultValue="$45k" />
-              <label>Salary <span className="required">*</span></label>
+            <div className="alumni-cjp-field-group alumni-cjp-floating">
+              <input type="text" required placeholder="Eg: ₹10,000" />
+              <label>Salary <span className="alumni-cjp-required">*</span></label>
             </div>
 
-            <div className="alumni-cjp-field-group floating">
+            <div className="alumni-cjp-field-group alumni-cjp-floating">
               <input type="text" required placeholder="Location" />
-              <label>Location <span className="required">*</span></label>
+              <label>Location <span className="alumni-cjp-required">*</span></label>
             </div>
           </div>
 
           {/* Row 4 */}
           <div className="alumni-cjp-form-row">
-            <div className="alumni-cjp-field-group floating">
+            <div className="alumni-cjp-field-group alumni-cjp-floating">
               <input type="datetime-local" required defaultValue="2025-04-23T00:00" />
-              <label>Application Deadline <span className="required">*</span></label>
+              <label>Application Deadline <span className="alumni-cjp-required">*</span></label>
             </div>
 
-            <div className="alumni-cjp-field-group floating">
+            <div className="alumni-cjp-field-group alumni-cjp-floating">
               <input type="url" required placeholder="Apply URL" />
-              <label>URL <span className="required">*</span></label>
+              <label>URL <span className="alumni-cjp-required">*</span></label>
             </div>
           </div>
 
           {/* Rich Text Fields */}
-          <div className="alumni-cjp-editor-group floating-quill">
-            <label>Job Context <span className="required">*</span></label>
-            <ReactQuill value={jobContext} onChange={setJobContext} modules={modules} placeholder="" />
+          <div className="alumni-cjp-editor-group alumni-cjp-floating-quill">
+            <label>Job Context <span className="alumni-cjp-required">*</span></label>
+            <ReactQuill value={jobContext} onChange={setJobContext} modules={modules} placeholder='Write description...'/>
           </div>
 
-          <div className="alumni-cjp-editor-group floating-quill">
-            <label>Job Responsibility <span className="required">*</span></label>
-            <ReactQuill value={jobResponsibility} onChange={setJobResponsibility} modules={modules} placeholder="" />
+          <div className="alumni-cjp-editor-group alumni-cjp-floating-quill">
+            <label>Job Responsibility <span className="alumni-cjp-required">*</span></label>
+            <ReactQuill value={jobResponsibility} onChange={setJobResponsibility} modules={modules} placeholder='Write description...'/>
           </div>
 
-          <div className="alumni-cjp-editor-group floating-quill">
-            <label>Educational Requirements <span className="required">*</span></label>
-            <ReactQuill value={eduRequirements} onChange={setEduRequirements} modules={modules} placeholder="" />
+          <div className="alumni-cjp-editor-group alumni-cjp-floating-quill">
+            <label>Educational Requirements <span className="alumni-cjp-required">*</span></label>
+            <ReactQuill value={eduRequirements} onChange={setEduRequirements} modules={modules} placeholder='Write description...'/>
           </div>
 
-          <div className="alumni-cjp-editor-group floating-quill">
-            <label>Additional Requirements <span className="required">*</span></label>
-            <ReactQuill value={additionalRequirements} onChange={setAdditionalRequirements} modules={modules} placeholder="" />
+          <div className="alumni-cjp-editor-group alumni-cjp-floating-quill">
+            <label >Additional Requirements <span className="alumni-cjp-required">*</span></label>
+            <ReactQuill value={additionalRequirements} onChange={setAdditionalRequirements} modules={modules}  placeholder='Write additional requirements'/>
           </div>
 
           <button type="submit" className="alumni-cjp-submit-btn">Post</button>
