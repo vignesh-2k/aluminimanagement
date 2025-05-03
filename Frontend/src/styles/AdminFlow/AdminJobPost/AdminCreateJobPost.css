@@ -1,0 +1,140 @@
+.jobp-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.jobp-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #1a365d;
+}
+
+.jobp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.jobp-form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.jobp-field-group {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.jobp-field-group label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #e53e3e;
+  margin-left: 3px;
+}
+
+.jobp-dropdown {
+  position: relative;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.jobp-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jobp-dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 5px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.jobp-dropdown-options div {
+  padding: 12px 16px;
+  transition: background 0.2s;
+}
+
+.jobp-dropdown-options div:hover {
+  background-color: #f7fafc;
+}
+
+/* Quill Editor */
+.jobp-editor-group {
+  margin-bottom: 25px;
+}
+
+.jobp-editor-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.ql-toolbar {
+  border: 1px solid #cbd5e0 !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0;
+  background-color: #f9fafb;
+  padding: 8px !important;
+}
+
+.ql-container {
+  border: 1px solid #cbd5e0 !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px;
+  min-height: 150px;
+}
+
+.ql-editor {
+  min-height: 150px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.jobp-submit-btn {
+  background-color: #48bb78;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
+.jobp-submit-btn:hover {
+  background-color: #38a169;
+}

@@ -1,0 +1,122 @@
+/* EditEvent.css */
+
+.edit-event-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Optional: dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.edit-event-modal {
+    background: #ffffff;
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-height: 90vh; /* Limit height */
+    overflow-y: auto; /* Enable vertical scroll inside modal */
+}
+
+.edit-event-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-event-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.edit-event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.edit-event-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.edit-event-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-event-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.edit-event-group input,
+.edit-event-group select,
+.edit-event-group textarea {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+.edit-event-group textarea {
+    resize: vertical;
+}
+
+.full-width {
+    grid-column: 1 / 3;
+}
+
+.edit-event-upload {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.edit-event-upload-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-event-upload-box input {
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+    text-align: center;
+    cursor: pointer;
+}
+
+.edit-event-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.edit-event-submit:hover {
+    background-color: #45a049;
+}
