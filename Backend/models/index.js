@@ -9,7 +9,7 @@ const Gender = require('./gender');
 const PassedOutYear = require('./passedOutYear');
 
 const initDB = async () => {
-    if (process.env.ENVIRONMENT === 'dev') {
+    if (process.env.ENVIRONMENT === 'testing') {
         await User.drop();
         await BatchName.drop();
         await Department.drop();
