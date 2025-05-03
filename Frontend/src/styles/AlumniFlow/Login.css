@@ -1,0 +1,248 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login-container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 40px 80px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+
+
+
+  /* New Layout Styles */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+
+
+.login-left {
+  flex: 1;
+  background-image: url('../../assets/images/alumini-login.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* Remove opacity here and use overlay instead */
+}
+
+.login-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay */
+  z-index: 1;
+}
+
+.login-header {
+  text-align: center;
+  color: white; /* Change to white for better contrast */
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 80%;
+  margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+/* Add these for better text visibility */
+.login-header h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-text {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem; 
+  text-align: center;
+
+}
+
+.register-text {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+.password-container {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 25px;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Rest of your existing styles remain the same */
+
+
+  /* .login-header h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+  } */
+  
+ 
+  
+  .login-form {
+    margin-top: 30px;
+  }
+  
+  .login-form h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  .signup-text {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+  }
+  
+  .signup-text strong {
+    color: #3498db;
+    cursor: pointer;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    /* display: block; */
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input:focus {
+    border-bottom-color: #3498db;
+  }
+  
+  .divider {
+    height: 1px;
+    background-color: #ecf0f1;
+    margin-top: 5px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .social-login {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .social-login p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .social-login p::before,
+  .social-login p::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 30%;
+    background-color: #ecf0f1;
+    top: 50%;
+  }
+  
+  .social-login p::before {
+    left: 0;
+  }
+  
+  .social-login p::after {
+    right: 0;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .social-icon {
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .social-icon:hover {
+    color: #3498db;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .login-container {
+      margin: 20px;
+      padding: 30px;
+    }
+    
+    .login-header h1 {
+      font-size: 2rem;
+    }
+    
+    .welcome-text {
+      font-size: 1.3rem;
+    }
+  }

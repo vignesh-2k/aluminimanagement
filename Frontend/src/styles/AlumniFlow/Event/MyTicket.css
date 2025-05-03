@@ -1,0 +1,238 @@
+.mt-container {
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 20px 40px;
+    background-color: #f8faec;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .mt-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .mt-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .mt-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .mt-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+  }
+  
+  .mt-search-input {
+    padding: 10px 12px 10px 35px;
+    border-radius: 999px;
+    border: 1px solid #eee;
+    background: #f5f5f5;
+    width: 250px;
+  }
+  
+  .mt-show-entries {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .mt-select {
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .mt-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .mt-table th,
+  .mt-table td {
+    padding: 14px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .mt-type-badge {
+    padding: 4px 10px;
+    background-color: #e6eaea;
+    color: #444;
+    border-radius: 12px;
+    font-size: 13px;
+  }
+  
+  .mt-download-link {
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    background: none;
+    border: none;
+  }
+  
+  .mt-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #555;
+  }
+  
+  .mt-pagination {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .mt-pagination button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .mt-pagination .mt-active {
+    background-color: #dff3ba;
+    border: none;
+    font-weight: bold;
+  }
+  
+  /* Popup Styles */
+  .tp-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tp-popup {
+    width: 80%;
+    max-width: 1000px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+  }
+  
+  .tp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tp-back,
+  .tp-download {
+    background-color: #dff3ba;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .tp-content {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .tp-left,
+  .tp-middle,
+  .tp-right {
+    flex: 1;
+  }
+  
+  .tp-image {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+  }
+  
+  .tp-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .tp-ticket-id {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .tp-reserved {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 20px;
+  }
+  
+  .tp-location-label {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .tp-location {
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .tp-qr {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 10px;
+  }
+  
+  .tp-scan-text {
+    font-size: 13px;
+    color: #444;
+    text-align: center;
+  }
+  
+  .tp-barcode {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 180px;
+  }
+  

@@ -1,0 +1,294 @@
+.alumni-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+  /* border-radius: 10px; */
+}
+
+/* Search and Entries Section */
+.search-entries {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Search Box */
+.alu-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.alu-search-icon {
+  position: absolute;
+  right: 12px;
+  color: gray;
+}
+
+.alu-search-box input {
+  padding: 10px 15px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  width: 300px;
+  font-size: 16px;
+}
+
+.alumni-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: 10px;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #555;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.alumni-filter:hover {
+  background-color: #0052a3;
+  border-color: black;
+  color: white;
+}
+
+/* Show Entries Dropdown */
+.entries-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.entries-dropdown select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Alumni Table */
+.alumni-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.alumni-table th,
+.alumni-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.alumni-table th {
+  background-color: #f8f8f8;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Fix: ensure consistent border-bottom on last td */
+.alumni-table tr:last-child td {
+  border-bottom: none;
+}
+
+.alumni-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Status Dropdown */
+.status-dropdown {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-weight: 500;
+  outline: none;
+}
+
+.status-dropdown option[value="Approved"] {
+  color: #28a745;
+}
+
+.status-dropdown option[value="Pending"] {
+  color: #ffa500;
+}
+
+.status-dropdown option[value="Rejected"] {
+  color: #dc3545;
+}
+
+.approved-status {
+  color: #28a745;
+}
+
+.pending-status {
+  color: #ffa500;
+}
+
+.rejected-status {
+  color: #dc3545;
+}
+
+/* Action Buttons */
+.action-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: -40px;
+}
+
+.action-icons button {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  margin-bottom: 5px;
+}
+
+.action-icons button:hover {
+  background-color: #eaf2ff;
+  border-radius: 4px;
+}
+
+.icon {
+  font-size: 16px;
+  color: #0052a3;
+}
+
+.phone-icon {
+  transform: rotate(90deg);
+}
+
+/* Footer */
+.table-footer {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.page-btn {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin: 0 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.page-btn.active {
+  background-color: #d6f5c5;
+  font-weight: bold;
+}
+
+/* Filter Section */
+.filter-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.filter-dropdown {
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 300px;
+}
+
+.search-btn {
+  background-color: #0052a3;
+  color: white;
+  border: none;
+  padding: 15px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.search-btn:hover {
+  background-color: rgb(8, 60, 112);
+  color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .alumni-container {
+    position: static;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .search-entries {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .al-search-box {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .entries-dropdown {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .filter-options {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .filter-dropdown {
+    width: 100%;
+  }
+}

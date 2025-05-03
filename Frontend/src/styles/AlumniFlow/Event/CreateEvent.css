@@ -1,0 +1,262 @@
+.alumni-ce-create-event-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.alumni-ce-heading {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.alumni-ce-event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.alumni-ce-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.alumni-ce-full-width {
+  width: 100%;
+}
+
+.alumni-ce-field-group {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alumni-ce-field-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  background: white;
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  padding: 0 5px;
+  z-index: 1;
+}
+
+.alumni-ce-required-star {
+  color: red;
+}
+
+.alumni-ce-field-group input,
+.alumni-ce-field-group textarea,
+.alumni-ce-field-group select,
+.alumni-ce-field-group .alumni-ce-quill-wrapper {
+  width: 100%;
+  padding: 14px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  outline: none;
+  z-index: 0;
+  transition: border-color 0.3s;
+  color: black;
+}
+
+.alumni-ce-field-group input::placeholder,
+.alumni-ce-field-group textarea::placeholder {
+  color: grey;
+}
+
+.alumni-ce-field-group input:hover,
+.alumni-ce-field-group input:focus,
+.alumni-ce-field-group textarea:hover,
+.alumni-ce-field-group textarea:focus,
+.alumni-ce-field-group select:hover,
+.alumni-ce-field-group select:focus {
+  border-color: #0052a3;
+}
+
+.alumni-ce-field-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.alumni-ce-description-field label {
+  left: 15px;
+}
+
+.alumni-ce-quill-wrapper .ql-container {
+  border: none !important;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  min-height: 120px;
+  border-radius: 8px;
+}
+
+.alumni-ce-quill-wrapper .ql-toolbar {
+  border: none !important;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.alumni-ce-quill-wrapper .ql-editor {
+  min-height: 100px;
+  padding: 10px 12px;
+}
+
+
+.alumni-ce-custom-dropdown-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.alumni-ce-custom-dropdown {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 14px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  color: black;
+}
+
+.alumni-ce-custom-dropdown:hover,
+.alumni-ce-custom-dropdown:focus-within {
+  border-color: #0052a3;
+}
+
+.alumni-ce-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alumni-ce-dropdown-arrow {
+  font-size: 18px;
+  color: #666;
+}
+
+.alumni-ce-dropdown-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alumni-ce-dropdown-option {
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.alumni-ce-dropdown-option:hover {
+  background-color: #f0f0f0;
+}
+
+
+.alumni-ce-upload-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.alumni-ce-upload-box {
+  flex: 1;
+  height: 220px;
+  border: 3px dotted #ccc;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  position: relative;
+  /* padding-top: 30px; */
+}
+
+.alumni-ce-upload-box label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  padding: 0 5px;
+  z-index: 2;
+}
+
+.alumni-ce-upload-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.alumni-ce-upload-icon {
+  font-size: 50px;
+  color: #888;
+}
+
+.alumni-ce-upload-input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+.alumni-ce-upload-preview {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+.alumni-ce-publish-btn {
+  background-color: #b4ec51;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.alumni-ce-publish-btn:hover {
+  background-color: #9bd145;
+}
