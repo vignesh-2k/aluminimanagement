@@ -39,9 +39,9 @@
   position: relative;
 }
 
-.floating input,
-.floating input[type="file"],
-.floating-dropdown .alumni-cjp-dropdown {
+.alumni-cjp-floating input,
+.alumni-cjp-floating input[type="file"],
+.alumni-cjp-floating-dropdown .alumni-cjp-dropdown {
   width: 100%;
   padding: 14px 16px;
   font-size: 16px;
@@ -51,18 +51,17 @@
   transition: all 0.3s;
 }
 
-.floating input:hover,
-.floating-dropdown .alumni-cjp-dropdown:hover {
+.alumni-cjp-floating input:hover,
+.alumni-cjp-floating input:focus,
+.alumni-cjp-floating input[type="file"]:hover,
+.alumni-cjp-floating input[type="file"]:focus,
+.alumni-cjp-floating-dropdown .alumni-cjp-dropdown:hover,
+.alumni-cjp-floating-dropdown .alumni-cjp-dropdown:focus {
   border-color: #0052a3;
 }
 
-.floating input:focus {
-  border-color: #0052a3;
-  outline: none;
-}
-
-.floating label,
-.floating-dropdown label {
+.alumni-cjp-floating label,
+.alumni-cjp-floating-dropdown label {
   position: absolute;
   top: -10px;
   left: 14px;
@@ -74,8 +73,24 @@
   transition: 0.2s ease all;
 }
 
+/* File input */
+.alumni-cjp-file-input input[type="file"] {
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
 
+.alumni-cjp-file-input input[type="file"]::-webkit-file-upload-button,
+.alumni-cjp-file-input input[type="file"]::file-selector-button {
+  background: rgb(220, 231, 175);
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
+/* Dropdown styles */
 .alumni-cjp-dropdown {
   position: relative;
   border: 1px solid #cbd5e0;
@@ -83,6 +98,7 @@
   padding: 12px 16px;
   background-color: white;
   cursor: pointer;
+  transition: border-color 0.3s;
 }
 
 .alumni-cjp-dropdown-header {
@@ -113,41 +129,46 @@
   background-color: #f7fafc;
 }
 
-.alumni-cjp-editor-group.floating-quill {
+/* Floating for Quill Editors */
+.alumni-cjp-editor-group.alumni-cjp-floating-quill {
   position: relative;
   margin-bottom: 25px;
 }
 
-.alumni-cjp-editor-group.floating-quill label {
+.alumni-cjp-editor-group.alumni-cjp-floating-quill label {
   position: absolute;
   top: -10px;
   left: 14px;
   background: white;
-  font-size: 13px;
+  font-size: 14px;
   color: #4a5568;
   padding: 0 5px;
   z-index: 5;
 }
 
+/* Quill Editor Styles */
 .ql-toolbar {
   border: 1px solid #cbd5e0 !important;
   border-bottom: none !important;
   border-radius: 8px 8px 0 0;
-  background-color: #f9fafb;
+  /* background-color: #f9fafb; */
   padding: 8px !important;
 }
 
 .ql-container {
   border: 1px solid #cbd5e0 !important;
   border-top: none !important;
-  border-radius: 0 0 8px 8px;
   min-height: 150px;
+  padding: 14px 12px;
+  border-radius: 10px;
 }
 
 .ql-editor {
   min-height: 150px;
-  padding: 15px;
-  font-size: 14px;
+  padding: 10px 32px;
+  font-size: 16px;
+  background-color:  #f9fafb;
+  border-radius: 8px;
 }
 
 .alumni-cjp-submit-btn {
@@ -168,7 +189,7 @@
   background-color: #38a169;
 }
 
-.required {
+.alumni-cjp-required {
   color: #e53e3e;
   margin-left: 3px;
 }

@@ -116,11 +116,11 @@
     z-index: 1;
   }
   
-  .ql-toolbar {
+   .ql-toolbar {
     border: 1px solid #ccc !important;
     border-bottom: none !important;
     border-radius: 8px 8px 0 0;
-    background-color: #f9fafb;
+    /* background-color: #f9fafb; */
   }
   
   .ql-container {
@@ -132,9 +132,9 @@
   
   .ql-editor {
     min-height: 150px;
-    padding: 15px;
+    padding: 10px 12px;
     font-size: 14px;
-  }
+  } 
   
   .ep-submit-btn {
     background-color: #3182ce;

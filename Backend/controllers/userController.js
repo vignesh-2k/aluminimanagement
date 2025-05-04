@@ -19,7 +19,7 @@ const getUserData = async (req, res) => {
           name : userData.name,
           password : userData.password,
           mobileNumber  : userData.mobileNumber ,
-          company : userData.company
+          // company : userData.company
         }
       });
     } else {
