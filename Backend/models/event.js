@@ -16,7 +16,11 @@ const Event = sequelize.define('Event' , {
         type:DataTypes.DATE,
         allowNull:false,
     },
-    eventCategory:{
+    eventCategory: {
+        type : DataTypes.STRING,
+        allowNull: false
+    },
+    eventType:{
         type:DataTypes.INTEGER,
         allowNull:false,
         references :{

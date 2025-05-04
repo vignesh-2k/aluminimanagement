@@ -62,8 +62,8 @@ User.belongsTo(PassedOutYear, { foreignKey: 'passedOutYearId' });
 BloodGroup.hasMany(User, { foreignKey: 'bloodGroupId' });
 User.belongsTo(BloodGroup, { foreignKey: 'bloodGroupId' });
 
-EventType.hasMany(Event , { foreignKey : 'eventCategory'});
-Event.belongsTo(EventType , {foreignKey : 'eventCategory'});
+EventType.hasMany(Event , { foreignKey : 'eventType'});
+Event.belongsTo(EventType , {foreignKey : 'eventType'});
 
 module.exports = {
     initDB,
