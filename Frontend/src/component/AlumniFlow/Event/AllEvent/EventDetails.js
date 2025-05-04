@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../../../styles/AlumniFlow/Event/EventDetails.css";
 import { TopBar } from "../../../../layout/AlumniFlow/Topbar";
 import { Navbar } from "../../../../layout/AlumniFlow/Navbar";
-// import eventImage from "../../../assets/event-details-full.JPG"; // Update path as needed
+import { getAllEvent } from "../../../services/almEvent";
 
 const EventDetails = () => {
+  const [event, setEvent] = useState([]);
+
+  const getEvent = async () => {
+    try {
+      const response = await getAllEvent();
+      setEvent(response.data); 
+    } catch (error) {
+      console.error("Error fetching event data", error);
+    }
+  };
+
+  useEffect(() => {
+    getEvent();
+  }, []);
+
   return (
     <>
       <TopBar />
@@ -12,29 +27,40 @@ const EventDetails = () => {
       <div className="ed-container">
         <h3 className="ed-title">Event Details</h3>
 
-        <div className="ed-card">
-          <p className="ed-date">1st May, 03:17:00 PM anna university, tirchy</p>
-          <h2 className="ed-heading">AI-tools</h2>
-          <div className="ed-image-wrapper">
-            <img  alt="event" className="ed-image" />
-          </div>
+        {event.map((eve) => (
+          <div className="ed-card" key={eve.eventId}>
+            <p className="ed-date">
+              {new Date(eve.eventDate).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}, {eve.location}
+            </p>
 
-          <div className="ed-ticket-info">
-            <span className="ed-available-label">Available Tickets :</span>
-            <span className="ed-available-count">100</span>
-          </div>
+            <h2 className="ed-heading">{eve.eventTitle}</h2>
 
-          <div className="ed-description">
-            <ol className="ed-list">
-              <li>
-                ghshfidsfsdfsgsdgsdsdsggfdsdsd
-                <strong><em>fffgtfh</em></strong>
-              </li>
-            </ol>
-          </div>
+            <div className="ed-image-wrapper">
+              <img
+                src={eve.eventImg || "/default-event.jpg"} 
+                alt="event"
+                className="ed-image"
+              />
+            </div>
 
-          <button className="ed-purchase-btn">Purchase Ticket</button>
-        </div>
+            <div className="ed-ticket-info">
+              <span className="ed-available-label">Available Tickets :</span>
+              <span className="ed-available-count">{eve.noOfTicket}</span>
+            </div>
+
+            <div className="ed-description">
+              <ol className="ed-list">
+                <li>{eve.description}</li>
+              </ol>
+            </div>
+
+            <button className="ed-purchase-btn">Purchase Ticket</button>
+          </div>
+        ))}
       </div>
     </>
   );
