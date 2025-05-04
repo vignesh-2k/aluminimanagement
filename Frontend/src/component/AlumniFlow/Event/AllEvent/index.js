@@ -13,7 +13,7 @@ const AllEvent = () => {
   const getEvent = async ( req, res ) => {
     try{
       const response = await getAllEvent();
-      setEvent(response.data.data);
+      setEvent(response.data);
     } catch(error) {
       console.log(error , "error fetching event Data");
     }
@@ -21,7 +21,7 @@ const AllEvent = () => {
 
   useEffect( ( ) => {
     getEvent();
-  } , [ ])
+  } , [ ]);
 
   return (
     <>
@@ -55,6 +55,7 @@ const AllEvent = () => {
           <table className="allevt-table">
             <thead>
               <tr>
+                <th>S.No</th>
                 <th>Event Title</th>
                 <th>Category</th>
                 <th>Type</th>
@@ -64,14 +65,20 @@ const AllEvent = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>AI-tools</td>
-                <td><span className="allevt-category">workshop</span></td>
-                <td><span className="allevt-type">Free</span></td>
-                <td>1st May, 03:17:00 PM</td>
-                <td>anna university, tirchy</td>
-                <td><a href="/eventdetails" className="allevt-reservation">Reservation</a></td>
-              </tr>
+              {event.map( (eve , index) => {
+                return (
+                    <tr key={eve.eventId}>
+                    <td>{index+1}</td>
+                    <td>{eve.eventTitle}</td>
+                    <td><span className="allevt-category">{eve.eventCategory}</span></td>
+                    <td><span className="allevt-type">Free</span></td>
+                    <td>{eve.eventDate}</td>
+                    <td>{eve.location}</td>
+                    <td><a href="/eventdetails" className="allevt-reservation">Reservation</a></td>
+                  </tr>
+                )  }
+            )}
+              
             </tbody>
           </table>
 
