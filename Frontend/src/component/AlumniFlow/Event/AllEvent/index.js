@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../../styles/AlumniFlow/Event/AllEvent.css";
 import { TopBar } from "../../../../layout/AlumniFlow/Topbar";
 import { Navbar } from "../../../../layout/AlumniFlow/Navbar";
 import { FaSearch } from "react-icons/fa";
+import { getAllEvent } from "../../../services/almEvent";
 
 const AllEvent = () => {
   const [entries, setEntries] = useState(10);
+  const [event, setEvent] = useState([]);
+
+
+  const getEvent = async ( req, res ) => {
+    try{
+      const response = await getAllEvent();
+      setEvent(response.data.data);
+    } catch(error) {
+      console.log(error , "error fetching event Data");
+    }
+  }
+
+  useEffect( ( ) => {
+    getEvent();
+  } , [ ])
 
   return (
     <>
