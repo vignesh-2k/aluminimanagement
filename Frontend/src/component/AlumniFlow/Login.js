@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../../styles/AlumniFlow/Login.css"
 import { FaGoogle, FaFacebook, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa';
 import API from '../../api';
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -17,7 +18,8 @@ function Login() {
       email, password
     }
     try {
-      const response = await API.post('http://localhost:4000/auth/login', loginData);
+      const response = await API.post('http://localhost:4000/auth/login', loginData)
+      Cookies.set('token', response.data.token)
       navigate('/dashboard')
       return response.data;
     } catch (error) {
