@@ -15,21 +15,21 @@ const MyTicket = () => {
       <TopBar />
       <Navbar />
 
-      <div className="mt-container">
-        <h1 className="mt-title">My Ticket</h1>
-        <div className="mt-card">
-          <div className="mt-header">
-            <div className="mt-search-box">
-              <i className="mt-search-icon"><FaSearch /></i>
+      <div className="almt-container">
+        <h1 className="almt-title">My Ticket</h1>
+        <div className="almt-card">
+          <div className="almt-header">
+            <div className="almt-search-box">
+              <i className="almt-search-icon"><FaSearch /></i>
               <input
                 type="text"
                 placeholder="Search event"
-                className="mt-search-input"
+                className="almt-search-input"
               />
             </div>
-            <div className="mt-show-entries">
+            <div className="almt-show-entries">
               <label>Show</label>
-              <select className="mt-select">
+              <select className="almt-select">
                 <option>10</option>
                 <option>25</option>
                 <option>50</option>
@@ -38,26 +38,26 @@ const MyTicket = () => {
             </div>
           </div>
 
-          <table className="mt-table">
-            <thead>
+          <table className="almt-table">
+            <thead className="almt-table-head">
               <tr>
-                <th>Event Title</th>
+                <th className="almt-th-left">Event Title</th>
                 <th>Ticket Id</th>
                 <th>Type</th>
                 <th>Date &amp; Time</th>
                 <th>Location</th>
-                <th>Action</th>
+                <th className="almt-th-right">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>AI-tools</td>
                 <td>60001</td>
-                <td><span className="mt-type-badge">Free</span></td>
+                <td><span className="almt-type-badge">Free</span></td>
                 <td>2025-05-01 15:17:00</td>
                 <td>anna university, tirchy</td>
                 <td>
-                  <button onClick={handleOpenPopup} className="mt-download-link">
+                  <button onClick={handleOpenPopup} className="almt-download-link">
                     Download
                   </button>
                 </td>
@@ -65,11 +65,11 @@ const MyTicket = () => {
             </tbody>
           </table>
 
-          <div className="mt-footer">
+          <div className="almt-footer">
             <span>Showing 1 to 1 of 1 entries</span>
-            <div className="mt-pagination">
+            <div className="almt-pagination">
               <button>{'«'}</button>
-              <button className="mt-active">1</button>
+              <button className="almt-active">1</button>
               <button>{'»'}</button>
             </div>
           </div>
@@ -77,47 +77,47 @@ const MyTicket = () => {
       </div>
 
       {showPopup && (
-        <div className="tp-overlay">
-          <div className="tp-popup">
-            <div className="tp-header">
-              <button className="tp-back" onClick={handleClosePopup}>
+        <div className="almt-overlay">
+          <div className="almt-popup">
+            <div className="almt-popup-header">
+              <button className="almt-back" onClick={handleClosePopup}>
                 <FaArrowLeft /> Back To Dashboard
               </button>
-              <button className="tp-download">
+              <button className="almt-download">
                 Download <FaDownload />
               </button>
             </div>
 
-            <div className="tp-content">
-              <div className="tp-left">
+            <div className="almt-popup-content">
+              <div className="almt-left">
                 <img
                   src="https://cdn.pixabay.com/photo/2017/06/10/07/18/graduation-2386974_1280.png"
                   alt="Event"
-                  className="tp-image"
+                  className="almt-image"
                 />
               </div>
 
-              <div className="tp-middle">
-                <h2 className="tp-title">AI-tools</h2>
-                <p className="tp-ticket-id">Ticket#60001</p>
-                <p className="tp-reserved">
+              <div className="almt-middle">
+                <h2 className="almt-title-popup">AI-tools</h2>
+                <p className="almt-ticket-id">Ticket#60001</p>
+                <p className="almt-reserved">
                   Reserved by Administrator Doe, 29 Apr 2025
                 </p>
-                <p className="tp-location-label">Location</p>
-                <p className="tp-location">anna university, tirchy</p>
+                <p className="almt-location-label">Location</p>
+                <p className="almt-location">anna university, tirchy</p>
               </div>
 
-              <div className="tp-right">
+              <div className="almt-right">
                 <img
                   src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Ticket#60001"
                   alt="QR Code"
-                  className="tp-qr"
+                  className="almt-qr"
                 />
-                <p className="tp-scan-text">Scan to verify</p>
+                <p className="almt-scan-text">Scan to verify</p>
                 <img
                   src="https://barcode.tec-it.com/barcode.ashx?data=60001&code=Code128&translate-esc=false"
                   alt="Barcode"
-                  className="tp-barcode"
+                  className="almt-barcode"
                 />
               </div>
             </div>

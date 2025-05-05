@@ -11,10 +11,7 @@
   overflow-y: auto;
 }
 
-h2 {
-  font-size: 28px;
-  margin-bottom: 25px;
-}
+
 
 .ce-event-form {
   display: flex;

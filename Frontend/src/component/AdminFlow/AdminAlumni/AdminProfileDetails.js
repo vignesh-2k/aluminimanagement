@@ -18,7 +18,12 @@ export default function AdminProfileDetails() {
         {/* Combined Alumni Profile Section */}
         <div className="ap-alumni-container">
           <div className="ap-alumni-profile pl-single-section">
-            <h2>Personal Info</h2>
+            <h2 style={{ 
+                marginBottom: "-20px",
+                fontSize: "18px",
+                color: "#333",
+                textAlign: "left"
+              }}>Personal Info</h2>
 
             {/* Profile Info */}
             <div className="ap-profile-info">

@@ -4,24 +4,29 @@ import 'react-quill/dist/quill.snow.css';
 import { IoClose, IoChevronDown } from "react-icons/io5";
 import '../../../../styles/AlumniFlow/JobPost/EditPost.css';
 
-const EditPost = ({ show, onClose, postData }) => {
+
+const EditPost = () => {
   const [formData, setFormData] = useState({
-    title: postData?.title || '',
-    employeeStatus: postData?.employeeStatus || 'Full Time',
-    salary: postData?.salary || '',
-    location: postData?.location || '',
-    url: postData?.url || '',
-    applicationDeadline: postData?.applicationDeadline || '',
-    compensation: postData?.compensation || '',
-    jobStatus: postData?.jobStatus || 'Pending'
+    title: '',
+    employeeStatus: 'Full Time',
+    salary: '',
+    location: '',
+    url: '',
+    applicationDeadline: '',
+    compensation: '',
+    jobStatus: 'Pending',
+    logo: null
   });
 
-  const [dropdownOpen, setDropdownOpen] = useState({ employeeStatus: false, jobStatus: false });
-  const [jobContext, setJobContext] = useState(postData?.jobContext || '');
-  const [jobResponsibility, setJobResponsibility] = useState(postData?.jobResponsibility || '');
-  const [eduRequirements, setEduRequirements] = useState(postData?.eduRequirements || '');
-  const [additionalRequirements, setAdditionalRequirements] = useState(postData?.additionalRequirements || '');
-  const [setLogo] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState({
+    employeeStatus: false,
+    jobStatus: false
+  });
+
+  const [jobContext, setJobContext] = useState('');
+  const [jobResponsibility, setJobResponsibility] = useState('');
+  const [eduRequirements, setEduRequirements] = useState('');
+  const [additionalRequirements, setAdditionalRequirements] = useState('');
 
   const modules = {
     toolbar: [['bold', 'italic', 'underline'], [{ list: 'ordered' }, { list: 'bullet' }], [{ align: [] }]],
@@ -29,8 +34,8 @@ const EditPost = ({ show, onClose, postData }) => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === 'logo') {
-      setLogo(files[0]);
+    if (name === 'logo' && files.length > 0) {
+      setFormData(prev => ({ ...prev, logo: files[0] }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
@@ -38,27 +43,32 @@ const EditPost = ({ show, onClose, postData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Submit logic here
-    onClose();
+    const completeData = {
+      ...formData,
+      jobContext,
+      jobResponsibility,
+      eduRequirements,
+      additionalRequirements
+    };
+    console.log('Submitted Data:', completeData);
+    alert("Job post updated successfully!");
   };
 
-  if (!show) return null;
-
   return (
-    <div className="ep-modal-overlay">
+    <div className="ep-container">
       <div className="ep-modal">
         <div className="ep-header">
           <h2>Edit Job Post</h2>
-          <button onClick={onClose} className="ep-close-btn"><IoClose /></button>
+          <button className="ep-close-btn"><IoClose /></button>
         </div>
 
         <form className="ep-form" onSubmit={handleSubmit}>
-          {/* Row 1 */}
           <div className="ep-form-row">
             <div className="ep-field-group floating">
               <input type="text" name="title" value={formData.title} onChange={handleChange} required placeholder="Enter job title" />
               <label>Job Title <span className="required">*</span></label>
             </div>
+
             <div className="ep-field-group floating">
               <div className="ep-dropdown" onClick={() => setDropdownOpen(prev => ({ ...prev, employeeStatus: !prev.employeeStatus }))}>
                 <div className="ep-dropdown-header">
@@ -80,7 +90,6 @@ const EditPost = ({ show, onClose, postData }) => {
             </div>
           </div>
 
-          {/* Row 2 */}
           <div className="ep-form-row">
             <div className="ep-field-group floating">
               <input type="text" name="compensation" value={formData.compensation} onChange={handleChange} required placeholder="Enter compensation details" />
@@ -92,7 +101,6 @@ const EditPost = ({ show, onClose, postData }) => {
             </div>
           </div>
 
-          {/* Row 3 */}
           <div className="ep-form-row">
             <div className="ep-field-group floating">
               <input type="text" name="salary" value={formData.salary} onChange={handleChange} required placeholder="Enter salary range or amount" />
@@ -104,7 +112,6 @@ const EditPost = ({ show, onClose, postData }) => {
             </div>
           </div>
 
-          {/* Row 4 */}
           <div className="ep-form-row">
             <div className="ep-field-group floating">
               <input type="datetime-local" name="applicationDeadline" value={formData.applicationDeadline} onChange={handleChange} required />
@@ -116,7 +123,6 @@ const EditPost = ({ show, onClose, postData }) => {
             </div>
           </div>
 
-          {/* Row 5 */}
           <div className="ep-form-row">
             <div className="ep-field-group floating">
               <div className="ep-dropdown" onClick={() => setDropdownOpen(prev => ({ ...prev, jobStatus: !prev.jobStatus }))}>
@@ -145,24 +151,14 @@ const EditPost = ({ show, onClose, postData }) => {
             </div>
           </div>
 
-          {/* Rich Text Editors */}
-          {[{
-            label: 'Job Context', value: jobContext, setter: setJobContext, placeholder: 'Write the job context here...'
-          }, {
-            label: 'Job Responsibility', value: jobResponsibility, setter: setJobResponsibility, placeholder: 'Describe job responsibilities...'
-          }, {
-            label: 'Educational Requirements', value: eduRequirements, setter: setEduRequirements, placeholder: 'Specify educational qualifications...'
-          }, {
-            label: 'Additional Requirements', value: additionalRequirements, setter: setAdditionalRequirements, placeholder: 'List any additional requirements...'
-          }].map(({ label, value, setter, placeholder }, i) => (
-            <div className="ep-field-group floating quill-floating" key={i}>
+          {[{ label: 'Job Context', value: jobContext, setter: setJobContext, placeholder: 'Write the job context here...' },
+            { label: 'Job Responsibility', value: jobResponsibility, setter: setJobResponsibility, placeholder: 'Describe job responsibilities...' },
+            { label: 'Educational Requirements', value: eduRequirements, setter: setEduRequirements, placeholder: 'Specify educational qualifications...' },
+            { label: 'Additional Requirements', value: additionalRequirements, setter: setAdditionalRequirements, placeholder: 'List any additional requirements...' }
+          ].map(({ label, value, setter, placeholder }, index) => (
+            <div className="ep-field-group floating quill-floating" key={index}>
               <label className="quill-label">{label} <span className="required">*</span></label>
-              <ReactQuill
-                value={value}
-                onChange={setter}
-                modules={modules}
-                placeholder={placeholder}
-              />
+              <ReactQuill value={value} onChange={setter} modules={modules} placeholder={placeholder} />
             </div>
           ))}
 

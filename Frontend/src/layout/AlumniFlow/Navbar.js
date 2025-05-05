@@ -56,7 +56,7 @@ export const Navbar = () => {
           <ul className={`dropdown-list ${openDropdown === "job" ? "show" : ""}`}>
             <li><Link to="/createjobpost">Create Post</Link></li>
             <li><Link to="/allpost">All Posts</Link></li>
-            <li><Link to="/myevent">My Posts</Link></li>
+            <li><Link to="/mypost">My Posts</Link></li>
           </ul>
         </li>
 
