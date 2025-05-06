@@ -4,10 +4,10 @@ import { TopBar } from "../../../../layout/AlumniFlow/Topbar";
 import "../../../../styles/AlumniFlow/Alumni/AllList.css";
 import { FaSearch, FaPhone, FaEnvelope, FaEye} from "react-icons/fa";
 import { HiOutlineAdjustments } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function AllList() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [alumniData] = useState([
     {
