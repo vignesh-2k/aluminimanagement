@@ -17,3 +17,12 @@ export const addEvent = async (eventData) => {
         console.log(error);
     }
 }
+
+export const getEventType = async (req , res) => {
+    try {
+        const response = await API.get(`${process.env.REACT_APP_BASE_URL}/events/eventtype`)
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}

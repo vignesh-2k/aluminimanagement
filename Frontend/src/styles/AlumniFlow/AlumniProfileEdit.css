@@ -1,219 +1,167 @@
-.ape-alumni-container {
-    position: absolute;
-    top: 80px;
-    left: 250px;
-    right: 0;
-    bottom: 0;
-    padding: 20px 40px;
-    background-color: #f8faec;
-    font-family: "Arial", sans-serif;
-    box-sizing: border-box;
-    overflow-y: auto;
-    border-radius: 10px;
-  }
+.alupe-alumni-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+  /* border-radius: 10px; */
+}
 
+.alupe-profile-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #333;
+}
 
+.alupe-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
 
+.alupe-tab {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
 
-  .ape-profile-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 24px;
-    color: #333;
-  }
-  
-  .ape-tabs {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-  
-  .ape-tab {
-    padding: 10px 20px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  .ape-tab:hover {
-    background-color: #eef0db;
-    color:black;
-  }
-  
-  .ape-active {
-    border-bottom: 3px solid #4b5563;
-    background-color: #0052a3;
-    color: white;
-    font-weight: bold;
-  }
+.alupe-tab:hover {
+  background-color: #eef0db;
+  color: black;
+}
 
-  
-  .ape-alumni-profile {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .ape-single-section {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    gap: 30px;
-  }
-  
-  h2 {
-    margin-bottom: -20px;
-    font-size: 18px;
-    color: #333;
-    text-align: left;
-  }
-  
-  .ape-profile-info {
-    display: flex;
-    align-items: flex-start;
-    gap: 90px;
-    flex-wrap: wrap;
-    /* margin-bottom: 10px; */
-  }
-  
-  .ape-avatar {
-    position: relative;
-    width: 135px;
-    height: 135px;
-    margin-bottom: -70px;
-  }
-  
-  .ape-profile-pic {
-    width: 150px;
-    height: 150px;
-    background-color: #ddd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .ape-edit-btn {
-    position: absolute;
-    bottom: 5px;
-    right: -10px;
-    background: purple;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-  }
-  
-  .ape-info-fields {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  
-  
-  
-  .ape-field-group {
-    position: relative;
-    width: 48%;
-    min-width: 200px;
-    margin-top: 20px;
-  }
-  
-  .ape-field-group input {
-    width: 100%;
-    padding: 16px 12px 8px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: transparent;
-    outline: none;
-  }
-  
-  .ape-field-group label {
-    position: absolute;
-    top: 16px;
-    left: 12px;
-    font-size: 14px;
-    color: #888;
-    background-color: white;
-    padding: 0 4px;
-    transition: 0.2s ease all;
-    pointer-events: none;
-  }
-  
-  /* 👇 When input is focused or has text */
-  .ape-field-group input:focus + label,
-  .ape-field-group input:not(:placeholder-shown) + label {
-    top: -8px;
-    left: 10px;
-    font-size: 12px;
-    color: #0052a3;
-  }
-  
-  .ape-field-group select {
-    width: 100%;
-    padding: 16px 12px 8px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  /* Ensure label is correctly placed for dropdowns */
-  .ape-field-group select:focus + label,
-  .ape-field-group select:not(:placeholder-shown) + label {
-    top: -8px;
-    left: 10px;
-    font-size: 12px;
-    color: #0052a3;
-  }
-  
-  .ape-field-group input[type="date"] {
-    width: 100%;
-    padding: 16px 12px 8px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  /* Floating label for date picker */
-  .ap-field-group input[type="date"]:focus + label,
-  .ap-field-group input[type="date"]:not(:placeholder-shown) + label {
-    top: -8px;
-    left: 10px;
-    font-size: 12px;
-    color: #0052a3;
-  }
-  
-  
-  .ape-save-container {
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  .ape-save-btn {
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #0052a3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .ape-save-btn:hover {
-    background-color: rgb(8, 60, 112);
-    color: white;
-  }
-  
+.alupe-active {
+  border-bottom: 3px solid #4b5563;
+  background-color: #0052a3;
+  color: white;
+  /* font-weight: bold; */
+}
+
+.alupe-alumni-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.alupe-single-section {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+}
+
+.alupe-profile-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 90px;
+  flex-wrap: wrap;
+}
+
+.alupe-avatar {
+  position: relative;
+  width: 135px;
+  height: 135px;
+  margin-bottom: -70px;
+}
+
+.alupe-profile-pic {
+  width: 150px;
+  height: 150px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alupe-edit-btn {
+  position: absolute;
+  bottom: 5px;
+  right: -10px;
+  background: purple;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.alupe-info-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.alupe-field-group {
+  position: relative;
+  width: 48%;
+  min-width: 200px;
+  margin-top: 20px;
+}
+
+.alupe-field-group input,
+.alupe-field-group select,
+.alupe-field-group input[type="date"] {
+  width: 100%;
+  padding: 16px 12px 8px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: transparent;
+  outline: none;
+}
+
+.alupe-field-group label {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  font-size: 14px;
+  color: #888;
+  background-color: white;
+  padding: 0 4px;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+.alupe-field-group input:focus + label,
+.alupe-field-group input:not(:placeholder-shown) + label,
+.alupe-field-group select:focus + label,
+.alupe-field-group select:not(:placeholder-shown) + label,
+.alupe-field-group input[type="date"]:focus + label,
+.alupe-field-group input[type="date"]:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 10px;
+  font-size: 12px;
+  color: #0052a3;
+}
+
+.alupe-save-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.alupe-save-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #0052a3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.alupe-save-btn:hover {
+  background-color: rgb(8, 60, 112);
+}
