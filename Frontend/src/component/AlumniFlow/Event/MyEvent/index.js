@@ -24,7 +24,6 @@ const MyEvent = () => {
   const handleCloseDeletePopup = () => setShowDeletePopup(false);
 
   const handleConfirmDelete = () => {
-    // Add deletion logic here
     setShowDeletePopup(false);
   };
 
