@@ -1,242 +1,195 @@
-.ep-modal-overlay {
+.alep-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  }
-  
-  .ep-modal {
-    background: white;
-    width: 90%; max-width: 900px; max-height: 90vh;
-    overflow-y: auto;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    position: relative;
-  }
-  
-  .ep-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 0.8rem;
-  }
-  
-  .ep-close-btn {
-    background: none; border: none; font-size: 24px; cursor: pointer;
-  }
-  
-  .ep-form {
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  
-  .ep-form-row {
-    display: flex; gap: 20px; flex-wrap: wrap;
-  }
-  
-  .ep-field-group {
-    position: relative;
-    flex: 1;
-    min-width: 300px;
-  }
-  
-  .ep-field-group.floating input,
-  .ep-field-group.floating input[type="file"] {
-    width: 100%;
-    padding: 14px 16px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: white;
-  }
-  
-  .ep-field-group.floating label {
-    position: absolute;
-    top: -10px;
-    left: 12px;
-    background: white;
-    padding: 0 5px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #000;
-    pointer-events: none;
-  }
-  
-  .required {
-    color: red;
-  }
-  
-  .ep-dropdown {
-    position: relative;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 12px 16px;
-    cursor: pointer;
-    background-color: #fff;
-  }
-  
-  .ep-dropdown-header {
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  
-  .ep-dropdown-options {
-    position: absolute;
-    top: 100%;
-    left: 0; right: 0;
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    z-index: 10;
-    margin-top: 5px;
-  }
-  
-  .ep-dropdown-options div {
-    padding: 12px 16px;
-    transition: background 0.2s;
-  }
-  
-  .ep-dropdown-options div:hover {
-    background-color: #f7fafc;
-  }
-  
-  /* Quill Editor styling */
-  .quill-floating {
-    margin-top: 24px;
-  }
-  
-  .quill-floating .quill-label {
-    position: absolute;
-    top: -10px;
-    left: 12px;
-    background: white;
-    padding: 0 5px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #000;
-    z-index: 1;
-  }
-  
-   .ql-toolbar {
-    border: 1px solid #ccc !important;
-    border-bottom: none !important;
-    border-radius: 8px 8px 0 0;
-    /* background-color: #f9fafb; */
-  }
-  
-  .ql-container {
-    border: 1px solid #ccc !important;
-    border-top: none !important;
-    border-radius: 0 0 8px 8px;
-    min-height: 150px;
-  }
-  
-  .ql-editor {
-    min-height: 150px;
-    padding: 10px 12px;
-    font-size: 14px;
-  } 
-  
-  .ep-submit-btn {
-    background-color: #3182ce;
-    color: white;
-    padding: 14px 40px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    align-self: flex-end;
-  }
-  
-  .ep-submit-btn:hover {
-    background-color: #2b6cb0;
-  }
-  
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999; padding: 20px;
+}
 
-  /* General padding improvements */
-.ep-form-row {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-  
-  .ep-field-group.floating input,
-  .ep-field-group.floating input[type="file"] {
-    padding: 16px 20px; /* Extra inner padding */
-  }
-  
-  /* Dropdown enhancements */
-  .ep-dropdown {
-    padding: 16px 20px;
-  }
-  
-  /* Three-color dropdown options */
-  .ep-dropdown-options .status-approved {
-    color: #155724;
-  }
-  
-  .ep-dropdown-options .status-pending {
-    color: #856404;
-  }
-  
-  .ep-dropdown-options .status-cancelled {
-    color: #721c24;
-  }
-  
-  /* Other dropdown options hover */
-  .ep-dropdown-options div:hover {
-    background-color: #edf2f7;
-  }
-  
-  /* Fixed label styling */
-  .ep-field-group.floating label,
-  .quill-floating .quill-label {
-    color: #000;
-    font-weight: 500;
-    font-size: 13px;
-    background: white;
-    padding: 0 5px;
-    position: absolute;
-    top: -10px;
-    left: 12px;
-  }
-  
-  /* Quill Editor Padding */
-  .ql-editor {
-    padding: 18px;
-  }
-  
-  /* File input styling */
-.ep-file-input {
-    background-color: #f1f5f9;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  /* Override default file input font to match */
-  .ep-file-input::file-selector-button {
-    background: #e2e8f0;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-  }
-  
-  /* Ensure consistent placeholder in Quill */
-  .ql-editor.ql-blank::before {
-    font-style: normal;
-    color: #9ca3af;
-    font-size: 14px;
-  }
-  
+.alep-modal {
+  background: white;
+  width: 90%; max-width: 900px; max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.alep-header {
+  /* display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem; */ 
+  display: flex;
+  justify-content: space-between;  
+   font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.alep-close-btn {
+  background: none; border: none; font-size: 24px; cursor: pointer;
+}
+
+.alep-form {
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.alep-form-row {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.alep-field-group {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.alep-field-group.floating input,
+.alep-field-group.floating input[type="file"] {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+}
+
+.alep-field-group.floating label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: white;
+  padding: 0 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #000;
+  pointer-events: none;
+}
+
+.required {
+  color: red;
+}
+
+.alep-dropdown {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px 20px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.alep-dropdown-header {
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.alep-dropdown-options {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  z-index: 10;
+  margin-top: 5px;
+}
+
+.alep-dropdown-options div {
+  padding: 12px 16px;
+  transition: background 0.2s;
+}
+
+.alep-dropdown-options div:hover {
+  background-color: #edf2f7;
+}
+
+.alep-dropdown-options .status-approved {
+  color: #155724;
+}
+.alep-dropdown-options .status-pending {
+  color: #856404;
+}
+.alep-dropdown-options .status-cancelled {
+  color: #721c24;
+}
+
+/* Quill Editor */
+.alep-quill-floating {
+  margin-top: 24px;
+}
+
+.alep-quill-label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: white;
+  padding: 0 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #000;
+  z-index: 1;
+}
+
+.ql-toolbar {
+  border: 1px solid #ccc !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0;
+}
+
+.ql-container {
+  border: 1px solid #ccc !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px;
+  min-height: 150px;
+}
+
+.ql-editor {
+  min-height: 150px;
+  padding: 18px;
+  font-size: 14px;
+}
+
+.ql-editor.ql-blank::before {
+  font-style: normal;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* File input */
+.alep-file-input {
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  width: 100%;
+  cursor: pointer;
+}
+
+.alep-file-input::file-selector-button {
+  background: #e2e8f0;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Submit Button */
+.alep-submit-btn {
+  background-color: #3182ce;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: flex-end;
+}
+
+.alep-submit-btn:hover {
+  background-color: #2b6cb0;
+}

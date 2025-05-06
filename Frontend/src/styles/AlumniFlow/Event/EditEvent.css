@@ -1,32 +1,30 @@
-/* EditEvent.css */
-
-.edit-event-overlay {
+.alee-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Optional: dark background */
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
     padding: 20px;
-}
-
-.edit-event-modal {
-    background: #ffffff;
+  }
+  
+  .alee-modal {
+    background: #fff;
     padding: 30px;
     width: 90%;
     max-width: 800px;
     border-radius: 12px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
-    max-height: 90vh; /* Limit height */
-    overflow-y: auto; /* Enable vertical scroll inside modal */
-}
-
-.edit-event-close {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .alee-close {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -34,80 +32,130 @@
     background: none;
     border: none;
     cursor: pointer;
-}
-
-.edit-event-title {
+  }
+  
+  .alee-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
-}
-
-.edit-event-form {
+  }
+  
+  .alee-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.edit-event-grid {
+  }
+  
+  .alee-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-}
-
-.edit-event-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.edit-event-group label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.edit-event-group input,
-.edit-event-group select,
-.edit-event-group textarea {
-    padding: 10px;
+  }
+  
+  .alee-group {
+    position: relative;
+  }
+  
+  .alee-group input,
+  .alee-group select {
+    width: 100%;
+    padding: 14px 10px 6px;
     font-size: 14px;
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     background: #fff;
-}
-
-.edit-event-group textarea {
-    resize: vertical;
-}
-
-.full-width {
+  }
+  
+  .alee-group label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #fff;
+    padding: 0 4px;
+    font-size: 12px;
+    color: #666;
+    pointer-events: none;
+  }
+  
+  .alee-full {
     grid-column: 1 / 3;
-}
-
-.edit-event-upload {
+  }
+  
+  .alee-fixed-label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .alee-upload-section {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-}
-
-.edit-event-upload-box {
+  }
+  
+  .alee-upload-box {
     flex: 1;
+    height: 220px;
+    border: 3px dotted #ccc;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    position: relative;
+  }
+  
+  .alee-upload-box label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    padding: 0 5px;
+    z-index: 2;
+  }
+  
+  .alee-upload-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-}
-
-.edit-event-upload-box input {
-    padding: 20px;
-    border: 1px dashed #ccc;
-    border-radius: 8px;
-    background: #fafafa;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    justify-content: center;
     text-align: center;
+    padding: 0 10px;
+  }
+  
+  .alee-upload-icon {
+    font-size: 50px;
+    color: #888;
+  }
+  
+  .alee-upload-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
-}
-
-.edit-event-submit {
-    background-color: #4CAF50;
-    color: white;
+    top: 0;
+    left: 0;
+  }
+  
+  .alee-upload-preview {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+  }
+  
+  .alee-submit {
+    background-color: #c6f670;
+    color: #000;
     padding: 12px;
     border-radius: 8px;
     font-size: 16px;
@@ -115,8 +163,13 @@
     border: none;
     cursor: pointer;
     margin-top: 20px;
-}
-
-.edit-event-submit:hover {
-    background-color: #45a049;
-}
+  }
+  
+  .alee-submit:hover {
+    background-color: #b1e756;
+  }
+  
+  .alee-required {
+    color: red;
+  }
+  
