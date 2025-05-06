@@ -2,7 +2,16 @@ const { Event , EventType } = require('../models');
 
 exports.createEvents = async (req , res ) => {
     try {
-        const newEvents = await Event.create(req.body);
+
+        const eventImg = req.files?.eventImg ? req.files.eventImg[0].path : null;
+        const ticketImg = req.files?.ticketImg ? req.files.ticketImg[0].path : null;
+
+
+        const newEvents = await Event.create({
+            ...req.body , 
+            eventImg,
+            ticketImg
+        });
         res.status(201).json({status :'success' , data:newEvents})
     } catch (error) {
         res.status(500).json({ status : 'error' , message:error.message})

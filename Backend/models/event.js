@@ -42,11 +42,11 @@ const Event = sequelize.define('Event' , {
     },
     eventImg:{
         type:DataTypes.STRING,
-        allowNull:true,
+        allowNull:false,
     },
     ticketImg:{
         type:DataTypes.STRING,
-        allowNull:true,
+        allowNull:false,
     }
 },{
     timestamps:true,
