@@ -1,4 +1,4 @@
-const { Event , EventType} = require('../models');
+const { Event , EventType } = require('../models');
 
 exports.createEvents = async (req , res ) => {
     try {
@@ -66,8 +66,12 @@ exports.updateEvent = async (req, res) => {
 
   exports.getAllEventType = async ( req, res ) => {
     try {
-        const eventType = await EventType.findAll();
-        res.json({ status : 'success' , data : eventType})
+        const eventTypes = await EventType.findAll();
+        // console.log(eventTypes);
+        if (!eventTypes || eventTypes.length === 0) {
+            return res.status(404).json({ status: 'error', message: 'No event types found' });
+          }
+        res.json({ status : 'success' , data:eventTypes})
     } catch (error) {
         res.status(500).json({ status : 'error' , message:error.message})
     }
