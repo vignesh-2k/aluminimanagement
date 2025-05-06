@@ -63,3 +63,12 @@ exports.updateEvent = async (req, res) => {
       res.status(500).json({ status: 'error', message: error.message });
     }
   };
+
+  exports.getAllEventType = async ( req, res ) => {
+    try {
+        const eventType = await EventType.findAll();
+        res.json({ status : 'success' , data : eventType})
+    } catch (error) {
+        res.status(500).json({ status : 'error' , message:error.message})
+    }
+  }

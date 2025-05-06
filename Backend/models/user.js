@@ -10,7 +10,7 @@ const User = sequelize.define('User', {
     },
     userTypeId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: 'UserTypes',
             key: 'id'

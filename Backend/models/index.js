@@ -11,7 +11,7 @@ const EventType = require('./eventType');
 const Event = require('./event');
 
 const initDB = async () => {
-    if (process.env.ENVIRONMENT === 'development') {
+    if (process.env.ENVIRONMENT === 'testing') {
         await Event.drop();
         await EventType.drop();
         await User.drop();
