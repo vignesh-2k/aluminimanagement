@@ -15,21 +15,14 @@ const CreateEvent = () => {
   const [noOfTicket, setNoOfTicket] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
-  const [uploadImage, setUploadImage] = useState('');
-  const [ticketImage, setTicketImage] = useState('');
+  const [uploadImage, setUploadImage] = useState(null);
+  const [ticketImage, setTicketImage] = useState(null);
   const [eventTypes, setEventTypes] = useState([]);
   const [selectedEventType, setSelectedEventType] = useState('');
   const [selectedEventTypeId, setSelectedEventTypeId] = useState(null);
   const [eventTypeOpen, setEventTypeOpen] = useState(false);
 
   const navigate = useNavigate();
-
-  const handleImageChange = (e, setter) => {
-    const file = e.target.files[0];
-    if (file) {
-      setter(URL.createObjectURL(file)); 
-    }
-  };
 
   const getEventTypes = async () => {
     try {
@@ -45,31 +38,47 @@ const CreateEvent = () => {
     getEventTypes();
   }, []);
 
-  const stripHtml = (html) => {
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || '';
+  const handleImageChange = (e, setter) => {
+    const file = e.target.files[0];
+    if (file) {
+      setter(file); // Set the actual file instead of a blob URL
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const plainTextDescription = stripHtml(description);
+    // Create a FormData object
+    const formData = new FormData();
+    formData.append('eventTitle', eventTitle);
+    formData.append('eventDate', eventDate);
+    formData.append('eventType', selectedEventTypeId);
+    formData.append('eventCategory', eventCategory);
+    formData.append('noOfTicket', noOfTicket);
+    formData.append('location', location);
+    formData.append('description', description);
 
-    const eventData = {
-      eventTitle,
-      eventDate,
-      eventType: selectedEventTypeId,
-      eventCategory,
-      noOfTicket,
-      location,
-      description: plainTextDescription,
-      eventImg: uploadImage,
-      ticketImg: ticketImage,
-    };
+    // Append image files to the formData
+    if (uploadImage) {
+      formData.append('eventImg', uploadImage);
+    }
+    if (ticketImage) {
+      formData.append('ticketImg', ticketImage);
+    }
 
-    addEvent(eventData);
-    navigate('/allevent');
+    try {
+      // Use your addEvent API service
+      await addEvent(formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Navigate to the event list page if successful
+      navigate('/allevent');
+    } catch (error) {
+      console.error('Error creating event:', error);
+    }
   };
 
   return (
@@ -209,7 +218,11 @@ const CreateEvent = () => {
               </label>
               <div className="alumni-ce-upload-content">
                 {uploadImage ? (
-                  <img src={uploadImage} alt="Uploaded" className="alumni-ce-upload-preview" />
+                  <img
+                    src={URL.createObjectURL(uploadImage)}
+                    alt="Uploaded"
+                    className="alumni-ce-upload-preview"
+                  />
                 ) : (
                   <>
                     <IoMdCloudUpload className="alumni-ce-upload-icon" />
@@ -231,7 +244,11 @@ const CreateEvent = () => {
               </label>
               <div className="alumni-ce-upload-content">
                 {ticketImage ? (
-                  <img src={ticketImage} alt="Ticket" className="alumni-ce-upload-preview" />
+                  <img
+                    src={URL.createObjectURL(ticketImage)}
+                    alt="Ticket"
+                    className="alumni-ce-upload-preview"
+                  />
                 ) : (
                   <>
                     <IoMdCloudUpload className="alumni-ce-upload-icon" />
