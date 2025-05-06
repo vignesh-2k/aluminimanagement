@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FaSearch,
   FaEdit,
@@ -10,12 +10,15 @@ import { Navbar } from "../../../../layout/AlumniFlow/Navbar";
 import EditEvent from '../EditEvent';
 import "../../../../styles/AlumniFlow/Event/MyEvent.css";
 import { useNavigate } from 'react-router-dom';
+import { getAllEvent } from '../../../services/almEvent';
 
 const MyEvent = () => {
   const navigate = useNavigate();
 
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [entries, setEntries] = useState(10);
+  const [eventList, setEventList] = useState([]);
 
   const handleEditClick = () => setShowEditPopup(true);
   const handleCloseEditPopup = () => setShowEditPopup(false);
@@ -26,6 +29,19 @@ const MyEvent = () => {
   const handleConfirmDelete = () => {
     setShowDeletePopup(false);
   };
+
+  const fetchEvents = async () => {
+    try {
+      const response = await getAllEvent();
+      setEventList(response.data);
+    } catch (error) {
+      console.error("Error fetching event data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   return (
     <>
@@ -48,7 +64,11 @@ const MyEvent = () => {
             <div className="alme-entries-container">
               <label className="alme-entries-label">
                 Show
-                <select className="alme-entries-select">
+                <select
+                  className="alme-entries-select"
+                  value={entries}
+                  onChange={(e) => setEntries(Number(e.target.value))}
+                >
                   <option value="10">10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
@@ -63,6 +83,7 @@ const MyEvent = () => {
             <table className="alme-event-table">
               <thead>
                 <tr>
+                  <th>S.No</th>
                   <th>Event Title</th>
                   <th>Category</th>
                   <th>Type</th>
@@ -73,25 +94,28 @@ const MyEvent = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>AI-tools</td>
-                  <td><span className="alme-category-badge">Workshop</span></td>
-                  <td><span className="alme-type-badge">Free</span></td>
-                  <td>22nd April, 12:00:00 AM</td>
-                  <td>Anna University, Trichy</td>
-                  <td><span className="alme-status-badge">Pending</span></td>
-                  <td className="alme-action-icons">
-                    <button className="alme-icon-btn" onClick={handleEditClick}><FaEdit /></button>
-                    <button className="alme-icon-btn" onClick={handleDeleteClick}><FaTrash /></button>
-                    <button className="alme-icon-btn" onClick={() => navigate('/eventdetails')}><FaEye /></button>
-                  </td>
-                </tr>
+                {eventList.slice(0, entries).map((event, index) => (
+                  <tr key={event.eventId}>
+                    <td>{index + 1}</td>
+                    <td>{event.eventTitle}</td>
+                    <td><span className="alme-category-badge">{event.eventCategory}</span></td>
+                    <td><span className="alme-type-badge">{event.eventType}</span></td>
+                    <td>{event.eventDate}</td>
+                    <td>{event.location}</td>
+                    <td><span className="alme-status-badge">Pending</span></td>
+                    <td className="alme-action-icons">
+                      <button className="alme-icon-btn" onClick={handleEditClick}><FaEdit /></button>
+                      <button className="alme-icon-btn" onClick={handleDeleteClick}><FaTrash /></button>
+                      <button className="alme-icon-btn" onClick={() => navigate('/eventdetails')}><FaEye /></button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
 
           <div className="alme-table-footer">
-            <span>Showing 1 to 1 of 1 entries</span>
+            <span>Showing 1 to {Math.min(entries, eventList.length)} of {eventList.length} entries</span>
             <div className="alme-pagination">
               <button className="alme-page-btn">&laquo;</button>
               <button className="alme-page-btn alme-active">1</button>
@@ -109,21 +133,12 @@ const MyEvent = () => {
         <div className="alme-delete-popup-overlay">
           <div className="alme-delete-popup">
             <div className="alme-delete-popup-icon">!</div>
-            <h2 style={ { 
-              marginBottom: "10px",
-              fontSize: "25px",
-              alignItems: "center",
-              color: "#333"
-            }}>Sure! You want to delete?</h2>
-
-            <p  style={ { 
-               color: "#777",
-               marginBottom: "20px"
-            }}
-            >You won't be able to revert this!</p>
+            <h2 style={{ marginBottom: "10px", fontSize: "25px", color: "#333" }}>Sure! You want to delete?</h2>
+            <p style={{ color: "#777", marginBottom: "20px" }}>
+              You won't be able to revert this!
+            </p>
             <div className="alme-delete-popup-buttons">
-              <button
-               className="alme-delete-confirm-btn" onClick={handleConfirmDelete}>
+              <button className="alme-delete-confirm-btn" onClick={handleConfirmDelete}>
                 Yes, Delete It!
               </button>
               <button className="alme-delete-cancel-btn" onClick={handleCloseDeletePopup}>

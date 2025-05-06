@@ -45,8 +45,16 @@ const CreateEvent = () => {
     getEventTypes();
   }, []);
 
+  const stripHtml = (html) => {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const plainTextDescription = stripHtml(description);
 
     const eventData = {
       eventTitle,
@@ -55,16 +63,14 @@ const CreateEvent = () => {
       eventCategory,
       noOfTicket,
       location,
-      description,
+      description: plainTextDescription,
       eventImg: uploadImage,
       ticketImg: ticketImage,
     };
 
     addEvent(eventData);
-    navigate('/allevent')
+    navigate('/allevent');
   };
-  
-  
 
   return (
     <>
@@ -242,10 +248,7 @@ const CreateEvent = () => {
             </div>
           </div>
 
-          <button 
-          type="submit" 
-          className="alumni-ce-publish-btn"
-          >
+          <button type="submit" className="alumni-ce-publish-btn">
             Publish Now
           </button>
         </form>
