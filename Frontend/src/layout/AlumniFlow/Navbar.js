@@ -63,7 +63,7 @@ export const Navbar = () => {
       
 
         {/* Alumni Dropdown */}
-        <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("alumni")}>
+        {/* <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("alumni")}>
           <div className="db-nav-link">
             <HiOutlineUserGroup className="db-nav-icon" />
             <span>Alumni</span>
@@ -75,8 +75,15 @@ export const Navbar = () => {
             <li><Link to="/alumini/alllist">All List</Link></li>
             <li><Link to="/alumini/pendinglist">Pending List</Link></li>
           </ul>
-        </li>
+        </li> */}
+       
 
+        <li className="db-nav-item">
+          <Link to="/alumini/alllist" className="db-nav-link">
+            <HiOutlineUserGroup className="db-nav-icon" />
+            <span>Alumni</span>
+          </Link>
+        </li>
        
 
         <li className="db-nav-item">

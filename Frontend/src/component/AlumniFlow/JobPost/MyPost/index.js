@@ -10,6 +10,7 @@ import { Navbar } from "../../../../layout/AlumniFlow/Navbar";
 import "../../../../styles/AlumniFlow/JobPost/MyPost.css";
 
 import { useNavigate } from 'react-router-dom';
+import EditPost from '../EditPost';
 
 const MyPost = () => {
   const navigate = useNavigate();
@@ -82,7 +83,9 @@ const MyPost = () => {
                   <td>30th May, 2025</td>
                   <td><span className="almp-badge-pending">Pending</span></td>
                   <td className="almp-action-icons">
-                    <button className="almp-icon-btn" onClick={() => navigate ('/editpost')}><FaEdit /></button>
+                    {/* <button className="almp-icon-btn" onClick={() => navigate ('/editpost')}><FaEdit /></button> */}
+                    <button className="almp-icon-btn" onClick={handleEditClick}><FaEdit /></button>
+
                     <button className="almp-icon-btn" onClick={handleDeleteClick}><FaTrash /></button>
                     <button className="almp-icon-btn" onClick={() => navigate('/postdetails')}><FaEye /></button>
                   </td>
@@ -101,6 +104,15 @@ const MyPost = () => {
           </div>
         </div>
       </div>
+  
+
+      {showEditPopup && (
+      <div className="almp-modal-overlay">
+      <EditPost onClose={handleCloseEditPopup} />
+      </div> 
+       )}
+
+     
 
       {/* Delete Confirmation Popup */}
       {showDeletePopup && (
