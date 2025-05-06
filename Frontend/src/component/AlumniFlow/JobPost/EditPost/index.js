@@ -4,8 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import { IoClose, IoChevronDown } from "react-icons/io5";
 import '../../../../styles/AlumniFlow/JobPost/EditPost.css';
 
-
-const EditPost = () => {
+const EditPost = ({ onClose }) => {
   const [formData, setFormData] = useState({
     title: '',
     employeeStatus: 'Full Time',
@@ -55,28 +54,28 @@ const EditPost = () => {
   };
 
   return (
-    <div className="ep-container">
-      <div className="ep-modal">
-        <div className="ep-header">
+    <div className="alep-container">
+      <div className="alep-modal">
+        <div className="alep-header">
           <h2>Edit Job Post</h2>
-          <button className="ep-close-btn"><IoClose /></button>
+          <button className="alep-close-btn" onClick={onClose}><IoClose /></button>
         </div>
 
-        <form className="ep-form" onSubmit={handleSubmit}>
-          <div className="ep-form-row">
-            <div className="ep-field-group floating">
+        <form className="alep-form" onSubmit={handleSubmit}>
+          <div className="alep-form-row">
+            <div className="alep-field-group floating">
               <input type="text" name="title" value={formData.title} onChange={handleChange} required placeholder="Enter job title" />
               <label>Job Title <span className="required">*</span></label>
             </div>
 
-            <div className="ep-field-group floating">
-              <div className="ep-dropdown" onClick={() => setDropdownOpen(prev => ({ ...prev, employeeStatus: !prev.employeeStatus }))}>
-                <div className="ep-dropdown-header">
+            <div className="alep-field-group floating">
+              <div className="alep-dropdown" onClick={() => setDropdownOpen(prev => ({ ...prev, employeeStatus: !prev.employeeStatus }))}>
+                <div className="alep-dropdown-header">
                   {formData.employeeStatus}
                   <IoChevronDown />
                 </div>
                 {dropdownOpen.employeeStatus && (
-                  <div className="ep-dropdown-options">
+                  <div className="alep-dropdown-options">
                     {['Full Time', 'Part Time', 'Contract'].map(option => (
                       <div key={option} onClick={() => {
                         setFormData(prev => ({ ...prev, employeeStatus: option }));
@@ -90,48 +89,48 @@ const EditPost = () => {
             </div>
           </div>
 
-          <div className="ep-form-row">
-            <div className="ep-field-group floating">
+          <div className="alep-form-row">
+            <div className="alep-field-group floating">
               <input type="text" name="compensation" value={formData.compensation} onChange={handleChange} required placeholder="Enter compensation details" />
               <label>Compensation & Benefits <span className="required">*</span></label>
             </div>
-            <div className="ep-field-group floating">
-              <input type="file" name="logo" onChange={handleChange} className="ep-file-input" />
+            <div className="alep-field-group floating">
+              <input type="file" name="logo" onChange={handleChange} className="alep-file-input" />
               <label>Upload Company Logo <span className="required">*</span></label>
             </div>
           </div>
 
-          <div className="ep-form-row">
-            <div className="ep-field-group floating">
+          <div className="alep-form-row">
+            <div className="alep-field-group floating">
               <input type="text" name="salary" value={formData.salary} onChange={handleChange} required placeholder="Enter salary range or amount" />
               <label>Salary <span className="required">*</span></label>
             </div>
-            <div className="ep-field-group floating">
+            <div className="alep-field-group floating">
               <input type="text" name="location" value={formData.location} onChange={handleChange} required placeholder="Enter job location" />
               <label>Location <span className="required">*</span></label>
             </div>
           </div>
 
-          <div className="ep-form-row">
-            <div className="ep-field-group floating">
+          <div className="alep-form-row">
+            <div className="alep-field-group floating">
               <input type="datetime-local" name="applicationDeadline" value={formData.applicationDeadline} onChange={handleChange} required />
               <label>Application Deadline <span className="required">*</span></label>
             </div>
-            <div className="ep-field-group floating">
+            <div className="alep-field-group floating">
               <input type="text" name="url" value={formData.url} onChange={handleChange} required placeholder="Enter job URL" />
               <label>URL <span className="required">*</span></label>
             </div>
           </div>
 
-          <div className="ep-form-row">
-            <div className="ep-field-group floating">
-              <div className="ep-dropdown" onClick={() => setDropdownOpen(prev => ({ ...prev, jobStatus: !prev.jobStatus }))}>
-                <div className="ep-dropdown-header">
+          <div className="alep-form-row">
+            <div className="alep-field-group floating">
+              <div className="alep-dropdown" onClick={() => setDropdownOpen(prev => ({ ...prev, jobStatus: !prev.jobStatus }))}>
+                <div className="alep-dropdown-header">
                   {formData.jobStatus}
                   <IoChevronDown />
                 </div>
                 {dropdownOpen.jobStatus && (
-                  <div className="ep-dropdown-options">
+                  <div className="alep-dropdown-options">
                     {['Pending', 'Approved', 'Cancelled'].map(option => (
                       <div
                         key={option}
@@ -156,13 +155,13 @@ const EditPost = () => {
             { label: 'Educational Requirements', value: eduRequirements, setter: setEduRequirements, placeholder: 'Specify educational qualifications...' },
             { label: 'Additional Requirements', value: additionalRequirements, setter: setAdditionalRequirements, placeholder: 'List any additional requirements...' }
           ].map(({ label, value, setter, placeholder }, index) => (
-            <div className="ep-field-group floating quill-floating" key={index}>
-              <label className="quill-label">{label} <span className="required">*</span></label>
+            <div className="alep-field-group floating alep-quill-floating" key={index}>
+              <label className="alep-quill-label">{label} <span className="required">*</span></label>
               <ReactQuill value={value} onChange={setter} modules={modules} placeholder={placeholder} />
             </div>
           ))}
 
-          <button type="submit" className="ep-submit-btn">Update</button>
+          <button type="submit" className="alep-submit-btn">Update</button>
         </form>
       </div>
     </div>
