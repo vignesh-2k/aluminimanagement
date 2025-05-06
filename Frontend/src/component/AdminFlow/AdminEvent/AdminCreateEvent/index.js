@@ -22,7 +22,10 @@ const CreateEvent = () => {
       <TopBar />
       <Navbar />
       <div className="ce-create-event-container">
-        <h2>Create Event</h2>
+        <h2 style={ { 
+                fontSize: "28px",
+                marginBottom: "25px"
+              }}>Create Event</h2>
         <form className="ce-event-form">
           <div className="ce-form-row">
             <div className="ce-field-group">

@@ -27,6 +27,7 @@ import AllPost from './component/AlumniFlow/JobPost/AllPost';
 import EditPost from './component/AlumniFlow/JobPost/EditPost';
 import EventDetails from './component/AlumniFlow/Event/AllEvent/EventDetails';
 import MyTicket from './component/AlumniFlow/Event/MyTicket';
+import MyPost from './component/AlumniFlow/JobPost/MyPost';
 
 //AdminFlow
 import AdminDashboard from './component/AdminFlow/AdminDashboard';
@@ -55,6 +56,7 @@ import AdminAllPost from './component/AdminFlow/AdminJobPost/AdminAllPost';
 import AdminEditPost from './component/AdminFlow/AdminJobPost/AdminEditPost';
 import AdminPendingEvent from './component/AdminFlow/AdminEvent/AdminPendingEvent';
 import AdminPendingPost from './component/AdminFlow/AdminJobPost/AdminPendingPost';
+
 
 function App() {
   return (
@@ -87,6 +89,7 @@ function App() {
             <Route path="/transaction" element={<Transaction />} />
             <Route path="/allpost" element={<AllPost />} />
             <Route path="/editpost" element={<EditPost />} />
+            <Route path="/mypost" element={<MyPost />} />
           </Routes>
         </div>
 

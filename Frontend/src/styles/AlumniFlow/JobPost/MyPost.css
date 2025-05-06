@@ -1,8 +1,6 @@
-/* MyEvent.css */
-
-.me-container {
+.almp-container {
   position: absolute;
-  top: 80px;
+  top: 70px;
   left: 250px;
   right: 0;
   bottom: 0;
@@ -11,145 +9,191 @@
   font-family: "Arial", sans-serif;
   box-sizing: border-box;
   overflow-y: auto;
-  border-radius: 10px;
 }
 
-.me-title {
-  font-size: 26px;
+
+.almp-title {
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.me-table-wrapper {
-  background: #ffffff;
+.almp-table-wrapper {
+  background-color: #fff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.me-top-bar {
+.almp-top-bar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.me-search-container {
+.almp-search-container {
+  display: flex;
+  align-items: center;
   position: relative;
 }
 
-.me-search-icon {
+.almp-search-icon {
   position: absolute;
   left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #888;
+  color: gray;
 }
 
-.me-search-input {
-  padding: 10px 10px 10px 35px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+.almp-search-input {
+  padding: 10px 10px 10px 32px;
+  border: 1px solid #ccc;
+  border-radius: 18px;
+  width: 250px;
 }
 
-.me-entries-container {
+.almp-entries-container {
   display: flex;
   align-items: center;
 }
 
-.me-entries-label {
+.almp-entries-label {
   font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
-.me-entries-select {
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+.almp-entries-select {
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 10px;
 }
 
-.me-event-table {
+.almp-table-responsive {
+  overflow-x: auto;
+}
+
+.almp-post-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.me-event-table thead tr {
-  background-color: #f0f0f0; /* Light grey header */
+.almp-post-table th,
+.almp-post-table td {
+  padding: 12px 10px;
+  text-align: left;
 }
 
-.me-event-table th, .me-event-table td {
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #eee;
+.almp-post-table thead tr {
+  background-color: #f0f0f0;
 }
 
-.me-category-badge, .me-type-badge, .me-status-badge {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 20px;
+.almp-status-badge {
+  background-color: #28a745;
+  color: white;
+  padding: 4px 8px;
   font-size: 12px;
-  color: #fff;
+  border-radius: 6px;
 }
 
-.me-category-badge {
-  background-color: #4CAF50;
+.almp-badge-pending {
+  background-color: #ffc107;
+  color: black;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
 }
 
-.me-type-badge {
-  background-color: #2196F3;
-}
-
-.me-status-badge {
-  background-color: #FFC107;
-  color: #000;
-}
-
-.me-action-icons {
+.almp-action-icons {
   display: flex;
-  gap: 10px;
-  justify-content: center;
+  gap: 8px;
 }
 
-.me-icon-btn {
+.almp-icon-btn {
   background: none;
   border: none;
-  font-size: 18px;
   cursor: pointer;
-  color: #555;
-  transition: color 0.3s;
+  font-size: 16px;
 }
 
-.me-icon-btn:hover {
-  color: #4CAF50; /* greenish hover for icons */
-}
-
-.me-table-footer {
+.almp-table-footer {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
-  font-size: 14px;
+  align-items: center;
 }
 
-.me-pagination {
+.almp-pagination {
   display: flex;
   gap: 5px;
 }
 
-.me-page-btn {
-  background: #eee;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+.almp-page-btn {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
   cursor: pointer;
 }
 
-.me-page-btn:hover {
-  background: #4CAF50;
+.almp-active {
+  background-color: #007bff;
   color: white;
+  border-color: #007bff;
 }
 
-.me-active {
-  background: #4CAF50;
+/* Delete Popup Styles */
+.almp-delete-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.almp-delete-popup {
+  background: white;
+  border-radius: 6px;
+  padding: 30px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.almp-delete-popup-icon {
+  font-size: 48px;
+  color: #f5a623;
+  margin-bottom: 20px;
+  border: 2px solid #f5a623;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.almp-delete-popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.almp-delete-confirm-btn {
+  background-color: #3085d6;
   color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.almp-delete-cancel-btn {
+  background-color: #d33;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

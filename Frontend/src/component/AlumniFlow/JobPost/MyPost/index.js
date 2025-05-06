@@ -1,44 +1,55 @@
-// MyEvent.jsx
 import React, { useState } from 'react';
-import { FaSearch, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
-import { TopBar } from "../../../layout/AlumniFlow/Topbar";
-import { Navbar } from "../../../layout/AlumniFlow/Navbar";
-import EditEvent from '../EditEvent'; // Popup
-import "../../../styles/Event/MyEvent.css";
+import {
+  FaSearch,
+  FaEdit,
+  FaTrash,
+  FaEye,
+} from 'react-icons/fa';
+import { TopBar } from "../../../../layout/AlumniFlow/Topbar";
+import { Navbar } from "../../../../layout/AlumniFlow/Navbar";
+import "../../../../styles/AlumniFlow/JobPost/MyPost.css";
 
-const MyEvent = () => {
+import { useNavigate } from 'react-router-dom';
+
+const MyPost = () => {
+  const navigate = useNavigate();
+
   const [showEditPopup, setShowEditPopup] = useState(false);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
-  const handleEditClick = () => {
-    setShowEditPopup(true);
-  };
+  const handleEditClick = () => setShowEditPopup(true);
+  const handleCloseEditPopup = () => setShowEditPopup(false);
 
-  const handleClosePopup = () => {
-    setShowEditPopup(false);
+  const handleDeleteClick = () => setShowDeletePopup(true);
+  const handleCloseDeletePopup = () => setShowDeletePopup(false);
+
+  const handleConfirmDelete = () => {
+    // Add deletion logic here
+    setShowDeletePopup(false);
   };
 
   return (
     <>
       <TopBar />
       <Navbar />
-      <div className="me-container">
-        <h2 className="me-title">My Event</h2>
+      <div className="almp-container">
+        <h2 className="almp-title">My Posts</h2>
 
-        <div className="me-table-wrapper">
-          <div className="me-top-bar">
-            <label className="me-search-container">
-              <FaSearch className="me-search-icon" />
+        <div className="almp-table-wrapper">
+          <div className="almp-top-bar">
+            <label className="almp-search-container">
+              <FaSearch className="almp-search-icon" />
               <input
                 type="text"
-                placeholder="Search event"
-                className="me-search-input"
+                placeholder="Search job post"
+                className="almp-search-input"
               />
             </label>
 
-            <div className="me-entries-container">
-              <label className="me-entries-label">
+            <div className="almp-entries-container">
+              <label className="almp-entries-label">
                 Show
-                <select className="me-entries-select">
+                <select className="almp-entries-select">
                   <option value="10">10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
@@ -49,52 +60,76 @@ const MyEvent = () => {
             </div>
           </div>
 
-          <div className="me-table-responsive">
-            <table className="me-event-table">
+          <div className="almp-table-responsive">
+            <table className="almp-post-table">
               <thead>
                 <tr>
-                  <th>Event Title</th>
-                  <th>Category</th>
-                  <th>Type</th>
-                  <th>Date & Time</th>
-                  <th>Location</th>
+                  <th>Company</th>
+                  <th>Job Title</th>
+                  <th>Employment Status</th>
+                  <th>Salary</th>
+                  <th>Deadline</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>AI-tools</td>
-                  <td><span className="me-category-badge">Workshop</span></td>
-                  <td><span className="me-type-badge">Free</span></td>
-                  <td>22nd April, 12:00:00 AM</td>
-                  <td>Anna University, Trichy</td>
-                  <td><span className="me-status-badge">Pending</span></td>
-                  <td className="me-action-icons">
-                    <button className="me-icon-btn" onClick={handleEditClick}><FaEdit /></button>
-                    <button className="me-icon-btn"><FaTrash /></button>
-                    <button className="me-icon-btn"><FaEye /></button>
+                  <td>Google</td>
+                  <td>Frontend Developer</td>
+                  <td><span className="almp-status-badge">Full-Time</span></td>
+                  <td>90,000/year</td>
+                  <td>30th May, 2025</td>
+                  <td><span className="almp-badge-pending">Pending</span></td>
+                  <td className="almp-action-icons">
+                    <button className="almp-icon-btn" onClick={() => navigate ('/editpost')}><FaEdit /></button>
+                    <button className="almp-icon-btn" onClick={handleDeleteClick}><FaTrash /></button>
+                    <button className="almp-icon-btn" onClick={() => navigate('/postdetails')}><FaEye /></button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="me-table-footer">
+          <div className="almp-table-footer">
             <span>Showing 1 to 1 of 1 entries</span>
-            <div className="me-pagination">
-              <button className="me-page-btn">&laquo;</button>
-              <button className="me-page-btn me-active">1</button>
-              <button className="me-page-btn">&raquo;</button>
+            <div className="almp-pagination">
+              <button className="almp-page-btn">&laquo;</button>
+              <button className="almp-page-btn almp-active">1</button>
+              <button className="almp-page-btn">&raquo;</button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Show Edit Popup */}
-      {showEditPopup && <EditEvent onClose={handleClosePopup} />}
+      {/* Delete Confirmation Popup */}
+      {showDeletePopup && (
+        <div className="almp-delete-popup-overlay">
+          <div className="almp-delete-popup">
+            <div className="almp-delete-popup-icon">!</div>
+            <h2 style={ { 
+              marginBottom: "10px",
+              fontSize: "25px",
+              alignItems: "center",
+              color: "#333"
+            }}>Sure! You want to delete?</h2>
+            <p style={ { 
+               color: "#777",
+               marginBottom: "20px"
+            }}>You won't be able to revert this!</p>
+            <div className="almp-delete-popup-buttons">
+              <button className="almp-delete-confirm-btn" onClick={handleConfirmDelete}>
+                Yes, Delete It!
+              </button>
+              <button className="almp-delete-cancel-btn" onClick={handleCloseDeletePopup}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
-export default MyEvent;
+export default MyPost;

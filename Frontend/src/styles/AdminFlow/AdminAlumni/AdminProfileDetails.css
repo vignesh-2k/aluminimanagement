@@ -25,12 +25,6 @@
     gap: 30px;
   }
   
-  h2 {
-    margin-bottom: -20px;
-    font-size: 18px;
-    color: #333;
-    text-align: left;
-  }
   
   .ap-profile-info {
     display: flex;

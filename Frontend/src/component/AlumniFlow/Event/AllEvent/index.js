@@ -71,7 +71,7 @@ const AllEvent = () => {
                     <td>{index+1}</td>
                     <td>{eve.eventTitle}</td>
                     <td><span className="allevt-category">{eve.eventCategory}</span></td>
-                    <td><span className="allevt-type">Free</span></td>
+                    <td><span className="allevt-type">{eve.eventType}</span></td>
                     <td>{eve.eventDate}</td>
                     <td>{eve.location}</td>
                     <td><a href="/eventdetails" className="allevt-reservation">Reservation</a></td>

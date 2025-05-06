@@ -21,7 +21,15 @@ export default function AdminProfileEdit () {
 
         {/* Combined Alumni Profile Section */}
         <div className="ape-alumni-container">
-            <h2 className="ape-profile-title">Profile</h2>
+            <h2 style={{
+                
+                  marginBottom: "-20px",
+                  fontSize: "18px",
+                  color: "#333",
+                  textAlign: "left"
+            
+                
+            }}className="ape-profile-title">Profile</h2>
             <div className="ape-tabs">
           <button className="ape-tab" onClick={() => navigate('/adminflow/adminprofile')}>Profile</button>
           <button className="ape-tab ape-active" >Edit Profile</button>
