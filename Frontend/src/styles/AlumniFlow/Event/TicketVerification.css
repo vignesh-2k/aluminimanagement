@@ -1,0 +1,99 @@
+.tv-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9ef;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .tv-card {
+    background-color: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  .tv-check-icon {
+    color: #007a33; /* Green success color */
+    font-size: 60px;
+    margin-bottom: 20px;
+    animation: pop 0.3s ease;
+  }
+
+  .tv-header {
+    background-color: #171a14;
+    padding: 20px;
+    color: white;
+  }
+  
+  .tv-logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .tv-logo {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    margin: 0; 
+  }
+  
+  .tv-head-title {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+  }
+  
+  .tv-title {
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+  }
+  
+  .tv-body {
+    padding: 30px 20px;
+  }
+  
+  .tv-check-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    animation: pop 0.3s ease;
+  }
+  
+  @keyframes pop {
+    0% {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .tv-success {
+    color: #007a33;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .tv-info {
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  .tv-footer {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+  }
+  

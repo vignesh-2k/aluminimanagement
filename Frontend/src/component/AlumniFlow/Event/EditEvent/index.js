@@ -91,15 +91,7 @@ const EditEvent = ({ onClose }) => {
               <label>Number of Tickets <span className="alee-required">*</span></label>
             </div>
 
-            <div className="alee-group">
-              <select name="status" value={formData.status} onChange={handleChange} required>
-                <option value="Publish">Publish</option>
-                <option value="Pending">Pending</option>
-                <option value="Cancelled">Cancelled</option>
-              </select>
-              <label>Status <span className="alee-required">*</span></label>
-            </div>
-
+           
             <div className="alee-group alee-full">
               <input type="text" name="location" value={formData.location} onChange={handleChange} required />
               <label>Location <span className="alee-required">*</span></label>

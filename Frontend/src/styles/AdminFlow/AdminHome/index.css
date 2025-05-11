@@ -1,0 +1,169 @@
+.adh-container {
+    position: absolute;
+    top: 65px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 30px 40px;
+    background-color: #f8faec;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .adh-columns {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .adh-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+  }
+  
+  .adh-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .adh-header h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+  }
+  
+  .adh-seeall {
+    color: #1a1a1a;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .adh-event-card {
+    position: relative;
+  }
+  
+  .adh-event-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .adh-tags {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 6px;
+  }
+  
+  .adh-tag {
+    background-color: #e0e0e0;
+    color: #000;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  
+  .adh-free {
+    background-color: #e6f4ea;
+    color: #007e33;
+  }
+  
+  .adh-workshop {
+    background-color: #e3f2fd;
+    color: #1565c0;
+  }
+  
+  .adh-event-details {
+    padding-top: 10px;
+  }
+  
+  .adh-event-date {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+  
+  .adh-event-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .adh-location {
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  
+  .adh-link {
+    font-size: 14px;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .adh-job-card {
+    background-color: #fff;
+  }
+  
+  .adh-job-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .adh-job-avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .adh-job-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+  
+  .adh-job-date {
+    font-size: 16px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .adh-job-desc {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  .adh-job-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .adh-icon {
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  

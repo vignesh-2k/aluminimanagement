@@ -223,11 +223,39 @@
 .almt-middle,
 .almt-right {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.almt-left {
+  align-items: center;
+  border-right: 1px dashed #c94b1a;
+  padding-right: 20px;
+  align-self: stretch; 
+}
+
+
+
+.almt-middle {
+  padding: 0 25px;
+  border-right: 1px dashed #c94b1a;
+  align-self: stretch; 
+}
+
+
+.almt-right {
+  align-items: center;
+  text-align: center;
+  padding-left: 20px;
+}
+
+
+
 .almt-image {
-  width: 100%;
-  max-width: 200px;
+  width: 200px; /* Fixed width */
+  height: 200px; /* Fixed height */
+  object-fit: cover; /* Ensures the image maintains its aspect ratio while fitting the specified width and height */
   border-radius: 10px;
 }
 
