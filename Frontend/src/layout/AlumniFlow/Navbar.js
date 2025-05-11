@@ -5,7 +5,7 @@ import { IoIosSettings } from "react-icons/io";
 import { BsCalendar4Event } from "react-icons/bs";
 import { MdWorkOutline, MdOutlineDashboard, MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { HiOutlineUserGroup } from "react-icons/hi";
-import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { FaRegIdCard } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 import { FiLogOut } from "react-icons/fi";
 
@@ -60,6 +60,20 @@ export const Navbar = () => {
           </ul>
         </li>
 
+      <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("intern")}>
+                <div className="db-nav-link">
+                  <FaRegIdCard  className="db-nav-icon" />
+                  <span>Internship</span>
+                  <div className="db-nav-arrow">
+                    {openDropdown === "intern" ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+                  </div>
+                </div>
+                <ul className={`dropdown-list ${openDropdown === "intern" ? "show" : ""}`}>
+                <li><Link to="/createintern">Create Intern</Link></li>
+                  <li><Link to="/alumniflow/allpost">All Interns</Link></li>
+                  <li><Link to="/alumniflow/pendingpost">Pending Interns</Link></li>
+                </ul>
+              </li>
       
 
         {/* Alumni Dropdown */}
@@ -86,12 +100,12 @@ export const Navbar = () => {
         </li>
        
 
-        <li className="db-nav-item">
+        {/* <li className="db-nav-item">
           <Link to="/Transaction" className="db-nav-link">
             <FaMoneyBillTrendUp className="db-nav-icon" />
             <span>Transaction List</span>
           </Link>
-        </li>
+        </li> */}
 
         <li className="db-nav-item">
           <Link to="/alumniprofile" className="db-nav-link">

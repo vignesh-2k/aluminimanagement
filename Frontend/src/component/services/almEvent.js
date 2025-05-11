@@ -26,3 +26,22 @@ export const getEventType = async (req , res) => {
         console.log(error)
     }
 }
+
+export const getEventById = async (eventId) => {
+    try {
+        const response = await API.get(`${process.env.REACT_APP_BASE_URL}/events/${eventId}`)
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deleteEvent = async (eventId) => {
+    try{
+      const response = await API.delete(`${process.env.REACT_APP_BASE_URL}/events/${eventId}`)
+      return response.data ;
+    }catch(error) {
+        console.log(error)
+    }
+}
+
