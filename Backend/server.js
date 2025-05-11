@@ -8,6 +8,7 @@ const { initDB } = require('./models');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const eventRoutes = require('./routes/event');
+const jobPostRoutes = require('./routes/jobPost');
 
 
 
@@ -43,7 +44,7 @@ app.use('/uploads', express.static(UPLOAD_DIR));
 app.use('/auth', authRoutes);
 app.use('/users' , authMiddleware , userRoutes);
 app.use('/events' , authMiddleware , eventRoutes);
-
+app.use('/jobs' , authMiddleware , jobPostRoutes);
 
 // Health Check
 app.get('/health', (req, res) => res.status(200).json({ message: 'Server is healthy' }));

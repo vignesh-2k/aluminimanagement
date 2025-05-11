@@ -9,9 +9,13 @@ const Gender = require('./gender');
 const PassedOutYear = require('./passedOutYear');
 const EventType = require('./eventType');
 const Event = require('./event');
+const EmployeeStatus = require('./employeestatus');
+const Jobs = require('./jobPost');
 
 const initDB = async () => {
     if (process.env.ENVIRONMENT === 'development') {
+        await Jobs.drop();
+        await EmployeeStatus.drop();
         await Event.drop();
         await EventType.drop();
         await User.drop();
@@ -31,6 +35,8 @@ const initDB = async () => {
         await User.sync({ force: true });
         await EventType.sync({ force : true});
         await Event.sync({force: true});
+        await EmployeeStatus.sync({force : true});
+        await Jobs.sync({force : true});
 
     } else {
         await UserType.sync();
@@ -64,6 +70,9 @@ User.belongsTo(BloodGroup, { foreignKey: 'bloodGroupId' });
 
 EventType.hasMany(Event , { foreignKey : 'eventType'});
 Event.belongsTo(EventType , {foreignKey : 'eventType'});
+ 
+EmployeeStatus.hasMany(Jobs, {foreignKey : 'employeeStatus'});
+Jobs.belongsTo(EmployeeStatus , {foreignKey : 'employeeStatus'})
 
 module.exports = {
     initDB,
@@ -76,4 +85,6 @@ module.exports = {
     Department,
     EventType,
     Event,
+    EmployeeStatus,
+    Jobs,
 };
