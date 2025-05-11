@@ -24,7 +24,7 @@ employeeStatus:{
     type : DataTypes.STRING,
     allowNull:false,
  },
- companyLogo : {
+ companyName : {
     type : DataTypes.STRING,
     allowNull :false,
  },

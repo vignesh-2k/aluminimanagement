@@ -13,7 +13,7 @@ const EmployeeStatus = require('./employeestatus');
 const Jobs = require('./jobPost');
 
 const initDB = async () => {
-    if (process.env.ENVIRONMENT === 'production') {
+    if (process.env.ENVIRONMENT === 'development') {
         await Jobs.drop();
         await EmployeeStatus.drop();
         await Event.drop();
