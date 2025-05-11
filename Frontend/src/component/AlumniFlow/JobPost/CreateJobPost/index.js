@@ -69,9 +69,9 @@ const CreateJobPost = () => {
               <label>Compensation & Benefits <span className="alumni-cjp-required">*</span></label>
             </div>
 
-            <div className="alumni-cjp-field-group alumni-cjp-floating alumni-cjp-file-input">
-              <input type="file" accept="image/*" required />
-              <label>Upload Company Logo <span className="alumni-cjp-required">*</span></label>
+            <div className="alumni-cjp-field-group alumni-cjp-floating ">
+              <input type="text" placeholder='Company Name' required />
+              <label>Company Name<span className="alumni-cjp-required">*</span></label>
             </div>
           </div>
 

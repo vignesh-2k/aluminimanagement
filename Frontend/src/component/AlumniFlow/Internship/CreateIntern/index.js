@@ -69,8 +69,8 @@ const CreateIntern = () => {
             </div>
 
             <div className="aluci-field-group aluci-floating aluci-file-input">
-              <input type="file" accept="image/*" required />
-              <label>Upload Company Logo <span className="aluci-required">*</span></label>
+              <input type="text"  required placeholder='Company Name' />
+              <label>Company Name <span className="aluci-required">*</span></label>
             </div>
           </div>
 

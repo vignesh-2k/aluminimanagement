@@ -45,3 +45,20 @@ export const deleteEvent = async (eventId) => {
     }
 }
 
+export const addJob = async (jobData) => {
+    try {
+        const response = await API.post(`${process.env.REACT_APP_BASE_URL}/jobs/createjobpost`, jobData)
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getEmployeeStatus = async (req , res) => {
+    try {
+        const response = await API.get(`${process.env.REACT_APP_BASE_URL}/jobs/employeestatus`)
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
