@@ -28,6 +28,9 @@ import EditPost from './component/AlumniFlow/JobPost/EditPost';
 import EventDetails from './component/AlumniFlow/Event/AllEvent/EventDetails';
 import MyTicket from './component/AlumniFlow/Event/MyTicket';
 import MyPost from './component/AlumniFlow/JobPost/MyPost';
+import TicketVerification from './component/AlumniFlow/Event/MyTicket/TicketVerification';
+import MyEventDetails from './component/AlumniFlow/Event/MyEvent/MyEventDetails';
+import CreateIntern from './component/AlumniFlow/Internship/CreateIntern';
 
 //AdminFlow
 import AdminDashboard from './component/AdminFlow/AdminDashboard';
@@ -56,6 +59,7 @@ import AdminAllPost from './component/AdminFlow/AdminJobPost/AdminAllPost';
 import AdminEditPost from './component/AdminFlow/AdminJobPost/AdminEditPost';
 import AdminPendingEvent from './component/AdminFlow/AdminEvent/AdminPendingEvent';
 import AdminPendingPost from './component/AdminFlow/AdminJobPost/AdminPendingPost';
+import AdminHome from './component/AdminFlow/AdminHome';
 
 
 function App() {
@@ -90,6 +94,9 @@ function App() {
             <Route path="/allpost" element={<AllPost />} />
             <Route path="/editpost" element={<EditPost />} />
             <Route path="/mypost" element={<MyPost />} />
+            <Route path="/ticketverification" element={<TicketVerification />} />
+            <Route path="/myeventdetails" element={<MyEventDetails />} />
+            <Route path="/createintern" element={<CreateIntern />} />
           </Routes>
         </div>
 
@@ -121,6 +128,7 @@ function App() {
             <Route path="/adminflow/adminallpost" element={<AdminAllPost />} />
             <Route path="/adminflow/admineditpost" element={<AdminEditPost />} />
             <Route path="/adminflow/adminjobpost/adminpendingpost" element={<AdminPendingPost />} />
+            <Route path="/adminflow/adminhome" element={<AdminHome />} />
  
           </Routes>
         </div>

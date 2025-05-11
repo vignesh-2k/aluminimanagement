@@ -1,0 +1,195 @@
+.aluci-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faec;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.aluci-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #1a365d;
+}
+
+.aluci-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.aluci-form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.aluci-field-group {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+.aluci-floating input,
+.aluci-floating input[type="file"],
+.aluci-floating-dropdown .aluci-dropdown {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: all 0.3s;
+}
+
+.aluci-floating input:hover,
+.aluci-floating input:focus,
+.aluci-floating input[type="file"]:hover,
+.aluci-floating input[type="file"]:focus,
+.aluci-floating-dropdown .aluci-dropdown:hover,
+.aluci-floating-dropdown .aluci-dropdown:focus {
+  border-color: #0052a3;
+}
+
+.aluci-floating label,
+.aluci-floating-dropdown label {
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background: white;
+  font-size: 14px;
+  color: #4a5568;
+  padding: 0 5px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+/* File input */
+.aluci-file-input input[type="file"] {
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.aluci-file-input input[type="file"]::-webkit-file-upload-button,
+.aluci-file-input input[type="file"]::file-selector-button {
+  background: rgb(220, 231, 175);
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Dropdown styles */
+.aluci-dropdown {
+  position: relative;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.aluci-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aluci-dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 5px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.aluci-dropdown-options div {
+  padding: 12px 16px;
+  transition: background 0.2s;
+}
+
+.aluci-dropdown-options div:hover {
+  background-color: #f7fafc;
+}
+
+/* Floating for Quill Editors */
+.aluci-editor-group.aluci-floating-quill {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.aluci-editor-group.aluci-floating-quill label {
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background: white;
+  font-size: 14px;
+  color: #4a5568;
+  padding: 0 5px;
+  z-index: 5;
+}
+
+/* Quill Editor Styles */
+.ql-toolbar {
+  border: 1px solid #cbd5e0 !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0;
+  /* background-color: #f9fafb; */
+  padding: 8px !important;
+}
+
+.ql-container {
+  border: 1px solid #cbd5e0 !important;
+  border-top: none !important;
+  min-height: 150px;
+  padding: 14px 12px;
+  border-radius: 10px;
+}
+
+.ql-editor {
+  min-height: 150px;
+  padding: 10px 32px;
+  font-size: 16px;
+  background-color:  #f9fafb;
+  border-radius: 8px;
+}
+
+.aluci-submit-btn {
+  background-color: #48bb78;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
+.aluci-submit-btn:hover {
+  background-color: #38a169;
+}
+
+.aluci-required {
+  color: #e53e3e;
+  margin-left: 3px;
+}
