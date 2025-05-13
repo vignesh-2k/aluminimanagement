@@ -54,7 +54,11 @@ const login = async (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-        res.json({ message: 'Login successful', token });
+        let userType = 'User'; 
+        if (user.userTypeId === 1) {
+            userType = 'Admin';
+        }
+        res.json({ message: 'Login successful', token , userType});
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

@@ -64,10 +64,12 @@ import AdminEditPost from './component/AdminFlow/AdminJobPost/AdminEditPost';
 import AdminPendingEvent from './component/AdminFlow/AdminEvent/AdminPendingEvent';
 import AdminPendingPost from './component/AdminFlow/AdminJobPost/AdminPendingPost';
 import AdminHome from './component/AdminFlow/AdminHome';
+import { AuthProvider } from './context/AuthContext';
 
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <div className="app-container">
         
@@ -146,6 +148,8 @@ function App() {
         
       </div>
     </BrowserRouter>
+
+    </AuthProvider>
   );
 }
 

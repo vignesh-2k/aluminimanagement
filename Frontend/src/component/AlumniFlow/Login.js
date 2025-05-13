@@ -19,8 +19,19 @@ function Login() {
     }
     try {
       const response = await API.post('http://localhost:4000/auth/login', loginData)
+
+      const { token , userType} = response.data 
+
       Cookies.set('token', response.data.token)
-      navigate('/dashboard')
+      Cookies.set('userType' , userType)
+
+      if(userType === 'Admin') {
+        navigate('/adminflow/admindashboard')
+      } else if(userType === 'User') {
+        navigate('/dashboard')
+      } else {
+        console.log("Unknown User type")
+      }
       return response.data;
     } catch (error) {
       console.log(error);
@@ -62,7 +73,7 @@ function Login() {
             <label>Password</label>
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="***********"
+              placeholder="Enter Your Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)} 
             />
@@ -72,7 +83,7 @@ function Login() {
             </span>
           </div>
 
-          <button className="login-button" onClick={handleLogin}>Log In</button>
+          <button className="login-button" style = { {  cursor : 'pointer' } }onClick={handleLogin}>Log In</button>
 
           <div className="social-login">
             <p>Or continue with</p>

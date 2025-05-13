@@ -3,11 +3,14 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
 import API from '../../api';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
+import { FaPowerOff } from "react-icons/fa";
+import { AuthContext} from '../../context/AuthContext';
 
 export const TopBar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const { logout } = useContext(AuthContext)
 
     const loadUserData = async () => {
         try {
@@ -34,6 +37,10 @@ export const TopBar = () => {
         };
     }, []);
 
+    const handleLogout = () => {
+        logout();
+    }
+
     return (
         <div className="top-bar">
             <div className="top-search-container">
@@ -50,7 +57,15 @@ export const TopBar = () => {
                     <span className="top-user-name">Alumni </span>
                 </div>
 
-                <RiArrowDownSLine className="top-user-icon" onClick={() => setDropdownOpen(!dropdownOpen)} />
+                <div>
+                    <FaPowerOff  
+                    size={30} 
+                    onClick={() => handleLogout()}
+                    style={{ cursor : 'pointer'}}
+                    />
+                </div>
+
+                {/* <RiArrowDownSLine className="top-user-icon" onClick={() => setDropdownOpen(!dropdownOpen)} />
 
                 {dropdownOpen && (
                     <div className="top-dropdown-menu">
@@ -63,7 +78,7 @@ export const TopBar = () => {
                             <span>Logout</span>
                         </div>
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     );
