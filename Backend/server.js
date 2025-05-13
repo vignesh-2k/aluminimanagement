@@ -9,7 +9,7 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const eventRoutes = require('./routes/event');
 const jobPostRoutes = require('./routes/jobPost');
-
+const registerDdRoutes = require('./routes/register');
 
 
 const authMiddleware = require('./middlewares/authMiddleware');
@@ -45,6 +45,7 @@ app.use('/auth', authRoutes);
 app.use('/users' , authMiddleware , userRoutes);
 app.use('/events' , authMiddleware , eventRoutes);
 app.use('/jobs' , authMiddleware , jobPostRoutes);
+app.use('/registerdd' , authMiddleware , registerDdRoutes);
 
 // Health Check
 app.get('/health', (req, res) => res.status(200).json({ message: 'Server is healthy' }));

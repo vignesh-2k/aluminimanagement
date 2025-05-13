@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { User   } = require('../models');
+const { User , BatchName , Department , PassedOutYear , Gender ,BloodGroup  } = require('../models');
 
 const register = async (req, res) => {
     const { 
@@ -87,6 +87,7 @@ const linkedinLogin = async (req, res) => {
 };
 
 
-module.exports = { register, login, linkedinLogin };
+
+module.exports = { register, login, linkedinLogin  };
 
 
