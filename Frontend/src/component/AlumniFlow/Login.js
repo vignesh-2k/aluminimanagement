@@ -27,7 +27,7 @@ function Login() {
 
       if(userType === 'Admin') {
         navigate('/adminflow/admindashboard')
-      } else if(userType === 'User') {
+      } else if(userType === 'Alumni') {
         navigate('/dashboard')
       } else {
         console.log("Unknown User type")

@@ -10,12 +10,14 @@ import { AuthContext} from '../../context/AuthContext';
 export const TopBar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
-    const { logout } = useContext(AuthContext)
+    const { logout } = useContext(AuthContext);
+    const [users, setUser] = useState( { } );
 
     const loadUserData = async () => {
         try {
             const response = await API.get('http://localhost:4000/users');
-            return response.data;
+            setUser(response.data.userData);
+            return response.data.userData;
         } catch (error) {
             console.log(error, "error fetching users data");
         }
@@ -54,7 +56,7 @@ export const TopBar = () => {
 
                 <div className="top-welcome-text">
                     <span>Welcome</span>
-                    <span className="top-user-name">Alumni </span>
+                    <span className="top-user-name">{users.name}</span>
                 </div>
 
                 <div>

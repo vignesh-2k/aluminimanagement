@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         Cookies.remove('token');
         setIsAuthenticated(false);
-        window.location.href = 'http://localhost:3000'; // Redirect to the login page
+        window.location.href = 'http://localhost:3000/login'; 
     };
 
     return (

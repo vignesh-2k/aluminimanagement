@@ -5,16 +5,25 @@ const { User   } = require('../models');
 const register = async (req, res) => {
     const { 
         name, 
-        batchName, 
-        mobileNumber, 
         email, 
-        userTypeId, 
-        department, 
-        passingYear, 
-        rollNumber, 
-        birthDate, 
-        gender, 
-        password 
+        password, 
+        userTypeId,
+        mobileNumber, 
+        dateOfBirth,
+        rollNumber,
+        address,
+        city,
+        state,
+        pinCode,
+        linkedInUrl,
+        companyName,
+        companyDesignation,
+        companyAddress,
+        batchNameId,
+        departmentId,
+        passedOutYearId,
+        genderId,
+        bloodGroupId
     } = req.body;
 
     console.log(req.body);
@@ -23,17 +32,26 @@ const register = async (req, res) => {
 
     try {
         const user = await User.create({
-            email: email,
+            email,
             password: hashedPassword,
-            batchNameId: batchName,  
-            name: name,
-            userTypeId ,   
-            mobileNumber: mobileNumber,
-            departmentId: department,  
-            passedOutYearId: passingYear,  
-            rollNumber: rollNumber,
-            birthDate: birthDate,  
-            genderId: gender       
+            name,
+            userTypeId,
+            mobileNumber,
+            dateOfBirth,
+            rollNumber,
+            address,
+            city,
+            state,
+            pinCode,
+            linkedInUrl,
+            companyName,
+            companyDesignation,
+            companyAddress,
+            batchNameId,
+            departmentId,
+            passedOutYearId,
+            genderId,
+            bloodGroupId
         });
 
         res.status(201).json({ message: 'User created', user });
@@ -54,7 +72,7 @@ const login = async (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-        let userType = 'User'; 
+        let userType = 'Alumni'; 
         if (user.userTypeId === 1) {
             userType = 'Admin';
         }

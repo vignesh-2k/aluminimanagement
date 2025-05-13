@@ -90,7 +90,7 @@ const User = sequelize.define('User', {
     },
     batchNameId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: 'BatchNames',
             key: 'id'
@@ -98,7 +98,7 @@ const User = sequelize.define('User', {
     },
     departmentId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: 'Departments',
             key: 'id'
@@ -106,7 +106,7 @@ const User = sequelize.define('User', {
     },
     passedOutYearId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: 'PassedOutYears',
             key: 'id'
@@ -114,7 +114,7 @@ const User = sequelize.define('User', {
     },
     genderId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: 'Genders',
             key: 'id'
