@@ -1,0 +1,62 @@
+.alumni-pd-container {
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 20px 40px;
+    background-color: #f8faf4;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+
+  
+  .alumni-pd-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .alumni-pd-box {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 25px 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+  }
+  
+  .alumni-pd-row {
+    margin-bottom: 18px;
+  }
+  
+  .alumni-pd-row strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+  }
+  
+  .alumni-pd-row p {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .alumni-pd-apply-btn {
+    margin-top: 10px;
+    background-color: #d5f666;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .alumni-pd-apply-btn:hover {
+    background-color: #c3ec5a;
+  }
+  

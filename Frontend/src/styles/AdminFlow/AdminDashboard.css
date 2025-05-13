@@ -1,154 +1,220 @@
-/* Dashboard Container */
-.dashboard {
-    position: absolute;
-    top: 65px;
-    left: 250px;
-    right: 0;
-    bottom: 0;
-    padding: 30px 40px;
-    background-color:  #f8faec;
-    box-sizing: border-box;
-    overflow-y: auto;
-    /* border-radius: 12px; */
-  }
-  
-  /* Title */
-  .dashboard h2 {
-    margin-bottom: 24px;
-    font-size: 28px;
-    font-weight: 600;
-    color: #222;
-  }
-  
-  /* Metrics */
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-bottom: 32px;
-  }
-  
-  /* Metric Card */
-  .metric-card {
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .metric-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .metric-card .metric-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .metric-card .metric-content span {
-    font-size: 14px;
-    color: #777;
-  }
-  
-  .metric-card .metric-content h3 {
-    font-size: 22px;
-    margin: 6px 0 0;
-    color: #333;
-    font-weight: 600;
-  }
-  
-  .metric-card .metric-icon {
-    font-size: 28px;
-    color: #4a90e2;
-  }
-  
-  /* Summary Section */
-  .summary-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-bottom: 32px;
-  }
-  
-  .summary-box {
-    background-color: #ffffff;
-    flex: 1;
-    min-width: 300px;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-  }
-  
-  .summary-box h4 {
-    margin-bottom: 16px;
-    font-size: 18px;
-    color: #444;
-  }
-  
-  .placeholder-chart {
-    height: 180px;
-    background: linear-gradient(135deg, #eaeaea, #f5f5f5);
-    border-radius: 8px;
-  }
-  
-  /* Transaction Section */
-  .transaction-section {
-    background-color: #ffffff;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-  }
-  
-  .transaction-section h4 {
-    margin-bottom: 16px;
-    font-size: 18px;
-    color: #444;
-  }
-  
-  /* Search */
-  .search-input {
-    padding: 10px 14px;
-    margin-bottom: 20px;
-    width: 280px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    outline: none;
-    transition: border 0.2s ease;
-  }
-  
-  .search-input:focus {
-    border-color: #4a90e2;
-  }
-  
-  /* Table */
-  .transaction-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-  
-  .transaction-table th,
-  .transaction-table td {
-    padding: 14px 12px;
-    border: 1px solid #eee;
-    text-align: left;
-  }
-  
-  .transaction-table th {
-    background-color: #f5f7f9;
-    color: #555;
-  }
-  
-  .transaction-table tbody tr:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .transaction-table tbody tr td {
-    text-align: center;
-  }
+.add-dashboard {
+  position: absolute;
+  top: 65px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 30px 40px;
+  background-color: #f8faec;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.add-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Metric Section */
+.add-metrics {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.add-metric-card {
+  flex: 1 1 250px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.add-metric-icon {
+  font-size: 32px;
+  color: #4b6584;
+  margin-right: 16px;
+}
+
+.add-metric-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-metric-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.add-metric-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Columns */
+.add-columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.add-section {
+  flex: 1;
+  min-width: 300px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* NEW: Minimized job section */
+.add-jobs-section {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* Header */
+.add-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.add-seeall {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Event Card */
+.add-event-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.add-event-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.add-tags {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.add-tag {
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.add-free {
+  background-color: #28a745;
+}
+
+.add-workshop {
+  background-color: #6f42c1;
+}
+
+.add-event-details {
+  padding: 10px;
+}
+
+.add-event-date {
+  font-size: 14px;
+  color: #555;
+}
+
+.add-event-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.add-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #777;
+}
+
+.add-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Job Card */
+.add-job-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  padding: 15px;
+}
+
+.add-job-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-job-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.add-job-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-job-date {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.add-job-desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.add-job-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #777;
+}
+
+.add-icon {
+  margin-right: 5px;
+  color: #555;
+}

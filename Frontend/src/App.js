@@ -32,6 +32,9 @@ import TicketVerification from './component/AlumniFlow/Event/MyTicket/TicketVeri
 import MyEventDetails from './component/AlumniFlow/Event/MyEvent/MyEventDetails';
 import CreateIntern from './component/AlumniFlow/Internship/CreateIntern';
 import AllIntern from './component/AlumniFlow/Internship/AllIntern';
+import PostDetails from './component/AlumniFlow/JobPost/AllPost/PostDetails';
+import MyIntern from './component/AlumniFlow/Internship/MyIntern';
+import EditIntern from './component/AlumniFlow/Internship/EditIntern';
 
 //AdminFlow
 import AdminDashboard from './component/AdminFlow/AdminDashboard';
@@ -99,6 +102,11 @@ function App() {
             <Route path="/myeventdetails" element={<MyEventDetails />} />
             <Route path="/createintern" element={<CreateIntern />} />
             <Route path="/allintern" element={<AllIntern />} />
+            <Route path="/myintern" element={<MyIntern />} />
+            <Route path="/editintern" element={<EditIntern />} />
+            <Route path="/myeventdetails" element={<MyEventDetails />} />
+            <Route path="/postdetails" element={<PostDetails />} />
+
 
           </Routes>
         </div>

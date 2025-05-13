@@ -37,9 +37,9 @@ export const TopBar = () => {
     return (
         <div className="top-bar">
             <div className="top-search-container">
-                <button className="top-find-alumni-btn">
+                {/* <button className="top-find-alumni-btn">
                     Find an Alumni
-                </button>
+                </button> */}
             </div>
 
             <div className="top-user-info" ref={dropdownRef}>

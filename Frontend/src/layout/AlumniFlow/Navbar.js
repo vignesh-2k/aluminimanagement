@@ -60,7 +60,7 @@ export const Navbar = () => {
           </ul>
         </li>
 
-      <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("intern")}>
+      {/* <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("intern")}>
                 <div className="db-nav-link">
                   <FaRegIdCard  className="db-nav-icon" />
                   <span>Internship</span>
@@ -71,9 +71,9 @@ export const Navbar = () => {
                 <ul className={`dropdown-list ${openDropdown === "intern" ? "show" : ""}`}>
                 <li><Link to="/createintern">Create Intern</Link></li>
                   <li><Link to="/allintern">All Interns</Link></li>
-                  {/* <li><Link to="/alumniflow/pendingpost">Pending Interns</Link></li> */}
+                  <li><Link to="/myintern">My Interns</Link></li>
                 </ul>
-              </li>
+              </li> */}
       
 
         {/* Alumni Dropdown */}
@@ -136,12 +136,12 @@ export const Navbar = () => {
           </ul>
         </li> */}
 
-        <li className="db-nav-item">
+        {/* <li className="db-nav-item">
           <Link to="/logout" className="db-nav-link">
             <FiLogOut className="db-nav-icon" />
             <span>Logout</span>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

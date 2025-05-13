@@ -46,7 +46,7 @@ const AllIntern = () => {
               <tr>
                 <th>Company Name</th>
                 <th>Internship Title</th>
-                <th>Type</th>
+                <th>Internship Type</th>
                 <th>Stipend</th>
                 <th>Application Deadline</th>
                 <th>Action</th>
@@ -118,7 +118,7 @@ const AllIntern = () => {
                   <strong>Application Deadline</strong>
                   <div>Monday, May 12, 2025</div>
                 </div>
-                <button className="aluai-apply-btn">Apply Now</button>
+                <button className="aluai-apply-btn" >Apply Now</button>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@ export default function AlumniProfileDetails() {
         {/* Combined Alumni Profile Section */}
         <div className="ap-alumni-container">
           <div className="ap-alumni-profile pl-single-section">
-            <h2>Personal Info</h2>
+            <h2 className="ap-alumni-h2">Personal Info</h2>
 
             {/* Profile Info */}
             <div className="ap-profile-info">
