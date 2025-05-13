@@ -74,7 +74,7 @@ const AdminHome = () => {
           </div>
 
           {/* Column 3 - Interns */}
-          <div className="adh-section">
+          {/* <div className="adh-section">
             <div className="adh-header">
               <h2>Interns</h2>
               <span className="adh-seeall">See All →</span>
@@ -102,7 +102,7 @@ const AdminHome = () => {
               </div>
               <a href="#" className="adh-link">More Details</a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
