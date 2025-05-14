@@ -1,6 +1,4 @@
-/* AllEvent.css */
-
-.allevt-container {
+.adalevt-container {
   position: absolute;
   top: 70px;
   left: 250px;
@@ -13,31 +11,31 @@
   overflow-y: auto;
 }
 
-.allevt-heading {
+.adalevt-heading {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.allevt-box {
+.adalevt-box {
   background-color: white;
   padding: 20px;
   border-radius: 25px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
 }
 
-.allevt-topbar {
+.adalevt-topbar {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
   align-items: center;
 }
 
-.allevt-search {
+.adalevt-search {
   position: relative;
 }
 
-.allevt-search input {
+.adalevt-search input {
   padding: 10px 12px 10px 35px;
   border: 1px solid #ccc;
   border-radius: 30px;
@@ -45,7 +43,7 @@
   padding-left: 35px;
 }
 
-.allevt-search-icon-left {
+.adalevt-search-icon-left {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -54,61 +52,61 @@
   color: #888;
 }
 
-.allevt-show-entries {
+.adalevt-show-entries {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.allevt-show-entries select {
+.adalevt-show-entries select {
   padding: 6px 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 14px;
 }
 
-.allevt-table {
+.adalevt-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
 }
 
-.allevt-table th,
-.allevt-table td {
+.adalevt-table th,
+.adalevt-table td {
   padding: 14px;
   text-align: left;
   border-bottom: 1px solid #eee;
 }
 
-.allevt-category {
+.adalevt-category {
   background-color: #f0f74a;
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 14px;
 }
 
-.allevt-type {
+.adalevt-type {
   background-color: #ececec;
   padding: 5px 15px;
   border-radius: 15px;
   font-size: 14px;
 }
 
-.allevt-reservation {
-  color: black;
+.adalevt-reservation {
+  color: blue;
   text-decoration: underline;
   cursor: pointer;
   font-weight: 500;
 }
 
-.allevt-footer {
+.adalevt-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 15px;
 }
 
-.allevt-pagination button {
+.adalevt-pagination button {
   border: 1px solid #ccc;
   background-color: white;
   padding: 5px 10px;
@@ -117,7 +115,7 @@
   cursor: pointer;
 }
 
-.allevt-pagination .allevt-active {
+.adalevt-pagination .adalevt-active {
   background-color: #e5ffa4;
   font-weight: bold;
   border: none;

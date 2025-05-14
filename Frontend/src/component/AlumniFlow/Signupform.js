@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/AlumniFlow/Signupform.css'; 
+import '../../styles/AlumniFlow/Signupform.css';
 import API from '../../api';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,9 +8,14 @@ const SignupForm = () => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [rollNumber, setRollNumber] = useState('');
   const [email, setEmail] = useState('');
-  const [dateOfBirth, setDateofbirth] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [departmentId, setDepartmentId] = useState('');
+  const [genderId, setGenderId] = useState('');
+  const [userTypeId, setUserTypeId] = useState('');
+  const [batchNameId, setBatchNameId] = useState('');
+  const [passedOutYearId, setPassedOutYearId] = useState('');
 
   const navigate = useNavigate();
 
@@ -18,23 +23,38 @@ const SignupForm = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Password Mismatch");
+      alert("Password mismatch");
       return;
     }
 
     const registerData = {
-      name,
+      userTypeId: parseInt(userTypeId),
       email,
-      mobileNumber,
       password,
+      name,
+      mobileNumber,
+      dateOfBirth,
+      rollNumber,
+      address: "Andipatty",
+      city: "Andipatty",
+      state: "Tamilnadu",
+      pinCode: "625512",
+      linkedInUrl: "linkedin.com/yourprofile",
+      companyName: "Company",
+      companyDesignation: "Designation",
+      companyAddress: "Company Address",
+      batchNameId: parseInt(batchNameId),
+      departmentId: parseInt(departmentId),
+      passedOutYearId: parseInt(passedOutYearId),
+      genderId: parseInt(genderId),
+      bloodGroupId: 1,
     };
 
     try {
-      const response = await API.post('http://localhost:4000/auth/register', registerData);
+      await API.post(`${process.env.REACT_APP_BASE_URL}/auth/register`, registerData);
       navigate('/login');
-      return response.data;
     } catch (error) {
-      console.log("Error in Registering Data", error);
+      console.error("Registration failed:", error);
     }
   };
 
@@ -51,125 +71,85 @@ const SignupForm = () => {
             <div className="suf-form-column">
               <div className="suf-form-group">
                 <label>Full Name *</label>
-                <input
-                  type="text"
-                  name="fullName"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <input type="text" required value={name} onChange={(e) => setName(e.target.value)} />
               </div>
 
               <div className="suf-form-group">
                 <label>Phone Number *</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="eg: (+880) 1754936599"
-                  required
-                  value={mobileNumber}
-                  onChange={(e) => setMobileNumber(e.target.value)}
-                />
+                <input type="tel" required value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} />
               </div>
 
               <div className="suf-form-group">
                 <label>Department *</label>
-                <select name="department">
+                <select required value={departmentId} onChange={(e) => setDepartmentId(e.target.value)}>
                   <option value="">Select Department</option>
-                  <option value="computer-science">Computer Science</option>
-                  <option value="electrical">Electrical Engineering</option>
+                  <option value="1">Computer Science</option>
+                  <option value="2">Electrical Engineering</option>
                 </select>
               </div>
 
               <div className="suf-form-group">
                 <label>ID/Roll Number *</label>
-                <input
-                  type="text"
-                  name="id"
-                  required
-                  value={rollNumber}
-                  onChange={(e) => setRollNumber(e.target.value)}
-                />
+                <input type="text" required value={rollNumber} onChange={(e) => setRollNumber(e.target.value)} />
               </div>
 
               <div className="suf-form-group">
                 <label>Gender *</label>
-                <div className="suf-radio-group">
-                  <label>
-                    <input type="radio" name="gender" /> Male
-                  </label>
-                  <label>
-                    <input type="radio" name="gender" /> Female
-                  </label>
-                  <label>
-                    <input type="radio" name="gender" /> Other
-                  </label>
-                </div>
+                <select required value={genderId} onChange={(e) => setGenderId(e.target.value)}>
+                  <option value="">Select Gender</option>
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  <option value="3">Other</option>
+                </select>
               </div>
 
               <div className="suf-form-group">
                 <label>Confirm Password *</label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  required
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
+                <input type="password" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
               </div>
             </div>
 
             <div className="suf-form-column">
               <div className="suf-form-group">
+                <label>User Type *</label>
+                <select required value={userTypeId} onChange={(e) => setUserTypeId(e.target.value)}>
+                  <option value="">Select User</option>
+                  <option value="1">Admin</option>
+                  <option value="2">Alumni</option>
+                </select>
+              </div>
+
+              <div className="suf-form-group">
                 <label>Batch Name *</label>
-                <select name="batch">
+                <select required value={batchNameId} onChange={(e) => setBatchNameId(e.target.value)}>
                   <option value="">Select Batch</option>
-                  <option value="2023">2023</option>
-                  <option value="2022">2022</option>
+                  <option value="1">2023</option>
+                  <option value="2">2022</option>
                 </select>
               </div>
 
               <div className="suf-form-group">
                 <label>Email Address *</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="example@example.com"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
               </div>
 
               <div className="suf-form-group">
                 <label>Passing Year *</label>
-                <select name="passingYear">
-                  <option value="">Select Passing Year</option>
-                  <option value="2025">2025</option>
-                  <option value="2024">2024</option>
+                <select required value={passedOutYearId} onChange={(e) => setPassedOutYearId(e.target.value)}>
+                  <option value="">Select Year</option>
+                  <option value="1">2025</option>
+                  <option value="2">2024</option>
                 </select>
               </div>
 
               <div className="suf-form-group">
                 <label>Birth Date *</label>
-                <input
-                  type="date"
-                  name="birthDate"
-                  required
-                  value={dateOfBirth}
-                  onChange={(e) => setDateofbirth(e.target.value)}
-                />
+                <input type="date" required value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} />
               </div>
 
               <div className="suf-form-group">
                 <label>Password *</label>
-                <input
-                  type="password"
-                  name="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
               </div>
             </div>
           </div>
