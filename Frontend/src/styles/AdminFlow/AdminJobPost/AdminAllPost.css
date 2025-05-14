@@ -1,97 +1,118 @@
+.adaljp-container {
+  position: absolute;
+  top: 70px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #f8faf4;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
 
+.adaljp-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-.jobpost-container {
-    position: absolute;
-    top: 70px;
-    left: 250px;
-    right: 0;
-    bottom: 0;
-    padding: 20px 40px;
-    background-color: #f8faf4;
-    font-family: "Arial", sans-serif;
-    box-sizing: border-box;
-    overflow-y: auto;
-  }
-  
-  
-  .jobpost-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .jobpost-box {
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  .jobpost-search-box {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
-  
-  .jobpost-search-box input {
-    width: 300px;
-    padding: 10px 10px 10px 40px;
-    border-radius: 50px;
-    border: 1px solid #ddd;
-  }
-  
-  .jobpost-search-icon {
-    position: absolute;
-    top: 50%;
-    left: 12px;
-    transform: translateY(-50%);
-    color: #aaa;
-    font-size: 18px;
-  }
-  
-  .jobpost-table-controls {
-    float: right;
-    margin-top: -5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .jobpost-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .jobpost-table th,
-  .jobpost-table td {
-    border: 1px solid #f0f0f0;
-    padding: 12px;
-    text-align: left;
-  }
-  
-  .jobpost-table th {
-    background-color: #f9f9f9;
-  }
-  
-  .no-data {
-    text-align: center;
-    padding: 20px;
-    color: gray;
-  }
-  
-  .table-footer {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .pagination-buttons button {
-    border: 1px solid #ccc;
-    background-color: white;
-    padding: 5px 10px;
-    margin-left: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+.adaljp-box {
+  background: white;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.adaljp-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.adaljp-search {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+}
+
+.adaljp-search input {
+  width: 100%;
+  padding: 10px 15px 10px 35px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 14px;
+}
+
+.adaljp-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 14px;
+}
+
+.adaljp-entries-container {
+  display: flex;
+  align-items: center;
+}
+
+.adaljp-entries-label {
+  font-size: 14px;
+}
+
+.adaljp-entries-select {
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.adaljp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.adaljp-table th,
+.adaljp-table td {
+  padding: 12px 10px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.adaljp-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-size: 18px;
+}
+
+.adaljp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.adaljp-pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.adaljp-page-btn {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.adaljp-page-btn.active {
+  background-color: #d6f585;
+  color: #000;
+}
