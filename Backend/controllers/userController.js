@@ -1,6 +1,6 @@
 const { User , UserType} = require("../models");
 
-const getUserData = async (req, res) => {
+const getUserDataById = async (req, res) => {
   try {
     const userId = req.user.id;
 
@@ -17,8 +17,23 @@ const getUserData = async (req, res) => {
         userData: {
           id: userData.id,
           name : userData.name,
-          password : userData.password,
+          // password : userData.password,
           mobileNumber  : userData.mobileNumber ,
+          dateOfBirth : userData.dateOfBirth , 
+          rollNumber : userData.rollNumber , 
+          address : userData.address , 
+          city : userData.city , 
+          state : userData.state , 
+          pinCode : userData.pinCode , 
+          linkedInUrl : userData.linkedInUrl , 
+          companyName : userData.companyName , 
+          companyDesignation : userData.companyDesignation , 
+          companyAddress : userData.companyAddress , 
+          batchNameId : userData.batchNameId , 
+          departmentId  : userData.departmentId , 
+          passedOutYearId  : userData.passedOutYearId ,
+          genderId : userData.genderId , 
+          bloodGroupId : userData.bloodGroupId 
           // company : userData.company
         }
       });
@@ -34,12 +49,28 @@ const getUserData = async (req, res) => {
 
 const getUserType = async (req , res) => {
 
-    const userType = await UserType.findAll();
+    try {
+      const userType = await UserType.findAll();
     console.log(userType);
 
     if(userType) {
       return res.status(200).json({ message: 'success',userType });
     }
+    } catch (error) {
+      console.log(error)
+    }
+    
 }
 
-module.exports = { getUserData , getUserType} ;
+const getUsers = async ( req, res ) => {
+  try {
+    const users = await User.findAll();
+    if(users) {
+      return res.status(200).json({ message : 'success' , users})
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = { getUserDataById , getUserType , getUsers} ;

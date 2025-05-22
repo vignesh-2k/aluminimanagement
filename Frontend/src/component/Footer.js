@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/AlumniFlow/Footer.css';
+import '../styles/Footer.css';
 
 function Footer() {  // Changed component name to start with uppercase
   return (

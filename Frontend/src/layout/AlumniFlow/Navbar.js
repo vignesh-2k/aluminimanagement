@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import '../../styles/AlumniFlow/Navbar.css';
+import '../../styles/layout/AlumniFlow/Navbar.css';
 import { IoIosSettings } from "react-icons/io";
 import { BsCalendar4Event } from "react-icons/bs";
 import { MdWorkOutline, MdOutlineDashboard, MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";

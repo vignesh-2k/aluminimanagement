@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import "../../styles/AlumniFlow/Login.css"
+import "../styles/Login.css"
 import { FaGoogle, FaFacebook, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa';
-import API from '../../api';
+import API from '../api';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 

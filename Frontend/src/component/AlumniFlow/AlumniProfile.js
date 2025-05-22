@@ -5,6 +5,31 @@ import { TopBar } from "../../layout/AlumniFlow/Topbar";
 import { useNavigate } from "react-router-dom";
 import { getuser } from "../services/register";
 
+const batchNames = {
+  1: "2023",
+  2: "2024",
+};
+
+const departments = {
+  1: "BCA",
+  2: "MCA",
+};
+
+const passedOutYears = {
+  1: "2026",
+  2: "2027",
+};
+
+const genders = {
+  1: "Male",
+  2: "Female",
+};
+
+const bloodGroups = {
+  1: "A+ve",
+  2: "A-ve",
+};
+
 const Profile = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
@@ -42,7 +67,7 @@ const Profile = () => {
               />
             </div>
             <h3 className="alup-profile-name">{userData?.name || "Alumni"}</h3>
-            <p className="alup-profile-email">{userData?.email}</p>
+            <p className="alup-profile-email">{userData?.email || "-"}</p>
           </div>
 
           <div className="alup-profile-content">
@@ -54,16 +79,17 @@ const Profile = () => {
                   <li><strong>Nick Name :</strong> {userData?.nickName || "-"}</li>
                   <li><strong>Email :</strong> {userData?.email || "-"}</li>
                   <li><strong>Phone :</strong> {userData?.mobileNumber || "-"}</li>
-                  <li><strong>Batch :</strong> {userData?.batch || "-"}</li>
-                  <li><strong>Department :</strong> {userData?.department || "-"}</li>
-                  <li><strong>Passing Year :</strong> {userData?.passingYear || "-"}</li>
+                  <li><strong>Batch :</strong> {batchNames[userData?.batchNameId] || "-"}</li>
+                  <li><strong>Department :</strong> {departments[userData?.departmentId] || "-"}</li>
+                  <li><strong>Passing Year :</strong> {passedOutYears[userData?.passedOutYearId] || "-"}</li>
                   <li><strong>Roll Number :</strong> {userData?.rollNumber || "-"}</li>
-                  <li><strong>Date of Birth :</strong> {userData?.dob || "-"}</li>
-                  <li><strong>Gender :</strong> {userData?.gender || "-"}</li>
+                  <li><strong>Date of Birth :</strong> {userData?.dateOfBirth || "-"}</li>
+                  <li><strong>Gender :</strong> {genders[userData?.genderId] || "-"}</li>
+                  <li><strong>Blood Group :</strong> {bloodGroups[userData?.bloodGroupId] || "-"}</li>
                   <li><strong>City :</strong> {userData?.city || "-"}</li>
                   <li><strong>State :</strong> {userData?.state || "-"}</li>
-                  <li><strong>Country :</strong> {userData?.country || "-"}</li>
-                  <li><strong>Zip Code :</strong> {userData?.zipCode || "-"}</li>
+                  <li><strong>Country :</strong> {"India"}</li>
+                  <li><strong>Zip Code :</strong> {userData?.pinCode || "-"}</li>
                   <li>
                     <strong>Attachment :</strong>{" "}
                     {userData?.attachmentUrl ? (
@@ -79,8 +105,24 @@ const Profile = () => {
                 <h4>Professional Info</h4>
                 <ul>
                   <li><strong>Company Name :</strong> {userData?.companyName || "-"}</li>
-                  <li><strong>Designation :</strong> {userData?.designation || "-"}</li>
-                  <li><strong>Office Address :</strong> {userData?.officeAddress || "-"}</li>
+                  <li><strong>Designation :</strong> {userData?.companyDesignation || "-"}</li>
+                  <li><strong>Office Address :</strong> {userData?.companyAddress || "-"}</li>
+                  <li>
+                    <strong>LinkedIn :</strong>{" "}
+                    {userData?.linkedInUrl ? (
+                      <a
+                        href={
+                          userData.linkedInUrl.startsWith("http")
+                            ? userData.linkedInUrl
+                            : `https://${userData.linkedInUrl}`
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {userData.linkedInUrl}
+                      </a>
+                    ) : "-"}
+                  </li>
                 </ul>
               </div>
             </div>

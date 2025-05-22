@@ -41,7 +41,7 @@ app.use(passport.initialize());
 app.use('/uploads', express.static(UPLOAD_DIR));
 
 // Routes
-app.use('/auth', authRoutes);
+app.use('/auth',  authMiddleware , authRoutes);
 app.use('/users' , authMiddleware , userRoutes);
 app.use('/events' , authMiddleware , eventRoutes);
 app.use('/jobs' , authMiddleware , jobPostRoutes);

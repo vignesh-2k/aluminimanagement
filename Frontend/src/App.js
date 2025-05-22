@@ -3,9 +3,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //AlumniFlow
-import Home from './component/AlumniFlow/home';
-import Login from './component/AlumniFlow/Login';
-import SignupForm from './component/AlumniFlow/Signupform';
+import Home from './component/home';
+import Login from './component/Login';
+import SignupForm from './component/Signupform';
 import  Dashboard  from './component/AlumniFlow/Dashboard';
 import AllList from './component/AlumniFlow/Alumini/AllList';
 import Pendinglist from './component/AlumniFlow/Alumini/Pendinglist';
