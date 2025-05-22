@@ -89,7 +89,7 @@ export const getUserTypes = async (req, res) => {
   const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
 
   try {
-    const response = await API.get(`${BASE_URL}/users/usertype` , {
+    const response = await API.get(`${BASE_URL}/registerdd/usertype` , {
       headers: {
         Authorization: `Bearer ${token}`,
       },

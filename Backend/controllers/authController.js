@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { User , BatchName , Department , PassedOutYear , Gender ,BloodGroup  } = require('../models');
+const { User } = require('../models');
 
 const register = async (req, res) => {
     const { 

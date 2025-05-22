@@ -1,5 +1,5 @@
 
-const { BatchName , Department , PassedOutYear , Gender ,BloodGroup  } = require('../models');
+const { BatchName , Department , PassedOutYear , Gender ,BloodGroup , UserType  } = require('../models');
 
 
 exports. getBatchDetails = async ( req , res ) => {
@@ -45,4 +45,21 @@ exports. getBloodGroup = async ( req , res ) => {
     } catch (error) {
         res.status(500).json({ status : 'error' , message:error.message})
     }
+}
+
+
+
+exports .getUserType = async (req , res) => {
+
+    try {
+      const userType = await UserType.findAll();
+      console.log(userType);
+
+    if(userType) {
+      return res.status(200).json({ message: 'success', data : userType });
+    }
+    } catch (error) {
+      console.log(error)
+    }
+    
 }

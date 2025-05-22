@@ -47,20 +47,6 @@ const getUserDataById = async (req, res) => {
 };
 
 
-const getUserType = async (req , res) => {
-
-    try {
-      const userType = await UserType.findAll();
-    console.log(userType);
-
-    if(userType) {
-      return res.status(200).json({ message: 'success',userType });
-    }
-    } catch (error) {
-      console.log(error)
-    }
-    
-}
 
 const getUsers = async ( req, res ) => {
   try {
@@ -73,4 +59,4 @@ const getUsers = async ( req, res ) => {
   }
 }
 
-module.exports = { getUserDataById , getUserType , getUsers} ;
+module.exports = { getUserDataById  , getUsers} ;

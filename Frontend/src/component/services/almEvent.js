@@ -45,3 +45,12 @@ export const deleteEvent = async (eventId) => {
     }
 }
 
+export const updateEvent = async (eventId , eventData) => {
+    try {
+       const response = await API.put(`${process.env.REACT_APP_BASE_URL}/events/${eventId}` , eventData)
+       return response.data 
+    } catch (error) {
+        console.log(error)
+    }
+}
+

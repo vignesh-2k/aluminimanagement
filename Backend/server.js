@@ -41,11 +41,11 @@ app.use(passport.initialize());
 app.use('/uploads', express.static(UPLOAD_DIR));
 
 // Routes
-app.use('/auth',  authMiddleware , authRoutes);
+app.use('/auth' , authRoutes);
 app.use('/users' , authMiddleware , userRoutes);
 app.use('/events' , authMiddleware , eventRoutes);
 app.use('/jobs' , authMiddleware , jobPostRoutes);
-app.use('/registerdd' , authMiddleware , registerDdRoutes);
+app.use('/registerdd'  , registerDdRoutes);
 
 // Health Check
 app.get('/health', (req, res) => res.status(200).json({ message: 'Server is healthy' }));
