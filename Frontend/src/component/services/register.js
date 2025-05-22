@@ -24,6 +24,15 @@ export const getuser = async () => {
   }
 };
 
+export const getUserById = async (userId) => {
+  try {
+    const response = await API.get(`${process.env.REACT_APP_BASE_URL}/users/${userId}`)
+    return response.data
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 
 export const addBatchList = async (batchNameId) => {
@@ -76,8 +85,15 @@ export const addBloodGroupList = async (bloodGroupId) => {
 
 // Get all user types
 export const getUserTypes = async (req, res) => {
+
+  const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+
   try {
-    const response = await API.get(`${BASE_URL}/users/usertype`);
+    const response = await API.get(`${BASE_URL}/users/usertype` , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching user types:", error);

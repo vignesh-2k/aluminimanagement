@@ -35,7 +35,7 @@
 
 .suf-welcome-container {
   flex: 1;
-  background-image: url('../../assets/images/alumini-login.jpg');
+  background-image: url('../assets/images/alumini-login.jpg');
   background-size: cover;
   background-position: center;
   position: relative;

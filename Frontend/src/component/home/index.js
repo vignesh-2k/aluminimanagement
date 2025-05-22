@@ -1,12 +1,12 @@
 import React from 'react';
-import "../../../styles/AlumniFlow/home.css";
-import annastatueImage from '../../../assets/images/annastatue.jpg';
-import annalogo from '../../../assets/images/anna_logo.png';
-import aluminiImage from '../../../assets/images/aluminibg2.jpg';
+import "../../styles/home.css";
+import annastatueImage from '../../assets/images/annastatue.jpg';
+import annalogo from '../../assets/images/anna_logo.png';
+import aluminiImage from '../../assets/images/aluminibg2.jpg';
 import { MdEmail } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
-import Footer from "../Footer"
+import Footer from "../../component/Footer"
 
 
 export default function Home () {
@@ -20,7 +20,7 @@ export default function Home () {
       <div className="home-top-header">
         <div className="home-header-contacts">
           <span><MdEmail />Email : annauniversityalumni@example.com</span>
-          <span><IoMdCall />Hotline : +00000000000</span>
+          <span><IoMdCall />contact : +00000000000</span>
         </div>
         <div className="home-header-auth">
           <button className="home-cta-btn"  onClick={() => navigate('/login')}>Login </button>

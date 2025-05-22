@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import '../../styles/AlumniFlow/Signupform.css';
-import API from '../../api';
+import React, { useEffect, useState } from 'react';
+import '../styles/Signupform.css';
+import API from '../api';
 import { useNavigate } from 'react-router-dom';
+import { getUserTypes } from './services/register';
 
 const SignupForm = () => {
   const [name, setName] = useState('');
@@ -14,10 +15,23 @@ const SignupForm = () => {
   const [departmentId, setDepartmentId] = useState('');
   const [genderId, setGenderId] = useState('');
   const [userTypeId, setUserTypeId] = useState('');
+  const [userTypes, setUserTypes] = useState([ ]);
   const [batchNameId, setBatchNameId] = useState('');
   const [passedOutYearId, setPassedOutYearId] = useState('');
 
   const navigate = useNavigate();
+  useEffect( ( ) => {
+    loadUserTypeData();
+  } , [ ])
+
+  const loadUserTypeData = async ( req, res) => {
+    try {
+      const response = await getUserTypes();
+      setUserTypes(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -110,14 +124,28 @@ const SignupForm = () => {
             </div>
 
             <div className="suf-form-column">
-              <div className="suf-form-group">
+              {/* <div className="suf-form-group">
                 <label>User Type *</label>
                 <select required value={userTypeId} onChange={(e) => setUserTypeId(e.target.value)}>
                   <option value="">Select User</option>
                   <option value="1">Admin</option>
                   <option value="2">Alumni</option>
                 </select>
-              </div>
+              </div> */}
+              <div className="suf-form-column">
+            <label >User Type *</label>
+            <select
+              value={userTypeId}
+              onChange={(e) => setUserTypeId(e.target.value)}
+            >
+              <option value="">Select User</option>
+              {userTypes.map((type) => (
+                <option key={type.id} value={type.id}>
+                  {type.usertype}
+                </option>
+              ))}
+            </select>
+          </div>
 
               <div className="suf-form-group">
                 <label>Batch Name *</label>

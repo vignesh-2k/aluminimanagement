@@ -1,4 +1,4 @@
-import '../../styles/AlumniFlow/Topbar.css';
+import '../../styles/layout/AlumniFlow/Topbar.css';
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
@@ -13,9 +13,9 @@ export const TopBar = () => {
     const { logout } = useContext(AuthContext);
     const [users, setUser] = useState( { } );
 
-    const loadUserData = async () => {
+    const loadUserData = async (userId) => {
         try {
-            const response = await API.get('http://localhost:4000/users');
+            const response = await API.get(`http://localhost:4000/users/${userId}`);
             setUser(response.data.userData);
             return response.data.userData;
         } catch (error) {
