@@ -3,46 +3,62 @@ import "../../styles/AlumniFlow/AlumniProfile.css";
 import { Navbar } from "../../layout/AlumniFlow/Navbar";
 import { TopBar } from "../../layout/AlumniFlow/Topbar";
 import { useNavigate } from "react-router-dom";
-import { getuser } from "../services/register";
-
-const batchNames = {
-  1: "2023",
-  2: "2024",
-};
-
-const departments = {
-  1: "BCA",
-  2: "MCA",
-};
-
-const passedOutYears = {
-  1: "2026",
-  2: "2027",
-};
-
-const genders = {
-  1: "Male",
-  2: "Female",
-};
-
-const bloodGroups = {
-  1: "A+ve",
-  2: "A-ve",
-};
+import {
+  getUserById,
+  getBatchList,
+  getDepartmentList,
+  getPassedOutYearList,
+  getGenderList,
+  getBloodGroupList,
+} from "../services/register";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
 
+  const [batchNames, setBatchNames] = useState({});
+  const [departments, setDepartments] = useState({});
+  const [passedOutYears, setPassedOutYears] = useState({});
+  const [genders, setGenders] = useState({});
+  const [bloodGroups, setBloodGroups] = useState({});
+
   useEffect(() => {
-    const fetchUser = async () => {
-      const response = await getuser();
-      if (response?.userData) {
-        setUserData(response.userData);
+    const fetchAllData = async () => {
+      const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+      if (!token) return;
+
+      try {
+        const userRes = await getUserById("me");
+        if (userRes?.userData) setUserData(userRes.userData);
+
+        const [batchRes, deptRes, yearRes, genderRes, bloodRes] = await Promise.all([
+          getBatchList(),
+          getDepartmentList(),
+          getPassedOutYearList(),
+          getGenderList(),
+          getBloodGroupList(),
+        ]);
+
+        setBatchNames(arrayToMap(batchRes.data, "batchName"));
+        setDepartments(arrayToMap(deptRes.data, "department"));
+        setPassedOutYears(arrayToMap(yearRes.data, "passedOutYear"));
+        setGenders(arrayToMap(genderRes.data, "gender"));
+        setBloodGroups(arrayToMap(bloodRes.data, "bloodGroup"));
+      } catch (err) {
+        console.error("Failed to fetch profile data:", err);
       }
     };
-    fetchUser();
+
+    fetchAllData();
   }, []);
+
+  const arrayToMap = (array, labelKey) => {
+    if (!Array.isArray(array)) return {};
+    return array.reduce((acc, item) => {
+      acc[item.id] = item[labelKey];
+      return acc;
+    }, {});
+  };
 
   return (
     <div>
@@ -52,7 +68,10 @@ const Profile = () => {
         <h2 className="alup-profile-title">Profile</h2>
         <div className="alup-tabs">
           <button className="alup-tab alup-active">Profile</button>
-          <button className="alup-tab" onClick={() => navigate("/alumniprofileedit")}>
+          <button
+            className="alup-tab"
+            onClick={() => navigate("/alumniprofileedit")}
+          >
             Edit Profile
           </button>
         </div>
@@ -67,7 +86,6 @@ const Profile = () => {
               />
             </div>
             <h3 className="alup-profile-name">{userData?.name || "Alumni"}</h3>
-            <p className="alup-profile-email">{userData?.email || "-"}</p>
           </div>
 
           <div className="alup-profile-content">
@@ -76,7 +94,7 @@ const Profile = () => {
                 <h4>Profile Bio</h4>
                 <ul>
                   <li><strong>Full Name :</strong> {userData?.name || "-"}</li>
-                  <li><strong>Nick Name :</strong> {userData?.nickName || "-"}</li>
+                  {/* <li><strong>Nick Name :</strong> {userData?.nickName || "-"}</li> */}
                   <li><strong>Email :</strong> {userData?.email || "-"}</li>
                   <li><strong>Phone :</strong> {userData?.mobileNumber || "-"}</li>
                   <li><strong>Batch :</strong> {batchNames[userData?.batchNameId] || "-"}</li>
@@ -88,14 +106,22 @@ const Profile = () => {
                   <li><strong>Blood Group :</strong> {bloodGroups[userData?.bloodGroupId] || "-"}</li>
                   <li><strong>City :</strong> {userData?.city || "-"}</li>
                   <li><strong>State :</strong> {userData?.state || "-"}</li>
-                  <li><strong>Country :</strong> {"India"}</li>
+                  <li><strong>Country :</strong> India</li>
                   <li><strong>Zip Code :</strong> {userData?.pinCode || "-"}</li>
-                  <li>
+                  {/* <li>
                     <strong>Attachment :</strong>{" "}
                     {userData?.attachmentUrl ? (
-                      <a href={userData.attachmentUrl} target="_blank" rel="noopener noreferrer">View</a>
-                    ) : "-"}
-                  </li>
+                      <a
+                        href={userData.attachmentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View
+                      </a>
+                    ) : (
+                      "-"
+                    )}
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -121,7 +147,9 @@ const Profile = () => {
                       >
                         {userData.linkedInUrl}
                       </a>
-                    ) : "-"}
+                    ) : (
+                      "-"
+                    )}
                   </li>
                 </ul>
               </div>

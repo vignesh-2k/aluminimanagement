@@ -26,59 +26,16 @@ export const getuser = async () => {
 
 export const getUserById = async (userId) => {
   try {
-    const response = await API.get(`${process.env.REACT_APP_BASE_URL}/users/${userId}`)
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+
+    const response = await API.get(`${process.env.REACT_APP_BASE_URL}/users/${userId}` ,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data
   } catch (error) {
     console.log(error);
-  }
-}
-
-
-
-export const addBatchList = async (batchNameId) => {
-  try {
-      const response = await API.post(`${process.env.REACT_APP_BASE_URL}/auth/register`, batchNameId)
-      return response.data
-  } catch (error) {
-      console.log(error);
-  }
-}
-
-export const addDepartmentList = async (departmentId) => {
-  try {
-      const response = await API.post(`${process.env.REACT_APP_BASE_URL}/auth/register`, departmentId)
-      return response.data
-  } catch (error) {
-      console.log(error);
-  }
-}
-
-
-
-export const addGenderList = async (genderId) => {
-  try {
-      const response = await API.post(`${process.env.REACT_APP_BASE_URL}/auth/register`, genderId)
-      return response.data
-  } catch (error) {
-      console.log(error);
-  }
-}
-
-
-export const addPassedOutYearList = async (passedOutYearId) => {
-  try {
-      const response = await API.post(`${process.env.REACT_APP_BASE_URL}/auth/register`, passedOutYearId)
-      return response.data
-  } catch (error) {
-      console.log(error);
-  }
-}
-export const addBloodGroupList = async (bloodGroupId) => {
-  try {
-      const response = await API.post(`${process.env.REACT_APP_BASE_URL}/auth/register`, bloodGroupId)
-      return response.data
-  } catch (error) {
-      console.log(error);
   }
 }
 
@@ -104,8 +61,14 @@ export const getUserTypes = async (req, res) => {
 
 // Get all batches
 export const getBatchList = async (req, res) => {
+  const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+
   try {
-    const response = await API.get(`${BASE_URL}/registerdd/batch`);
+    const response = await API.get(`${BASE_URL}/registerdd/batch` , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching batch list:", error);
@@ -117,8 +80,14 @@ export const getBatchList = async (req, res) => {
 
 // Get all departments
 export const getDepartmentList = async (req, res) => {
+  const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+
   try {
-    const response = await API.get(`${BASE_URL}/registerdd/dept`);
+    const response = await API.get(`${BASE_URL}/registerdd/dept` ,  {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching department list:", error);
@@ -143,8 +112,14 @@ export const getGenderList = async (req, res) => {
 
 // Get all passed out years
 export const getPassedOutYearList = async (req, res) => {
+  const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+
   try {
-    const response = await API.get(`${BASE_URL}/registerdd/passedoutyear`);
+    const response = await API.get(`${BASE_URL}/registerdd/passedoutyear`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching passed out year list:", error);

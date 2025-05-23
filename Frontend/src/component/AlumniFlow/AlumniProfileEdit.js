@@ -42,6 +42,20 @@ export default function AdminProfileEdit() {
                   </div>
 
                   <div className="alupe-field-group">
+                    <input type="text" defaultValue="123456789" />
+                    <label>Roll Number</label>
+                  </div>
+
+                  <div className="alupe-field-group">
+                    <select defaultValue="Male">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <label>Gender</label>
+                  </div>
+
+                  <div className="alupe-field-group">
                     <select defaultValue="Batch-2023">
                       <option value="Batch-2020">Batch-2020</option>
                       <option value="Batch-2021">Batch-2021</option>
@@ -122,6 +136,10 @@ export default function AdminProfileEdit() {
                 <div className="alupe-field-group">
                   <input type="text" defaultValue="Your Current Designation" />
                   <label>Designation</label>
+                </div>
+                <div className="alupe-field-group">
+                  <input type="text" defaultValue="Your Office Address" />
+                  <label>Office Address</label>
                 </div>
               </div>
 
