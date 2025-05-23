@@ -17,6 +17,7 @@ const getUserDataById = async (req, res) => {
         userData: {
           id: userData.id,
           name : userData.name,
+          email : userData.email,
           // password : userData.password,
           mobileNumber  : userData.mobileNumber ,
           dateOfBirth : userData.dateOfBirth , 
