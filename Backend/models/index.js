@@ -11,6 +11,8 @@ const EventType = require('./eventType');
 const Event = require('./event');
 const EmployeeStatus = require('./employeestatus');
 const Jobs = require('./jobPost');
+const PendingUser = require('./pendingUser');
+
 
 const initDB = async () => {
     if (process.env.ENVIRONMENT === 'development') {
@@ -18,6 +20,7 @@ const initDB = async () => {
         await EmployeeStatus.drop();
         await Event.drop();
         await EventType.drop();
+        await PendingUser.drop();
         await User.drop();
         await BatchName.drop();
         await Department.drop();
@@ -33,6 +36,7 @@ const initDB = async () => {
         await Gender.sync({ force: true });
         await PassedOutYear.sync({ force: true });
         await User.sync({ force: true });
+        await PendingUser.sync( { force : true });
         await EventType.sync({ force : true});
         await Event.sync({force: true});
         await EmployeeStatus.sync({force : true});
@@ -49,7 +53,7 @@ const initDB = async () => {
     }
 };
 
-// Define Associations
+// Users
 UserType.hasMany(User, { foreignKey: 'userTypeId' });
 User.belongsTo(UserType, { foreignKey: 'userTypeId' });
 
@@ -68,11 +72,39 @@ User.belongsTo(PassedOutYear, { foreignKey: 'passedOutYearId' });
 BloodGroup.hasMany(User, { foreignKey: 'bloodGroupId' });
 User.belongsTo(BloodGroup, { foreignKey: 'bloodGroupId' });
 
+//events
+
 EventType.hasMany(Event , { foreignKey : 'eventType'});
 Event.belongsTo(EventType , {foreignKey : 'eventType'});
+
+//jobs
  
 EmployeeStatus.hasMany(Jobs, {foreignKey : 'employeeStatus'});
 Jobs.belongsTo(EmployeeStatus , {foreignKey : 'employeeStatus'})
+
+//pending User
+
+UserType.hasMany(PendingUser , { foreignKey : 'userTypeId'});
+PendingUser.belongsTo(UserType , {foreignKey : 'userTypeId'});
+
+
+BatchName.hasMany(PendingUser, { foreignKey: 'batchNameId' });
+PendingUser.belongsTo(BatchName, { foreignKey: 'batchNameId' });
+
+Department.hasMany(PendingUser, { foreignKey: 'departmentId' });
+PendingUser.belongsTo(Department, { foreignKey: 'departmentId' });
+
+Gender.hasMany(PendingUser, { foreignKey: 'genderId' });
+PendingUser.belongsTo(Gender, { foreignKey: 'genderId' });
+
+PassedOutYear.hasMany(PendingUser, { foreignKey: 'passedOutYearId' });
+PendingUser.belongsTo(PassedOutYear, { foreignKey: 'passedOutYearId' });
+
+BloodGroup.hasMany(PendingUser, { foreignKey: 'bloodGroupId' });
+PendingUser.belongsTo(BloodGroup, { foreignKey: 'bloodGroupId' });
+
+
+
 
 module.exports = {
     initDB,
@@ -87,4 +119,5 @@ module.exports = {
     Event,
     EmployeeStatus,
     Jobs,
+    PendingUser
 };

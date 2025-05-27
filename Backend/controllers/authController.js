@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { User } = require('../models');
+const { User , PendingUser } = require('../models');
 
 const register = async (req, res) => {
     const { 
@@ -31,7 +31,9 @@ const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     try {
-        const user = await User.create({
+
+        if(userTypeId === 1) {
+            const admin = await User.create({
             email,
             password: hashedPassword,
             name,
@@ -54,8 +56,34 @@ const register = async (req, res) => {
             bloodGroupId
         });
 
-        res.status(201).json({ message: 'User created', user });
-    } catch (error) {
+        res.status(201).json({ message: 'Admin created', admin });
+ 
+        } else {
+            const pendingUser = await PendingUser.create({
+            email,
+            password: hashedPassword,
+            name,
+            userTypeId,
+            mobileNumber,
+            dateOfBirth,
+            rollNumber,
+            address,
+            city,
+            state,
+            pinCode,
+            linkedInUrl,
+            companyName,
+            companyDesignation,
+            companyAddress,
+            batchNameId,
+            departmentId,
+            passedOutYearId,
+            genderId,
+            bloodGroupId
+             })
+            res.status(201).json({ message: 'User created', pendingUser });
+            }
+           } catch (error) {
         console.error(error);
         res.status(400).json({ error: error.message });
     }
