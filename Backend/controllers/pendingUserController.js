@@ -53,3 +53,23 @@ exports.approvePendingUser = async ( req , res) => {
         res.status(400).json({ error: error.message });
     }
 }
+
+exports.deletePendingUser = async ( req , res ) => {
+
+    try {
+        const { id : pendingUserId} = req.params ;
+
+        const deleted = await PendingUser.destroy({ where :{pendingUserId}})
+
+        if(deleted) {
+            res.json({ status: 'success', message: 'Pending User deleted successfully' });
+        } else {
+             res.status(404).json({ status: 'error', message: 'PendingUser not found' });
+
+        }
+    
+    } catch (error) {
+         res.status(500).json({ status: 'error', message: error.message });
+
+    }
+}
