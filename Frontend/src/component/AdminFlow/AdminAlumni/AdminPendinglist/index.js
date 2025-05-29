@@ -1,23 +1,65 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "../../../../layout/AdminFlow/Navbar";
 import { TopBar } from "../../../../layout/AdminFlow/Topbar";
 import "../../../../styles/AdminFlow/AdminAlumni/AdminProfileDetails.css";
 import { FaSearch, FaPhone, FaEnvelope, FaEye, FaEdit } from "react-icons/fa";
 import { HiOutlineAdjustments } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import { 
+  getpendinguser, 
+  getDepartmentList, 
+  getBatchList, 
+  getPassedOutYearList,
+  approvePendingUser,
+  rejectPendingUser
+} from "../../../services/adminflow/pendinguser";
 
 export default function PendingList() {
   const navigate = useNavigate();
-
-  const [alumniData] = useState([
-    { id: 1, fullName: "Sreeram", batch: "Batch-2023", passingYear: 2025, department: "CSE", status: "Approved", image: "profile-placeholder.png" },
-    { id: 2, fullName: "Anish", batch: "Batch-2022", passingYear: 2024, department: "ECE", status: "Pending", image: "profile-placeholder.png" },
-    { id: 3, fullName: "Santhosh", batch: "Batch-2021", passingYear: 2023, department: "MECH", status: "Rejected", image: "profile-placeholder.png" },
-  ]);
-
+  const [alumniData, setAlumniData] = useState([]);
+  const [filteredAlumni, setFilteredAlumni] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({ batch: "", passingYear: "", department: "" });
-  const [filteredAlumni, setFilteredAlumni] = useState(alumniData);
+
+  // Dropdown options
+  const [departments, setDepartments] = useState([]);
+  const [batches, setBatches] = useState([]);
+  const [passingYears, setPassingYears] = useState([]);
+
+  useEffect(() => {
+    loadDropdownData();
+    fetchPendingUsers();
+  }, []);
+
+  const loadDropdownData = async () => {
+    try {
+      const deptRes = await getDepartmentList();
+      const batchRes = await getBatchList();
+      const yearRes = await getPassedOutYearList();
+      setDepartments(deptRes.data);
+      setBatches(batchRes.data);
+      setPassingYears(yearRes.data);
+    } catch (error) {
+      console.error("Dropdown loading error", error);
+    }
+  };
+
+  const fetchPendingUsers = async () => {
+    const data = await getpendinguser();
+    if (data?.status === "success") {
+      const transformed = data.data.map((user) => ({
+        id: user.pendingUserId,
+        fullName: user.name,
+        batch: user.batchNameId,
+        passingYear: user.passedOutYearId,
+        department: user.departmentId,
+        status: "Pending",
+        image: "profile-placeholder.png",
+      }));
+      setAlumniData(transformed);
+      setFilteredAlumni(transformed);
+    }
+  };
 
   const toggleFilters = () => setShowFilters(!showFilters);
 
@@ -27,19 +69,36 @@ export default function PendingList() {
 
   const applyFilters = () => {
     const filtered = alumniData.filter((alumni) =>
-      (!filters.batch || alumni.batch === filters.batch) &&
+      (!filters.batch || alumni.batch.toString() === filters.batch) &&
       (!filters.passingYear || alumni.passingYear.toString() === filters.passingYear) &&
-      (!filters.department || alumni.department === filters.department)
+      (!filters.department || alumni.department.toString() === filters.department)
     );
     setFilteredAlumni(filtered);
   };
 
-  const handleStatusChange = (id, newStatus) => {
-    setFilteredAlumni(prevAlumni =>
-      prevAlumni.map(alumni =>
-        alumni.id === id ? { ...alumni, status: newStatus } : alumni
-      )
-    );
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      if (newStatus === "Approved") {
+        await approvePendingUser(id);
+        navigate('/AdminFlow/AdminAlumni/AdminAllList');  // Navigate to AllList page
+      } else if (newStatus === "Rejected") {
+        await rejectPendingUser(id);
+      }
+      // Refresh the pending list after status change
+      fetchPendingUsers();
+    } catch (error) {
+      console.error("Error changing status", error);
+    }
+  };
+
+  const getDepartmentName = (id) => {
+    const dept = departments.find(d => d.id === id);
+    return dept?.department || "Unknown";
+  };
+
+  const getBatchName = (id) => {
+    const batch = batches.find(b => b.id === id);
+    return batch?.batchName || "Unknown";
   };
 
   return (
@@ -75,24 +134,23 @@ export default function PendingList() {
             <div className="pl-filter-group">
               <select name="batch" value={filters.batch} onChange={handleFilterChange} className="pl-filter-dropdown">
                 <option value="">All Batch</option>
-                <option value="Batch-2023">Batch-2023</option>
-                <option value="Batch-2022">Batch-2022</option>
-                <option value="Batch-2021">Batch-2021</option>
+                {batches.map((b) => (
+                  <option key={b.id} value={b.id}>{b.batchName}</option>
+                ))}
               </select>
 
               <select name="passingYear" value={filters.passingYear} onChange={handleFilterChange} className="pl-filter-dropdown">
                 <option value="">All Passing Year</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-                <option value="2023">2023</option>
+                {passingYears.map((y) => (
+                  <option key={y.id} value={y.id}>{y.passedOutYear}</option>
+                ))}
               </select>
 
               <select name="department" value={filters.department} onChange={handleFilterChange} className="pl-filter-dropdown">
                 <option value="">All Department</option>
-                <option value="CSE">CSE</option>
-                <option value="ECE">ECE</option>
-                <option value="MECH">MECH</option>
-                <option value="Civil">Civil</option>
+                {departments.map((d) => (
+                  <option key={d.id} value={d.id}>{d.department}</option>
+                ))}
               </select>
 
               <button className="pl-search-btn" onClick={applyFilters}>Search Now</button>
@@ -114,13 +172,10 @@ export default function PendingList() {
           <tbody>
             {filteredAlumni.map((alumni) => (
               <tr key={alumni.id}>
-                <td className="pl-alumni-profile">
-                  <img src={alumni.image} alt="Profile" className="pl-profile-pic" />
-                  {alumni.fullName}
-                </td>
-                <td>{alumni.batch}</td>
-                <td>{alumni.passingYear}</td>
-                <td>{alumni.department}</td>
+                <td>{alumni.fullName}</td>
+                <td>{getBatchName(alumni.batch)}</td>
+                <td>{passingYears.find(y => y.id === alumni.passingYear)?.passedOutYear || "Unknown"}</td>
+                <td>{getDepartmentName(alumni.department)}</td>
                 <td>
                   <select
                     className={`pl-status-dropdown ${alumni.status.toLowerCase()}-status`}
@@ -136,7 +191,6 @@ export default function PendingList() {
                   <button><FaPhone className="pl-icon pl-phone-icon" /></button>
                   <button><FaEnvelope className="pl-icon" /></button>
                   <button><FaEye className="pl-icon" /></button>
-                  <button onClick={() => navigate('/alumini/alumniProfile')}><FaEdit className="pl-icon" /></button>
                 </td>
               </tr>
             ))}

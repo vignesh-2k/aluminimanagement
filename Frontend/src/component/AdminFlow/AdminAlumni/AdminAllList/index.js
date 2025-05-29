@@ -1,41 +1,67 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "../../../../layout/AdminFlow/Navbar";
 import { TopBar } from "../../../../layout/AdminFlow/Topbar";
-import "../../../../styles/AdminFlow/AdminAlumni/AdminAllList.css"
+import "../../../../styles/AdminFlow/AdminAlumni/AdminAllList.css";
 import { FaSearch, FaPhone, FaEnvelope, FaEye } from "react-icons/fa";
 import { HiOutlineAdjustments } from "react-icons/hi";
+import {
+  getuser,
+  getBatchList,
+  getPassedOutYearList,
+  getDepartmentList,
+} from "../../../services/adminflow/pendinguser";
 
 export default function AllList() {
-  const [alumniData] = useState([
-    {
-      id: 1,
-      fullName: "Sreeram",
-      batch: "Batch-2023",
-      passingYear: 2025,
-      location: "Chennai",
-      image: "profile-placeholder.png",
-    },
-    {
-      id: 2,
-      fullName: "Anish",
-      batch: "Batch-2022",
-      passingYear: 2024,
-      location: "Hyderabad",
-      image: "profile-placeholder.png",
-    },
-    {
-      id: 3,
-      fullName: "Santhosh",
-      batch: "Batch-2021",
-      passingYear: 2023,
-      location: "Bangalore",
-      image: "profile-placeholder.png",
-    },
-  ]);
-
+  const [alumniData, setAlumniData] = useState([]);
+  const [filteredAlumni, setFilteredAlumni] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
-  const [filters, setFilters] = useState({ batch: "", passingYear: "", location: "" });
-  const [filteredAlumni, setFilteredAlumni] = useState(alumniData);
+  const [filters, setFilters] = useState({
+    batch: "",
+    passingYear: "",
+    department: "",
+  });
+
+  // Dropdown options
+  const [batches, setBatches] = useState([]);
+  const [passingYears, setPassingYears] = useState([]);
+  const [departments, setDepartments] = useState([]);
+
+  useEffect(() => {
+    // Load dropdown data
+    const loadDropdownData = async () => {
+      try {
+        const batchRes = await getBatchList();
+        const yearRes = await getPassedOutYearList();
+        const deptRes = await getDepartmentList();
+
+        if (batchRes?.data) setBatches(batchRes.data);
+        if (yearRes?.data) setPassingYears(yearRes.data);
+        if (deptRes?.data) setDepartments(deptRes.data);
+      } catch (error) {
+        console.error("Dropdown loading error", error);
+      }
+    };
+
+    // Fetch alumni data
+    const fetchUsers = async () => {
+      const data = await getuser();
+      if (data && data.users) {
+        const mapped = data.users.map((user) => ({
+          id: user.id,
+          fullName: user.name,
+          batch: user.batchNameId,
+          passingYear: user.passedOutYearId,
+          department: user.departmentId,
+          image: "profile-placeholder.png",
+        }));
+        setAlumniData(mapped);
+        setFilteredAlumni(mapped);
+      }
+    };
+
+    loadDropdownData();
+    fetchUsers();
+  }, []);
 
   const toggleFilters = () => setShowFilters(!showFilters);
 
@@ -46,11 +72,28 @@ export default function AllList() {
   const applyFilters = () => {
     const filtered = alumniData.filter(
       (alumni) =>
-        (!filters.batch || alumni.batch === filters.batch) &&
-        (!filters.passingYear || alumni.passingYear.toString() === filters.passingYear) &&
-        (!filters.location || alumni.location === filters.location)
+        (!filters.batch || alumni.batch.toString() === filters.batch) &&
+        (!filters.passingYear ||
+          alumni.passingYear.toString() === filters.passingYear) &&
+        (!filters.department ||
+          alumni.department.toString() === filters.department)
     );
     setFilteredAlumni(filtered);
+  };
+
+  const getBatchName = (id) => {
+    const batch = batches.find((b) => b.id === id);
+    return batch?.batchName || "Unknown";
+  };
+
+  const getPassingYear = (id) => {
+    const year = passingYears.find((y) => y.id === id);
+    return year?.passedOutYear || "Unknown";
+  };
+
+  const getDepartmentName = (id) => {
+    const dept = departments.find((d) => d.id === id);
+    return dept?.department || "Unknown";
   };
 
   return (
@@ -91,9 +134,11 @@ export default function AllList() {
                 className="adal-filter-dropdown"
               >
                 <option value="">All Batch</option>
-                <option value="Batch-2023">Batch-2023</option>
-                <option value="Batch-2022">Batch-2022</option>
-                <option value="Batch-2021">Batch-2021</option>
+                {batches.map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.batchName}
+                  </option>
+                ))}
               </select>
 
               <select
@@ -103,21 +148,25 @@ export default function AllList() {
                 className="adal-filter-dropdown"
               >
                 <option value="">All Passing Year</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-                <option value="2023">2023</option>
+                {passingYears.map((y) => (
+                  <option key={y.id} value={y.id}>
+                    {y.passedOutYear}
+                  </option>
+                ))}
               </select>
 
               <select
-                name="location"
-                value={filters.location}
+                name="department"
+                value={filters.department}
                 onChange={handleFilterChange}
                 className="adal-filter-dropdown"
               >
-                <option value="">All Locations</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Hyderabad">Hyderabad</option>
-                <option value="Bangalore">Bangalore</option>
+                <option value="">All Department</option>
+                {departments.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.department}
+                  </option>
+                ))}
               </select>
 
               <button className="adal-search-btn" onClick={applyFilters}>
@@ -133,31 +182,38 @@ export default function AllList() {
               <th>Full Name</th>
               <th>Batch</th>
               <th>Passing Year</th>
-              <th>Location</th>
+              <th>Department</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {filteredAlumni.map((alumni) => (
               <tr key={alumni.id}>
-                <td className="adal-profile-info">
-                  <img src={alumni.image} alt="Profile" className="adal-profile-pic" />
+                <td>
                   {alumni.fullName}
                 </td>
-                <td>{alumni.batch}</td>
-                <td>{alumni.passingYear}</td>
-                <td>{alumni.location}</td>
+                <td>{getBatchName(alumni.batch)}</td>
+                <td>{getPassingYear(alumni.passingYear)}</td>
+                <td>{getDepartmentName(alumni.department)}</td>
                 <td className="adal-action-icons">
-                  <button><FaPhone className="adal-icon adal-phone-icon" /></button>
-                  <button><FaEnvelope className="adal-icon" /></button>
-                  <button><FaEye className="adal-icon" /></button>
+                  <button>
+                    <FaPhone className="adal-icon adal-phone-icon" />
+                  </button>
+                  <button>
+                    <FaEnvelope className="adal-icon" />
+                  </button>
+                  <button>
+                    <FaEye className="adal-icon" />
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
 
-        <div className="adal-table-footer">Showing {filteredAlumni.length} entries</div>
+        <div className="adal-table-footer">
+          Showing {filteredAlumni.length} entries
+        </div>
 
         <div className="adal-pagination">
           <button className="adal-page-btn">«</button>

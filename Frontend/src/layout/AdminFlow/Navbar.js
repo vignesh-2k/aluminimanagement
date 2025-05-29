@@ -102,7 +102,7 @@ export const Navbar = () => {
         
 
         {/* Alumni Dropdown */}
-        {/* <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("alumni")}>
+        <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("alumni")}>
           <div className="db-nav-link">
             <HiOutlineUserGroup className="db-nav-icon" />
             <span>Alumni</span>
@@ -114,13 +114,13 @@ export const Navbar = () => {
             <li><Link to="/adminflow/adminalumni/adminalllist">All List</Link></li>
             <li><Link to="/adminflow/adminalumni/adminpendinglist">Pending List</Link></li>
           </ul>
-        </li> */}
-         <li className="db-nav-item">
+        </li>
+         {/* <li className="db-nav-item">
           <Link to="/adminflow/adminalumni/adminalllist" className="db-nav-link">
             <HiOutlineUserGroup className="db-nav-icon" />
             <span>All Alumni</span>
           </Link>
-        </li>
+        </li> */}
 
 
         {/* <li className="db-nav-item">

@@ -58,7 +58,7 @@ export const TopBar = () => {
 
                 <div className="top-welcome-text">
                     <span>Welcome</span>
-                    <span className="top-user-name">{users.name} </span>
+                    {/* <span className="top-user-name">{users.name} </span> */}
                 </div>
 
                 <div>
