@@ -20,6 +20,11 @@ exports.approvePendingUser = async ( req , res) => {
             return res.status(404).json({ message: 'Pending user not found' });
         }
 
+         const existingUser = await User.findOne({ where: { email: pendingUser.email } });
+        if (existingUser) {
+            return res.status(400).json({ message: 'User with this email already exists' });
+        }
+
          const user = await User.create({
             email: pendingUser.email,
             password: pendingUser.password,

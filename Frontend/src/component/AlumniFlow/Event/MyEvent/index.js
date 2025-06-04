@@ -1,10 +1,6 @@
+
 import React, { useEffect, useState } from 'react';
-import {
-  FaSearch,
-  FaEdit,
-  FaTrash,
-  FaEye,
-} from 'react-icons/fa';
+import { FaSearch, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import { TopBar } from "../../../../layout/AlumniFlow/Topbar";
 import { Navbar } from "../../../../layout/AlumniFlow/Navbar";
 import EditEvent from '../EditEvent';
@@ -14,16 +10,24 @@ import { deleteEvent, getAllEvent, getEventType } from '../../../services/almEve
 
 const MyEvent = () => {
   const navigate = useNavigate();
-
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [entries, setEntries] = useState(10);
   const [eventList, setEventList] = useState([]);
   const [eventTypes, setEventTypes] = useState({});
   const [selectedEventId, setSelectedEventId] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
-  const handleEditClick = () => setShowEditPopup(true);
-  const handleCloseEditPopup = () => setShowEditPopup(false);
+  const handleEditClick = (event) => {
+    setSelectedEvent(event);
+    setShowEditPopup(true);
+  };
+
+  const handleCloseEditPopup = () => {
+    setShowEditPopup(false);
+    setSelectedEvent(null);
+    fetchEvents(); // refresh the table after edit
+  };
 
   const handleDeleteClick = (eventId) => {
     setSelectedEventId(eventId);
@@ -66,7 +70,7 @@ const MyEvent = () => {
       });
       setEventTypes(typeMap);
     } catch (error) {
-      console.log(error, "error fetching event types");
+      console.log("Error fetching event types:", error);
     }
   };
 
@@ -86,21 +90,12 @@ const MyEvent = () => {
           <div className="alme-top-bar">
             <label className="alme-search-container">
               <FaSearch className="alme-search-icon" />
-              <input
-                type="text"
-                placeholder="Search event"
-                className="alme-search-input"
-              />
+              <input type="text" placeholder="Search event" className="alme-search-input" />
             </label>
-
             <div className="alme-entries-container">
               <label className="alme-entries-label">
                 Show
-                <select
-                  className="alme-entries-select"
-                  value={entries}
-                  onChange={(e) => setEntries(Number(e.target.value))}
-                >
+                <select className="alme-entries-select" value={entries} onChange={(e) => setEntries(Number(e.target.value))}>
                   <option value="10">10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
@@ -132,28 +127,15 @@ const MyEvent = () => {
                     <td>{event.eventTitle}</td>
                     <td><span className="alme-category-badge">{event.eventCategory}</span></td>
                     <td><span className="alme-type-badge">{eventTypes[event.eventType] || event.eventType}</span></td>
-                    <td>
-                      {new Date(event.eventDate).toLocaleString("en-GB", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </td>
+                    <td>{new Date(event.eventDate).toLocaleString("en-GB", {
+                      day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit",
+                    })}</td>
                     <td>{event.location}</td>
                     <td><span className="alme-status-badge">Pending</span></td>
                     <td className="alme-action-icons">
-                      <button className="alme-icon-btn" onClick={handleEditClick}><FaEdit /></button>
+                      <button className="alme-icon-btn" onClick={() => handleEditClick(event)}><FaEdit /></button>
                       <button className="alme-icon-btn" onClick={() => handleDeleteClick(event.eventId)}><FaTrash /></button>
-                      <button
-                        className="alme-icon-btn"
-                        onClick={() =>
-                          navigate("/myeventdetails", { state: { eventData: event } })
-                        }
-                      >
-                        <FaEye />
-                      </button>
+                      <button className="alme-icon-btn" onClick={() => navigate("/myeventdetails", { state: { eventData: event } })}><FaEye /></button>
                     </td>
                   </tr>
                 ))}
@@ -162,9 +144,7 @@ const MyEvent = () => {
           </div>
 
           <div className="alme-table-footer">
-            <span>
-              Showing 1 to {Math.min(entries, eventList.length)} of {eventList.length} entries
-            </span>
+            <span>Showing 1 to {Math.min(entries, eventList.length)} of {eventList.length} entries</span>
             <div className="alme-pagination">
               <button className="alme-page-btn">&laquo;</button>
               <button className="alme-page-btn alme-active">1</button>
@@ -174,27 +154,17 @@ const MyEvent = () => {
         </div>
       </div>
 
-      {/* Edit Event Popup */}
-      {showEditPopup && <EditEvent onClose={handleCloseEditPopup} />}
+      {showEditPopup && <EditEvent onClose={handleCloseEditPopup} eventData={selectedEvent} />}
 
-      {/* Delete Confirmation Popup */}
       {showDeletePopup && (
         <div className="alme-delete-popup-overlay">
-          <div className="alme-delete-popup">         
+          <div className="alme-delete-popup">
             <div className="alme-delete-popup-icon">!</div>
-            <h2 style={{ marginBottom: "10px", fontSize: "25px", color: "#333" }}>
-              Sure! You want to delete?
-            </h2>
-            <p style={{ color: "#777", marginBottom: "20px" }}>
-              You won't be able to revert this!
-            </p>
+            <h2>Sure! You want to delete?</h2>
+            <p>You won't be able to revert this!</p>
             <div className="alme-delete-popup-buttons">
-              <button className="alme-delete-confirm-btn" onClick={handleConfirmDelete}>
-                Yes, Delete It!
-              </button>
-              <button className="alme-delete-cancel-btn" onClick={handleCloseDeletePopup}>
-                Cancel
-              </button>
+              <button className="alme-delete-confirm-btn" onClick={handleConfirmDelete}>Yes, Delete It!</button>
+              <button className="alme-delete-cancel-btn" onClick={handleCloseDeletePopup}>Cancel</button>
             </div>
           </div>
         </div>
