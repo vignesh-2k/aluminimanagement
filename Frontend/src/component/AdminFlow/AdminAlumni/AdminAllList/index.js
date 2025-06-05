@@ -20,12 +20,21 @@ export default function AllList() {
     passingYear: "",
     department: "",
   });
+  const [popupType, setPopupType] = useState(null);
+  const [popupData, setPopupData] = useState(null);
 
   // Dropdown options
   const [batches, setBatches] = useState([]);
   const [passingYears, setPassingYears] = useState([]);
   const [departments, setDepartments] = useState([]);
 
+ const [searchTerm, setSearchTerm] = useState("");
+  
+
+  useEffect(() => {
+      applyFilters();
+    }, [searchTerm, filters]);
+    
   useEffect(() => {
     // Load dropdown data
     const loadDropdownData = async () => {
@@ -46,12 +55,27 @@ export default function AllList() {
     const fetchUsers = async () => {
       const data = await getuser();
       if (data && data.users) {
+
+        
         const mapped = data.users.map((user) => ({
-          id: user.id,
+          id: user.pendingUserId || user.id,
           fullName: user.name,
           batch: user.batchNameId,
           passingYear: user.passedOutYearId,
           department: user.departmentId,
+          mobileNumber: user.mobileNumber,
+          email: user.email,
+          address: user.address,
+          city: user.city,
+          state: user.state,
+          pinCode: user.pinCode,
+          linkedInUrl: user.linkedInUrl,
+          companyName: user.companyName,
+          companyDesignation: user.companyDesignation,
+          companyAddress: user.companyAddress,
+          dob: user.dateOfBirth,
+          genderId: user.genderId,
+          status: "Pending",
           image: "profile-placeholder.png",
         }));
         setAlumniData(mapped);
@@ -76,7 +100,10 @@ export default function AllList() {
         (!filters.passingYear ||
           alumni.passingYear.toString() === filters.passingYear) &&
         (!filters.department ||
-          alumni.department.toString() === filters.department)
+          alumni.department.toString() === filters.department) &&
+          
+          (alumni.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
+
     );
     setFilteredAlumni(filtered);
   };
@@ -96,6 +123,16 @@ export default function AllList() {
     return dept?.department || "Unknown";
   };
 
+  const openPopup = (type, data) => {
+    setPopupType(type);
+    setPopupData(data);
+  };
+
+  const closePopup = () => {
+    setPopupType(null);
+    setPopupData(null);
+  };
+
   return (
     <div className="adal-app-container">
       <Navbar />
@@ -105,7 +142,12 @@ export default function AllList() {
         <div className="adal-search-entries">
           <div className="adal-search-box">
             <FaSearch className="adal-search-icon" />
-            <input type="text" placeholder="Search Alumni" />
+            <input
+              type="text"
+              placeholder="Search Alumni"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
 
           <div className="adal-filter-toggle" onClick={toggleFilters}>
@@ -189,20 +231,18 @@ export default function AllList() {
           <tbody>
             {filteredAlumni.map((alumni) => (
               <tr key={alumni.id}>
-                <td>
-                  {alumni.fullName}
-                </td>
+                <td>{alumni.fullName}</td>
                 <td>{getBatchName(alumni.batch)}</td>
                 <td>{getPassingYear(alumni.passingYear)}</td>
                 <td>{getDepartmentName(alumni.department)}</td>
                 <td className="adal-action-icons">
-                  <button>
+                  <button onClick={() => openPopup("phone", alumni)}>
                     <FaPhone className="adal-icon adal-phone-icon" />
                   </button>
-                  <button>
+                  <button onClick={() => openPopup("email", alumni)}>
                     <FaEnvelope className="adal-icon" />
                   </button>
-                  <button>
+                  <button onClick={() => openPopup("view", alumni)}>
                     <FaEye className="adal-icon" />
                   </button>
                 </td>
@@ -221,6 +261,91 @@ export default function AllList() {
           <button className="adal-page-btn">»</button>
         </div>
       </div>
+
+      {/* Popup */}
+      {popupType && popupData && (
+        <div className="adpl-popup-overlay" onClick={closePopup}>
+          <div
+            className="adpl-popup-box"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="adpl-popup-close" onClick={closePopup}>
+              ×
+            </button>
+
+            {popupType === "phone" && (
+              <div className="adpl-popup-content">
+                <h3>Phone Number</h3>
+                <p>{popupData.mobileNumber}</p>
+              </div>
+            )}
+
+            {popupType === "email" && (
+              <div className="adpl-popup-content">
+                <h3>Email Address</h3>
+                <p>{popupData.email}</p>
+              </div>
+            )}
+
+            {popupType === "view" && (
+              <div className="adpl-popup-content">
+                <h3>Alumni Details</h3>
+                <div className="adpl-view-grid">
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">Full Name:</span>
+                    <span className="adpl-view-value">{popupData.fullName}</span>
+                  </div>
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">Email:</span>
+                    <span className="adpl-view-value">{popupData.email}</span>
+                  </div>
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">Mobile:</span>
+                    <span className="adpl-view-value">
+                      {popupData.mobileNumber}
+                    </span>
+                  </div>
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">DOB:</span>
+                    <span className="adpl-view-value">{popupData.dob}</span>
+                  </div>
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">Address:</span>
+                    <span className="adpl-view-value">
+                      {popupData.address}, {popupData.city}, {popupData.state},{" "}
+                      {popupData.pinCode}
+                    </span>
+                  </div>
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">Company:</span>
+                    <span className="adpl-view-value">
+                      {popupData.companyName}
+                    </span>
+                  </div>
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">Designation:</span>
+                    <span className="adpl-view-value">
+                      {popupData.companyDesignation}
+                    </span>
+                  </div>
+                  <div className="adpl-view-item">
+                    <span className="adpl-view-label">LinkedIn:</span>
+                    <span className="adpl-view-value">
+                      <a
+                        href={popupData.linkedInUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {popupData.linkedInUrl}
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
