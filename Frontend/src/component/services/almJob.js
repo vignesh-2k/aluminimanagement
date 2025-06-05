@@ -45,3 +45,12 @@ export const deleteJobPost = async (jobPostId) => {
         console.log(error)
     }
 }
+
+export const updateJob = async (jobPostId , jobData) => {
+    try {
+       const response = await API.put(`${process.env.REACT_APP_BASE_URL}/jobs/${jobPostId}` , jobData)
+       return response.data 
+    } catch (error) {
+        console.log(error)
+    }
+}
