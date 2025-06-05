@@ -1,4 +1,5 @@
-.pl-alumni-container {
+/* AdminProfileDetails.css */
+.adpl-alumni-container {
   position: absolute;
   top: 70px;
   left: 250px;
@@ -11,26 +12,26 @@
   overflow-y: auto;
 }
 
-.pl-search-entries {
+.adpl-search-entries {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.pl-search-box {
+.adpl-search-box {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.pl-search-icon {
+.adpl-search-icon {
   position: absolute;
   right: 12px;
   color: gray;
 }
 
-.pl-search-box input {
+.adpl-search-box input {
   padding: 10px 15px 10px 40px;
   border: 1px solid #ddd;
   border-radius: 25px;
@@ -39,7 +40,7 @@
   font-size: 16px;
 }
 
-.pl-filter-toggle {
+.adpl-filter-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,25 +57,25 @@
   transition: all 0.3s ease;
 }
 
-.pl-filter-toggle:hover {
+.adpl-filter-toggle:hover {
   background-color: #0052a3;
   border-color: black;
   color: white;
 }
 
-.pl-entries-dropdown {
+.adpl-entries-dropdown {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.pl-entries-dropdown select {
+.adpl-entries-dropdown select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.pl-alumni-table {
+.adpl-alumni-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -84,37 +85,38 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-.pl-alumni-table th,
-.pl-alumni-table td {
+.adpl-alumni-table th,
+.adpl-alumni-table td {
   padding: 15px;
   border-bottom: 1px solid #ccc;
   text-align: left;
   vertical-align: middle;
 }
 
-.pl-alumni-table th {
+.adpl-alumni-table th {
   background-color: #f8f8f8;
   color: #333;
   font-weight: bold;
 }
 
-.pl-alumni-table tr:last-child td {
+.adpl-alumni-table tr:last-child td {
   border-bottom: none;
+  
 }
 
-.pl-alumni-profile {
+.adpl-alumni-profile {
   display: flex;
   align-items: center;
 }
 
-.pl-profile-pic {
+.adpl-profile-pic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
-.pl-status-dropdown {
+.adpl-status-dropdown {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -122,15 +124,15 @@
   outline: none;
 }
 
-.pl-status-dropdown option[value="Approved"] {
+.adpl-status-dropdown option[value="Approved"] {
   color: #28a745;
 }
 
-.pl-status-dropdown option[value="Pending"] {
+.adpl-status-dropdown option[value="Pending"] {
   color: #ffa500;
 }
 
-.pl-status-dropdown option[value="Rejected"] {
+.adpl-status-dropdown option[value="Rejected"] {
   color: #dc3545;
 }
 
@@ -146,15 +148,14 @@
   color: #dc3545;
 }
 
-.pl-action-icons {
+.adpl-action-icons {
   display: flex;
   gap: 10px;
-  justify-content: center;
-  align-items: center;
-  margin-left: -40px;
+  /* justify-content: center;
+  align-items: center; */
 }
 
-.pl-action-icons button {
+.adpl-action-icons button {
   background: none;
   border: none;
   padding: 5px;
@@ -166,34 +167,34 @@
   margin-bottom: 5px;
 }
 
-.pl-action-icons button:hover {
+.adpl-action-icons button:hover {
   background-color: #eaf2ff;
   border-radius: 4px;
 }
 
-.pl-icon {
+.adpl-icon {
   font-size: 16px;
   color: #0052a3;
 }
 
-.pl-phone-icon {
+.adpl-phone-icon {
   transform: rotate(90deg);
 }
 
-.pl-table-footer {
+.adpl-table-footer {
   text-align: left;
   margin-top: 10px;
   font-size: 0.9em;
   color: #666;
 }
 
-.pl-pagination {
+.adpl-pagination {
   display: flex;
   justify-content: flex-start;
   margin-top: 10px;
 }
 
-.pl-page-btn {
+.adpl-page-btn {
   background-color: white;
   border: 1px solid #ccc;
   padding: 5px 10px;
@@ -202,12 +203,12 @@
   border-radius: 5px;
 }
 
-.pl-page-btn.active {
+.adpl-page-btn.active {
   background-color: #d6f5c5;
   font-weight: bold;
 }
 
-.pl-filter-options {
+.adpl-filter-options {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,13 +220,13 @@
   margin-bottom: 20px;
 }
 
-.pl-filter-group {
+.adpl-filter-group {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
-.pl-filter-dropdown {
+.adpl-filter-dropdown {
   padding: 15px;
   font-size: 14px;
   border-radius: 5px;
@@ -233,7 +234,7 @@
   width: 300px;
 }
 
-.pl-search-btn {
+.adpl-search-btn {
   background-color: #0052a3;
   color: white;
   border: none;
@@ -244,41 +245,137 @@
   font-weight: bold;
 }
 
-.pl-search-btn:hover {
+.adpl-search-btn:hover {
   background-color: rgb(8, 60, 112);
   color: white;
 }
 
+/* Popup Styles */
+.adpl-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.adpl-popup-box {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.adpl-popup-box h3 {
+  margin-top: 0;
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #0052a3;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.adpl-popup-box p {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+.adpl-popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s;
+}
+
+.adpl-popup-close:hover {
+  color: #333;
+}
+
+/* View Details Grid */
+.adpl-view-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.adpl-view-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: start;
+}
+
+.adpl-view-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.adpl-view-value {
+  word-break: break-word;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .pl-alumni-container {
+  .adpl-alumni-container {
     position: static;
     width: 100%;
     padding: 15px;
   }
 
-  .pl-search-entries {
+  .adpl-search-entries {
     flex-direction: column;
     align-items: flex-start;
+    gap: 15px;
   }
 
-  .pl-search-box {
+  .adpl-search-box {
     width: 100%;
     margin-bottom: 10px;
   }
 
-  .pl-entries-dropdown {
+  .adpl-search-box input {
+    width: 100%;
+  }
+
+  .adpl-entries-dropdown {
     width: 100%;
     justify-content: flex-start;
   }
 
-  .pl-filter-options {
+  .adpl-filter-options {
     flex-direction: column;
     gap: 15px;
   }
 
-  .pl-filter-dropdown {
+  .adpl-filter-dropdown {
     width: 100%;
   }
-}
 
+  .adpl-alumni-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .adpl-view-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .adpl-view-item {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
