@@ -60,4 +60,17 @@ const getUsers = async ( req, res ) => {
   }
 }
 
-module.exports = { getUserDataById  , getUsers} ;
+const getTotalAlumni = async (req, res) => {
+  try {
+    const alumniCount = await User.count({
+      where: { userTypeId: 2 }
+    });
+    
+    return res.status(200).json({ count: alumniCount });
+  } catch (error) {
+    console.error('Error fetching alumni count:', error);
+    return res.status(500).json({ message: 'Server error', error: error.message });
+  }
+}
+
+module.exports = { getUserDataById  , getUsers , getTotalAlumni} ;

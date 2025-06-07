@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../styles/AlumniFlow/Dashboard.css';
 import { Navbar } from '../../../layout/AlumniFlow/Navbar';
 import { TopBar } from '../../../layout/AlumniFlow/Topbar';
@@ -7,8 +7,24 @@ import { MdWorkOutline } from "react-icons/md";
 import { BsCalendar4Event } from "react-icons/bs";
 import { FaLocationDot, FaMoneyBill, FaBriefcase } from "react-icons/fa6";
 import { PiCalendarFill } from "react-icons/pi";
+import { getTotalAlumniCount } from '../../services/almDashboard';
 
 const Dashboard = () => {
+
+  const [totalAlumni , setTotalAlumni] = useState({ count : 0 });
+
+  const loadTotalAlumni = async ( req , res ) => {
+    try {
+      const response = await getTotalAlumniCount()
+      setTotalAlumni(response.data?.data ?? { count: 0 });
+    } catch (error) {
+      console.log(error , "Error Fetching Total Count of Alumni")
+    }
+  }
+
+  useEffect( ( ) => {
+    loadTotalAlumni();
+  } , [ ])
   return (
     <>
       <Navbar />
@@ -22,7 +38,7 @@ const Dashboard = () => {
             <div className="ald-metric-icon"><HiOutlineUserGroup /></div>
             <div className="ald-metric-content">
               <p className="ald-metric-title">Total Alumni</p>
-              <p className="ald-metric-value">0</p>
+              <p className="ald-metric-value">{totalAlumni?.count ?? 0}</p>
             </div>
           </div>
 

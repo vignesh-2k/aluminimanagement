@@ -45,12 +45,22 @@ export const deleteEvent = async (eventId) => {
     }
 }
 
-export const updateEvent = async (eventId , eventData) => {
-    try {
-       const response = await API.put(`${process.env.REACT_APP_BASE_URL}/events/${eventId}` , eventData)
-       return response.data 
-    } catch (error) {
-        console.log(error)
-    }
-}
+export const updateEvent = async (eventId, eventData) => {
+  try {
+    const response = await API.put(
+      `${process.env.REACT_APP_BASE_URL}/events/${eventId}`,
+      eventData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.log("Update failed:", error);
+    throw error;
+  }
+};
+
 

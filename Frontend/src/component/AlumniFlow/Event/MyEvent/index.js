@@ -26,7 +26,7 @@ const MyEvent = () => {
   const handleCloseEditPopup = () => {
     setShowEditPopup(false);
     setSelectedEvent(null);
-    fetchEvents(); // refresh the table after edit
+    fetchEvents(); 
   };
 
   const handleDeleteClick = (eventId) => {
