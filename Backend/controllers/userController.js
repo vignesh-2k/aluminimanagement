@@ -73,4 +73,20 @@ const getTotalAlumni = async (req, res) => {
   }
 }
 
-module.exports = { getUserDataById  , getUsers , getTotalAlumni} ;
+const updateUsers = async ( req , res ) => {
+  try {
+     const { id } = req.params ;
+     const [updated] = await User.update(req.body , { where : { id }});
+     if(updated){
+      const updatedUsers = await User.findOne({ where : { id }});
+      res.json({ status: 'success', data: updateUsers });
+     } else {
+      res.status(404).json({ status: 'error', message: 'User not found' });
+     }
+  } catch (error) {
+      res.status(500).json({ status: 'error', message: error.message });
+
+  }
+}
+
+module.exports = { getUserDataById  , getUsers , getTotalAlumni , updateUsers} ;
