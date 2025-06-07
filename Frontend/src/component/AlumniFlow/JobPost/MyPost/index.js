@@ -20,10 +20,14 @@ const MyPost = () => {
   }, []);
 
   const fetchData = async () => {
-    const jobData = await getAllJob();
-    const statusData = await getEmployeeStatus();
-    setJobs(jobData?.data || []);
-    setStatuses(statusData?.data || []);
+    try {
+      const jobData = await getAllJob();
+      const statusData = await getEmployeeStatus();
+      setJobs(jobData?.data || []);
+      setStatuses(statusData?.data || []);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const getStatusText = (statusId) => {
@@ -48,8 +52,10 @@ const MyPost = () => {
     try {
       await deleteJobPost(selectedJob.jobId);
       setJobs(jobs.filter(job => job.jobId !== selectedJob.jobId));
+      alert("Job deleted successfully!");
     } catch (error) {
       console.error("Delete failed:", error);
+      alert("Delete failed. Please try again.");
     } finally {
       setShowDeletePopup(false);
     }
@@ -57,6 +63,11 @@ const MyPost = () => {
 
   const handleViewDetails = (job) => {
     navigate('/postdetails', { state: { job } });
+  };
+
+  const handleUpdateSuccess = () => {
+    fetchData(); 
+    setShowEditPopup(false);
   };
 
   return (
@@ -95,7 +106,6 @@ const MyPost = () => {
                   <th>Employment Status</th>
                   <th>Salary</th>
                   <th>Deadline</th>
-                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -110,8 +120,7 @@ const MyPost = () => {
                       </span>
                     </td>
                     <td>{job.salary}/year</td>
-                    <td>{new Date(job.applicationDeadline).toLocaleDateString()}</td>
-                    <td><span className="almp-badge-pending">Pending</span></td>
+                    <td>{job.applicationDeadline ? new Date(job.applicationDeadline).toLocaleDateString() : 'N/A'}</td>
                     <td className="almp-action-icons">
                       <button className="almp-icon-btn" onClick={() => handleEditClick(job)}><FaEdit /></button>
                       <button className="almp-icon-btn" onClick={() => handleDeleteClick(job)}><FaTrash /></button>
@@ -134,9 +143,13 @@ const MyPost = () => {
         </div>
       </div>
 
-      {showEditPopup && (
+      {showEditPopup && selectedJob && (
         <div className="almp-modal-overlay">
-          <EditPost onClose={handleCloseEditPopup} job={selectedJob} />
+          <EditPost 
+            onClose={handleCloseEditPopup} 
+            jobData={selectedJob} 
+            onUpdateSuccess={handleUpdateSuccess} 
+          />
         </div>
       )}
 
