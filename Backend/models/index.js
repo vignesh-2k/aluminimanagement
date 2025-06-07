@@ -12,10 +12,12 @@ const Event = require('./event');
 const EmployeeStatus = require('./employeestatus');
 const Jobs = require('./jobPost');
 const PendingUser = require('./pendingUser');
+const Internship = require('./internship');
 
 
 const initDB = async () => {
     if (process.env.ENVIRONMENT === 'development') {
+        await Internship.drop();
         await Jobs.drop();
         await EmployeeStatus.drop();
         await Event.drop();
@@ -41,7 +43,7 @@ const initDB = async () => {
         await Event.sync({force: true});
         await EmployeeStatus.sync({force : true});
         await Jobs.sync({force : true});
-
+        await Internship.sync({ force : true});
     } else {
         await UserType.sync();
         await BatchName.sync();
@@ -119,5 +121,6 @@ module.exports = {
     Event,
     EmployeeStatus,
     Jobs,
-    PendingUser
+    PendingUser,
+    Internship
 };
