@@ -35,28 +35,10 @@ const CreateIntern = () => {
               <input type="text" required placeholder='Enter the Title' />
               <label>Internship Title <span className="aluci-required">*</span></label>
             </div>
-            <div className="aluci-field-group aluci-floating-dropdown">
-              <div
-                className="aluci-dropdown"
-                onClick={() => setTypeOpen(!typeOpen)}
-              >
-                <div className="aluci-dropdown-header">
-                  {internType}
-                  <IoChevronDown />
-                </div>
-                {typeOpen && (
-                  <div className="aluci-dropdown-options">
-                    {['Remote', 'On-site', 'Hybrid'].map(option => (
-                      <div key={option} onClick={() => {
-                        setInternType(option);
-                        setTypeOpen(false);
-                      }}>
-                        {option}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <div className="aluci-field-group aluci-floating">
+            
+              <input type="text" required placeholder='Eg:- Remote' />
+
               <label>Internship Type <span className="aluci-required">*</span></label>
             </div>
           </div>

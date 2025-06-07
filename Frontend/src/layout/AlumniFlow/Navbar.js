@@ -60,7 +60,7 @@ export const Navbar = () => {
           </ul>
         </li>
 
-      {/* <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("intern")}>
+      <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("intern")}>
                 <div className="db-nav-link">
                   <FaRegIdCard  className="db-nav-icon" />
                   <span>Internship</span>
@@ -73,7 +73,7 @@ export const Navbar = () => {
                   <li><Link to="/allintern">All Interns</Link></li>
                   <li><Link to="/myintern">My Interns</Link></li>
                 </ul>
-              </li> */}
+              </li>
       
 
         {/* Alumni Dropdown */}

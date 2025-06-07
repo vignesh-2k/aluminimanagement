@@ -60,4 +60,33 @@ const getUsers = async ( req, res ) => {
   }
 }
 
-module.exports = { getUserDataById  , getUsers} ;
+const getTotalAlumni = async (req, res) => {
+  try {
+    const alumniCount = await User.count({
+      where: { userTypeId: 2 }
+    });
+    
+    return res.status(200).json({ count: alumniCount });
+  } catch (error) {
+    console.error('Error fetching alumni count:', error);
+    return res.status(500).json({ message: 'Server error', error: error.message });
+  }
+}
+
+const updateUsers = async ( req , res ) => {
+  try {
+     const { id } = req.params ;
+     const [updated] = await User.update(req.body , { where : { id }});
+     if(updated){
+      const updatedUsers = await User.findOne({ where : { id }});
+      res.json({ status: 'success', data: updateUsers });
+     } else {
+      res.status(404).json({ status: 'error', message: 'User not found' });
+     }
+  } catch (error) {
+      res.status(500).json({ status: 'error', message: error.message });
+
+  }
+}
+
+module.exports = { getUserDataById  , getUsers , getTotalAlumni , updateUsers} ;

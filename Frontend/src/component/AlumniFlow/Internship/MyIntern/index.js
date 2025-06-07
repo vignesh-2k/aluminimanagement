@@ -95,7 +95,7 @@ const MyIntern = () => {
                   <th>Internship Type</th>
                   <th>Stipend</th>
                   <th>Deadline</th>
-                  <th>Status</th>
+                  {/* <th>Status</th> */}
                   <th>Action</th>
                 </tr>
               </thead>
@@ -111,7 +111,7 @@ const MyIntern = () => {
                     </td>
                     <td>{intern.salary}/month</td>
                     <td>{new Date(intern.applicationDeadline).toLocaleDateString()}</td>
-                    <td><span className="almi-badge-pending">Pending</span></td>
+                    {/* <td><span className="almi-badge-pending">Pending</span></td> */}
                     <td className="almi-action-icons">
                       <button className="almi-icon-btn" onClick={() => handleEditClick(intern)}><FaEdit /></button>
                       <button className="almi-icon-btn" onClick={() => handleDeleteClick(intern)}><FaTrash /></button>

@@ -79,3 +79,14 @@ exports.getEmployeeStatus = async ( req , res ) => {
  
     }
 }
+
+exports.getTotalJobs = async ( req, res ) => {
+    try {
+        const jobs = await Jobs.count()
+        return res.status(200).json({ jobCount : jobs });
+
+    } catch (error) {
+    res.status(500).json({ status : 'error' , message:error.message})
+
+    }
+}
