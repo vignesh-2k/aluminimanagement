@@ -4,31 +4,48 @@ import { TopBar } from "../../../../layout/AlumniFlow/Topbar";
 import { Navbar } from "../../../../layout/AlumniFlow/Navbar";
 import "../../../../styles/AlumniFlow/Internship/MyIntern.css";
 import { useNavigate } from 'react-router-dom';
-import Editintern from '../EditIntern';
-import { getAllJob, getEmployeeStatus, deleteJobPost } from '../../../services/almJob';
+import EditIntern from '../EditIntern';
+import { getAllIntern, deleteIntern } from '../../../services/almIntern';
 
 const MyIntern = () => {
   const navigate = useNavigate();
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [interns, setInterns] = useState([]);
-  const [statuses, setStatuses] = useState([]);
+  const [filteredInterns, setFilteredInterns] = useState([]);
   const [selectedIntern, setSelectedIntern] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    fetchData();
+    fetchInterns();
   }, []);
 
-  const fetchData = async () => {
-    const jobData = await getAllJob(); // Replace with getAllInterns() if available
-    const statusData = await getEmployeeStatus();
-    setInterns(jobData?.data || []);
-    setStatuses(statusData?.data || []);
-  };
+  useEffect(() => {
+    // Filter internships based on search term
+    const filtered = interns.filter(intern => 
+      intern.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      intern.internshipTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      intern.internshipType.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredInterns(filtered);
+  }, [searchTerm, interns]);
 
-  const getStatusText = (statusId) => {
-    const match = statuses.find((s) => s.employeeStatusId === statusId);
-    return match ? match.employeeStatus : 'Unknown';
+  const fetchInterns = async () => {
+    try {
+      const response = await getAllIntern();
+      if (Array.isArray(response.data)) {
+        setInterns(response.data);
+        setFilteredInterns(response.data);
+      } else if (response.data) {
+        setInterns([response.data]);
+        setFilteredInterns([response.data]);
+      }
+    } catch (error) {
+      console.error("Error fetching internships:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleEditClick = (intern) => {
@@ -41,13 +58,17 @@ const MyIntern = () => {
     setShowDeletePopup(true);
   };
 
-  const handleCloseEditPopup = () => setShowEditPopup(false);
+  const handleCloseEditPopup = () => {
+    setShowEditPopup(false);
+    fetchInterns();
+  };
+
   const handleCloseDeletePopup = () => setShowDeletePopup(false);
 
   const handleConfirmDelete = async () => {
     try {
-      await deleteJobPost(selectedIntern.jobId);
-      setInterns(interns.filter(intern => intern.jobId !== selectedIntern.jobId));
+      await deleteIntern(selectedIntern.internshipId);
+      setInterns(interns.filter(intern => intern.internshipId !== selectedIntern.internshipId));
     } catch (error) {
       console.error("Delete failed:", error);
     } finally {
@@ -56,8 +77,21 @@ const MyIntern = () => {
   };
 
   const handleViewDetails = (intern) => {
-    navigate('/postdetails', { state: { job: intern } });
+    navigate('/interndetails', { state: { internId: intern.internshipId } });
   };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  if (loading) {
+    return (
+      <div className="almi-loading">
+        <div className="almi-spinner"></div>
+        <p>Loading internships...</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -70,7 +104,13 @@ const MyIntern = () => {
           <div className="almi-top-bar">
             <label className="almi-search-container">
               <FaSearch className="almi-search-icon" />
-              <input type="text" placeholder="Search internship post" className="almi-search-input" />
+              <input 
+                type="text" 
+                placeholder="Search internship post" 
+                className="almi-search-input"
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
             </label>
             <div className="almi-entries-container">
               <label className="almi-entries-label">
@@ -95,36 +135,60 @@ const MyIntern = () => {
                   <th>Internship Type</th>
                   <th>Stipend</th>
                   <th>Deadline</th>
-                  {/* <th>Status</th> */}
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {interns.map((intern) => (
-                  <tr key={intern.jobId}>
-                    <td>{intern.companyName}</td>
-                    <td>{intern.jobTitle}</td>
-                    <td>
-                      <span className="almi-status-badge">
-                        {getStatusText(intern.employeeStatus)}
-                      </span>
-                    </td>
-                    <td>{intern.salary}/month</td>
-                    <td>{new Date(intern.applicationDeadline).toLocaleDateString()}</td>
-                    {/* <td><span className="almi-badge-pending">Pending</span></td> */}
-                    <td className="almi-action-icons">
-                      <button className="almi-icon-btn" onClick={() => handleEditClick(intern)}><FaEdit /></button>
-                      <button className="almi-icon-btn" onClick={() => handleDeleteClick(intern)}><FaTrash /></button>
-                      <button className="almi-icon-btn" onClick={() => handleViewDetails(intern)}><FaEye /></button>
+                {filteredInterns.length > 0 ? (
+                  filteredInterns.map((intern) => (
+                    <tr key={intern.internshipId}>
+                      <td>{intern.companyName}</td>
+                      <td>{intern.internshipTitle}</td>
+                      <td>
+                        <span className="almi-status-badge">
+                          {intern.internshipType}
+                        </span>
+                      </td>
+                      <td>{intern.stipend}/month</td>
+                      <td>{new Date(intern.applicationDeadline).toLocaleDateString()}</td>
+                      <td className="almi-action-icons">
+                        <button 
+                          className="almi-icon-btn" 
+                          onClick={() => handleEditClick(intern)}
+                          aria-label="Edit internship"
+                        >
+                          <FaEdit />
+                        </button>
+                        <button 
+                          className="almi-icon-btn" 
+                          onClick={() => handleDeleteClick(intern)}
+                          aria-label="Delete internship"
+                        >
+                          <FaTrash />
+                        </button>
+                        <button 
+                          className="almi-icon-btn" 
+                          onClick={() => handleViewDetails(intern)}
+                          aria-label="View details"
+                        >
+                          <FaEye />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6" className="almi-no-data">
+                      No internships found
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>
 
           <div className="almi-table-footer">
-            <span>Showing {interns.length > 0 ? `1 to ${interns.length}` : 0} of {interns.length} entries</span>
+            <span>Showing {filteredInterns.length} of {interns.length} entries</span>
             <div className="almi-pagination">
               <button className="almi-page-btn">&laquo;</button>
               <button className="almi-page-btn almi-active">1</button>
@@ -136,7 +200,10 @@ const MyIntern = () => {
 
       {showEditPopup && (
         <div className="almi-modal-overlay">
-          <Editintern onClose={handleCloseEditPopup} job={selectedIntern} />
+          <EditIntern 
+            onClose={handleCloseEditPopup} 
+            intern={selectedIntern} 
+          />
         </div>
       )}
 
@@ -147,8 +214,18 @@ const MyIntern = () => {
             <h2>Sure! You want to delete?</h2>
             <p>You won't be able to revert this!</p>
             <div className="almi-delete-popup-buttons">
-              <button className="almi-delete-confirm-btn" onClick={handleConfirmDelete}>Yes, Delete It!</button>
-              <button className="almi-delete-cancel-btn" onClick={handleCloseDeletePopup}>Cancel</button>
+              <button 
+                className="almi-delete-confirm-btn" 
+                onClick={handleConfirmDelete}
+              >
+                Yes, Delete It!
+              </button>
+              <button 
+                className="almi-delete-cancel-btn" 
+                onClick={handleCloseDeletePopup}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>

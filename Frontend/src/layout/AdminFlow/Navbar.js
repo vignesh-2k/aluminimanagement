@@ -136,14 +136,14 @@ export const Navbar = () => {
             <span>Profile</span>
           </Link>
         </li>
-        <li className="db-nav-item">
+        {/* <li className="db-nav-item">
           <Link to="/adminflow/adminsettings/adminchangepassword" className="db-nav-link">
             <IoIosSettings className="db-nav-icon" />
             <span>Settings</span>
           </Link>
-        </li>
+        </li> */}
         {/* Settings Dropdown */}
-        {/* <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("settings")}>
+        <li className="db-nav-item db-nav-dropdown" onClick={() => handleToggle("settings")}>
           <div className="db-nav-link">
             <IoIosSettings className="db-nav-icon" />
             <span>Settings</span>
@@ -157,7 +157,7 @@ export const Navbar = () => {
             <li><Link to="/adminflow/adminsettings/admindepartmentsetting">Department Setting</Link></li>
             <li><Link to="/adminflow/adminsettings/adminpassingyearsetting">Passing Year Setting</Link></li>
           </ul>
-        </li> */}
+        </li>
 {/* 
         <li className="db-nav-item">
           <Link to="/logout" className="db-nav-link">
