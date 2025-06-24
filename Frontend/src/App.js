@@ -35,6 +35,7 @@ import AllIntern from './component/AlumniFlow/Internship/AllIntern';
 import PostDetails from './component/AlumniFlow/JobPost/AllPost/PostDetails';
 import MyIntern from './component/AlumniFlow/Internship/MyIntern';
 import EditIntern from './component/AlumniFlow/Internship/EditIntern';
+import InternDetails from './component/AlumniFlow/Internship/AllIntern/internDetails';
 
 //AdminFlow
 import AdminDashboard from './component/AdminFlow/AdminDashboard';
@@ -108,7 +109,7 @@ function App() {
             <Route path="/editintern" element={<EditIntern />} />
             <Route path="/myeventdetails" element={<MyEventDetails />} />
             <Route path="/postdetails" element={<PostDetails />} />
-
+             <Route path="/interndetails" element={<InternDetails />} />
 
           </Routes>
         </div>
